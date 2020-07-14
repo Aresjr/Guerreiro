@@ -1,5 +1,7 @@
 {% extends 'layouts/main.html' %}
 
 {% block content %}
-
+    {% for user in users %}
+      <li>{{ user.first_name }}</li>
+    {% endfor %}
 {% endblock %}
