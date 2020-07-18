@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from flask_mongoengine import MongoEngine
+from pymongo import MongoClient
+from mongoengine import MongoEngine
 import logging
 from logging import Formatter, FileHandler
 from model.User import User
@@ -11,6 +12,10 @@ app.config['MONGODB_SETTINGS'] = {
     "db": "guerreiro",
 }
 db = MongoEngine(app)
+
+#client = MongoClient('mongodb://localhost:27017/')
+#db = client.guerreiro
+
 
 @app.route('/')
 def home():

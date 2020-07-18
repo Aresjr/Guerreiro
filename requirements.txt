@@ -1,7 +1,31 @@
-Fabric
+Fabric~=2.5.0
 Flask-WTF
-WTForms
-coverage
-# ecdsa
-# paramiko
-# pycrypto
+WTForms~=2.3.1
+coverage~=5.2
+pip~=20.1.1
+keyring~=21.2.1
+six~=1.15.0
+Jinja2~=2.11.2
+Werkzeug~=1.0.1
+itsdangerous~=1.1.0
+click~=7.1.2
+blinker~=1.4
+invoke~=1.4.1
+paramiko~=2.7.1
+PyYAML~=5.3.1
+MarkupSafe~=1.1.1
+certifi~=2020.6.20
+chardet~=3.0.4
+cryptography~=2.9.2
+python-dateutil~=2.8.1
+SQLAlchemy~=1.3.18
+bcrypt~=3.1.7
+idna~=2.10
+urllib3~=1.25.9
+simplejson~=3.16.0
+Flask~=1.1.2
+pyparsing~=2.4.7
+pycparser~=2.20
+setuptools~=49.2.0
+requests~=2.24.0
+mongoengine~=0.20.0
