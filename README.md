@@ -1,5 +1,6 @@
 ## Bem-vindo, Guerreiro
 
+#Up and Running
   ```
   $ git clone https://github.com/Aresjr/Guerreiro.git
   $ cd Guerreiro
@@ -8,3 +9,10 @@
   $ pip install -r requirements.txt
   $ python app.py
   ```
+
+#Migration
+'''
+$ flask db stamp head
+$ flask db migrate
+$ flask db upgrade
+'''
