@@ -1,8 +1,8 @@
-## Bem-vindo Guerreiro
+## Bem-vindo, Guerreiro
 
   ```
-  $ git clone https://github.com/realpython/flask-boilerplate.git
-  $ cd flask-boilerplate
+  $ git clone https://github.com/Aresjr/Guerreiro.git
+  $ cd Guerreiro
   $ virtualenv env
   $ source env/bin/activate
   $ pip install -r requirements.txt
