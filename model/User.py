@@ -1,7 +1,6 @@
-from mongoengine import Document, StringField
+from app import db
 
 
-class User(Document):
-    name = StringField(max_length=100)
-    nick = StringField(max_length=20)
-    email = StringField(required=True)
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128))

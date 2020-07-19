@@ -1,25 +1,20 @@
 from flask import Flask, render_template
-from pymongo import MongoClient
-from mongoengine import MongoEngine
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
-from model.User import User
 import os
 
 app = Flask(__name__)
-app.config.from_object('config')
-app.config['MONGODB_SETTINGS'] = {
-    "db": "guerreiro",
-}
-db = MongoEngine(app)
-
-#client = MongoClient('mongodb://localhost:27017/')
-#db = client.guerreiro
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS '] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://320034667:pgroot@localhost/guerreiro'
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 @app.route('/')
 def home():
-    return render_template('pages/home.html', users=User.objects)
+    return render_template('pages/home.html', users=[])
 
 
 @app.errorhandler(500)
