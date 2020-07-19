@@ -1,6 +1,6 @@
 ## Bem-vindo, Guerreiro
 
-Up and Running
+# Up and Running
   ```
   $ git clone https://github.com/Aresjr/Guerreiro.git
   $ cd Guerreiro
@@ -10,7 +10,7 @@ Up and Running
   $ python app.py
   ```
 
-Migration
+# Migration
   ```
   $ flask db stamp head
   $ flask db migrate
