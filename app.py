@@ -1,15 +1,26 @@
-from flask import Flask, render_template
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
 import logging
-from logging import Formatter, FileHandler
 import os
+from logging import Formatter, FileHandler
+
+from flask import Flask, render_template
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS '] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://320034667:pgroot@localhost/guerreiro'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:pgroot@localhost/guerreiro'
 db = SQLAlchemy(app)
+
+from model import Lang
+from model import Company
+from model import Department
+from model import Group
+from model import User
+
 migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 
 @app.route('/')

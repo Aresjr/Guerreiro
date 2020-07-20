@@ -1,7 +1,7 @@
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:pgroot@localhost/guerreiro'
+# psql -h localhost -p 5432 -d guerreiro -U postgres -W
 
 
 class Config(object):
