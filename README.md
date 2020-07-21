@@ -7,13 +7,18 @@
   $ virtualenv env
   $ source env/bin/activate
   $ pip install -r requirements.txt
-  $ python app.py
+  $ flask run
   ```
 
 ### Migration
   ```
-  $ flask db init
-  $ flask db stamp head
-  $ flask db migrate
-  $ flask db upgrade
+  $ python migrate.py db init
+  $ python migrate.py db stamp head
+  $ python migrate.py db migrate
+  $ python migrate.py db upgrade
+  ```
+
+### Carga Inicial
+  ```
+  $ python dataload.py
   ```
