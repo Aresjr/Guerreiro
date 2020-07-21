@@ -12,10 +12,9 @@
 
 ### Migration
   ```
-  $ python migrate.py db init
-  $ python migrate.py db stamp head
-  $ python migrate.py db migrate
-  $ python migrate.py db upgrade
+  $ flask db init
+  $ flask db migrate
+  $ flask db upgrade
   ```
 
 ### Carga Inicial
