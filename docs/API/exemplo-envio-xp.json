@@ -1,0 +1,45 @@
+{
+	"tarefas":[
+		{
+		"codigo":1234, /* Opcional, se não for enviada a taref eh cadastrada */
+		"desc":"Atividade X",
+		"inicioAtividade":"2020-01-01T00:00:00.000Z", /* Opcional */
+		"fimAtividade":"2020-01-01T00:00:00.000Z", /* Opcional */
+		"totalMinutos":60.5, /* Opcional */
+		"xp":[
+		{
+			"totalXp":4,
+			"habilidade":1 /* habilidade 1 - Java (Categoria da Habilidade - Programacao) */
+		},
+		{
+			"totalXp":3,
+			"habilidade":2 /* habilidade 2 - SQL (Categoria da Habilidade - Banco de Dados) */
+		},
+		{
+			"totalXp":2,
+			"habilidade":3 /* habilidade 3 - Analise (Categoria da Habilidade - Analise de Sistema) */
+		},
+		{
+			"totalXp":1,
+			"habilidade":4 /* habilidade 4 - Funcao X do Sistema Y (Categoria da Habilidade - Sistema Y) */
+		}
+		]
+		},
+		{
+		"codigo":2345, /* Opcional, se nao for enviada e cadastrada */
+		"desc":"Atividade X",
+		"inicioAtividade":"2020-01-01T00:00:00.000Z", /* Opcional */
+		"fimAtividade":"2020-01-01T00:00:00.000Z", /* Opcional */
+		"totalMinutos":60.5, /* Opcional */
+		"xp":[
+		{
+			"totalXp":4,
+			"habilidade":3 /* habilidade 3 - Analise (Categoria da Habilidade - Analise de Sistema) */
+		},
+		{
+			"totalXp":3,
+			"habilidade":5 /* habilidade 2 - SQL (Categoria da Habilidade - Banco de Dados) */
+		}
+		]
+		}
+	]}
