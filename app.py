@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-from model import Lang, Company, Department, Group, User, Role, Race
+from model import Lang, Empresa, Setor, Grupo, Usuario, NivelAcesso, Raca
 manager.run()
 
 
