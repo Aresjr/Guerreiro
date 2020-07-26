@@ -13,7 +13,7 @@ class Usuario(db.Model):
     cargo = db.Column(db.Integer, ForeignKey('cargo.id'))
 
     # PESSOAL
-    nome = db.Column(db.String(255))
+    nome = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(128), unique=True, nullable=False)
     senha = db.Column(db.String(128), nullable=False)
 
@@ -31,7 +31,7 @@ class Usuario(db.Model):
     # VERSIONAMENTO
     dataCriacao = db.Column(db.Date, default=func.now())
     datAlteracao = db.Column(db.Date)
-    del_ = db.Column(db.Boolean, default=False)
+    del_ = db.Column(key='del', type=db.Boolean, default=False)
 
     def set_password(self, senha):
         self.senha = generate_password_hash(senha)

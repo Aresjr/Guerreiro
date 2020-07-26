@@ -1,10 +1,9 @@
 import logging
 import os
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from logging import Formatter, FileHandler
 
-from flask import Flask, render_template
-
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.debug = True
@@ -13,19 +12,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # MIGRATION
-# from flask_migrate import Migrate, MigrateCommand
-# from flask_script import Manager
-# migrate = Migrate(app, db)
-# manager = Manager(app)
-# manager.add_command('db', MigrateCommand)
-# from model import Lang, Empresa, Setor, Grupo, Usuario, NivelAcesso, Raca, Cargo
-# manager.run()
+# import migration
 
-
-@app.route('/')
-def home():
-    return render_template('pages/home.html', users=[])
-
+from routes import index
 
 if not app.debug:
     file_handler = FileHandler('error.log')
