@@ -7,5 +7,6 @@ class Xp(db.Model):
     totalXp = db.Column(db.Integer)
     tarefa = db.Column(db.Integer, ForeignKey('tarefa.id'))
     habilidade = db.Column(db.Integer, ForeignKey('habilidade.id'))
+    usuarioCriacao = db.Column(db.Integer, ForeignKey('usuario.id'))
     dataCriacao = db.Column(db.Date, default=func.now())
     del_ = db.Column(db.Boolean, key='del', default=False)

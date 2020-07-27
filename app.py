@@ -9,12 +9,13 @@ app = Flask(__name__)
 app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:pgroot@localhost/guerreiro'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['TESTING'] = True
 db = SQLAlchemy(app)
 
 # MIGRATION
 # import migration
 
-from routes import index, perfil
+from routes import index, perfil, api
 
 if not app.debug:
     file_handler = FileHandler('error.log')

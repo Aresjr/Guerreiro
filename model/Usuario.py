@@ -28,6 +28,7 @@ class Usuario(db.Model):
     lang = db.Column(db.Integer, ForeignKey('lang.id'))
 
     # VERSIONAMENTO
+    usuarioCriacao = db.Column(db.Integer, ForeignKey('usuario.id'))
     dataCriacao = db.Column(db.Date, default=func.now())
     datAlteracao = db.Column(db.Date)
     del_ = db.Column(db.Boolean, key='del', default=False)
