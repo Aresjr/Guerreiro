@@ -1,7 +1,19 @@
 {% extends 'layouts/main.html' %}
 
 {% block content %}
-    {% for user in users %}
-      <h1>{{ user.nick }}</h1>
-    {% endfor %}
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-profile">
+        <div class="card-avatar">
+          <a href="#">
+            <img class="img" src="/static/img/profile.png" />
+          </a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{ usuario.nome }}</h4>
+            <h6 class="card-description">{{ usuario.cargo.desc }} Level {{ usuario.level }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 # MIGRATION
 # import migration
 
-from routes import index
+from routes import index, perfil
 
 if not app.debug:
     file_handler = FileHandler('error.log')

@@ -10,4 +10,4 @@ class Tarefa(db.Model):
     fimAtividade = db.Column(db.Date)
     totalMinutos = db.Column(db.Float)
     dataCriacao = db.Column(db.Date, default=func.now())
-    del_ = db.Column(key='del', type=db.Boolean, default=False)
+    del_ = db.Column(db.Boolean, key='del', default=False)

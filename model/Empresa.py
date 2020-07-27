@@ -13,4 +13,4 @@ class Empresa(db.Model):
 
     lang = db.Column(db.Integer, ForeignKey('lang.id'))
     dataCriacao = db.Column(db.Date, default=func.now())
-    del_ = db.Column(key='del', type=db.Boolean, default=False)
+    del_ = db.Column(db.Boolean, key='del', default=False)

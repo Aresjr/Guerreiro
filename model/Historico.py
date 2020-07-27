@@ -7,4 +7,4 @@ class Historico(db.Model):
     desc = db.Column(db.String(255), nullable=False)
     tipoHistorico = db.Column(db.Integer, ForeignKey('tipo_historico.id'))
     dataCriacao = db.Column(db.Date, default=func.now())
-    del_ = db.Column(key='del', type=db.Boolean, default=False)
+    del_ = db.Column(db.Boolean, key='del', default=False)

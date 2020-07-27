@@ -1,0 +1,60 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-profile">
+        <div class="card-avatar">
+          <a href="#">
+            <img class="img" src="/static/img/profile.png" />
+          </a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{ usuario.nickname }}</h4>
+            <h6 class="card-description">{{ usuario.cargo.desc }} Level {{ usuario.level }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">Editar Informações</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Nome</label>
+                  <input type="text" value="{{ usuario.nome }}" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Empresa</label>
+                  <input type="text" value="Philips" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Nickname</label>
+                  <input type="text" value="{{ usuario.nickname }}" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Email address</label>
+                  <input type="email" value="{{ usuario.email }}" class="form-control">
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Atualizar</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

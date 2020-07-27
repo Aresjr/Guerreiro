@@ -22,7 +22,6 @@ class Usuario(db.Model):
     level = db.Column(db.Integer, default=1, nullable=False)
     currentXp = db.Column(db.Integer, default=0)
     nextLevelXp = db.Column(db.Integer, default=1000)
-    # raca = db.Column(db.Integer, ForeignKey('raca.id'))
 
     # PREFS
     darkMode = db.Column(db.Boolean, default=False)
@@ -31,7 +30,7 @@ class Usuario(db.Model):
     # VERSIONAMENTO
     dataCriacao = db.Column(db.Date, default=func.now())
     datAlteracao = db.Column(db.Date)
-    del_ = db.Column(key='del', type=db.Boolean, default=False)
+    del_ = db.Column(db.Boolean, key='del', default=False)
 
     def set_password(self, senha):
         self.senha = generate_password_hash(senha)

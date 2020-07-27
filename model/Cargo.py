@@ -7,4 +7,4 @@ class Cargo(db.Model):
     desc = db.Column(db.String(255), nullable=False)
     cargoSuperior = db.Column(db.Integer, ForeignKey('cargo.id'))
     dataCriacao = db.Column(db.Date, default=func.now())
-    del_ = db.Column(key='del', type=db.Boolean, default=False)
+    del_ = db.Column(db.Boolean, key='del', default=False)

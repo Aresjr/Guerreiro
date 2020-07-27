@@ -7,4 +7,4 @@ class Lang(db.Model):
     codigo = db.Column(db.String(7), unique=True)
     desc = db.Column(db.String(128), unique=True)
     dataCriacao = db.Column(db.Date, default=func.now())
-    del_ = db.Column(key='del', type=db.Boolean, default=False)
+    del_ = db.Column(db.Boolean, key='del', default=False)
