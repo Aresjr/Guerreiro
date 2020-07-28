@@ -2,7 +2,7 @@ from sqlalchemy import func, ForeignKey
 from app import db
 
 
-class Tarefa(db.Model):
+class Atividade(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     codigo = db.Column(db.Integer)
     desc = db.Column(db.String(255))

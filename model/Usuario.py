@@ -11,6 +11,7 @@ class Usuario(db.Model):
     # FUNCIONÁRIO
     grupo = db.Column(db.Integer, ForeignKey('grupo.id'))
     cargo = db.Column(db.Integer, ForeignKey('cargo.id'))
+    cargoDesejado = db.Column(db.Integer, ForeignKey('cargo.id'))
 
     # PESSOAL
     nome = db.Column(db.String(255), nullable=False)

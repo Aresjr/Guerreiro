@@ -10,6 +10,7 @@ app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:pgroot@localhost/guerreiro'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['TESTING'] = True
+app.config['FLASK_ENV'] = 'development'
 db = SQLAlchemy(app)
 
 # MIGRATION
