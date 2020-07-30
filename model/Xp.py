@@ -1,4 +1,4 @@
-from sqlalchemy import func, ForeignKey
+from sqlalchemy import ForeignKey
 from app import db
 
 
@@ -7,6 +7,3 @@ class Xp(db.Model):
     totalXp = db.Column(db.Integer)
     atividade = db.Column(db.Integer, ForeignKey('atividade.id'))
     habilidade = db.Column(db.Integer, ForeignKey('habilidade.id'))
-    usuarioCriacao = db.Column(db.Integer, ForeignKey('usuario.id'))
-    dataCriacao = db.Column(db.Date, default=func.now())
-    del_ = db.Column(db.Boolean, key='del', default=False)

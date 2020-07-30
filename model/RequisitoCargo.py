@@ -1,12 +1,11 @@
-from sqlalchemy import func, ForeignKey
+from sqlalchemy import ForeignKey
 from app import db
 
 
 class RequisitoCargo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    desc = db.Column(db.String(255), nullable=False)
-    cargoSuperior = db.Column(db.Integer, ForeignKey('cargo.id'))
-    cargoInicial = db.Column(db.Boolean, default=False)
-    usuarioCriacao = db.Column(db.Integer, ForeignKey('usuario.id'))
-    dataCriacao = db.Column(db.Date, default=func.now())
+    descricao = db.Column(db.String, nullable=False)
+    cargo = db.Column(db.Integer, ForeignKey('cargo.id'), nullable=False)
+    habilidade = db.Column(db.Integer, ForeignKey('habilidade.id'), nullable=False)
+    nivelMinimo = db.Column(db.Integer, nullable=False)
     del_ = db.Column(db.Boolean, key='del', default=False)

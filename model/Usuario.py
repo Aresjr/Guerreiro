@@ -1,4 +1,4 @@
-from sqlalchemy import func, ForeignKey
+from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
 from helper.XpHelper import XpHelper
@@ -9,7 +9,7 @@ class Usuario(db.Model):
     nivelAcesso = db.Column(db.Integer, ForeignKey('nivel_acesso.id'))
 
     # FUNCIONÁRIO
-    grupo = db.Column(db.Integer, ForeignKey('grupo.id'))
+    setor = db.Column(db.Integer, ForeignKey('setor.id'))
     cargo = db.Column(db.Integer, ForeignKey('cargo.id'))
     cargoDesejado = db.Column(db.Integer, ForeignKey('cargo.id'))
 
@@ -28,10 +28,6 @@ class Usuario(db.Model):
     darkMode = db.Column(db.Boolean, default=False)
     lang = db.Column(db.Integer, ForeignKey('lang.id'))
 
-    # VERSIONAMENTO
-    usuarioCriacao = db.Column(db.Integer, ForeignKey('usuario.id'))
-    dataCriacao = db.Column(db.Date, default=func.now())
-    datAlteracao = db.Column(db.Date)
     del_ = db.Column(db.Boolean, key='del', default=False)
 
     def set_password(self, senha):

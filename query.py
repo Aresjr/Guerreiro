@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine, table
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model import Lang, Empresa, Setor, Grupo, NivelAcesso, Cargo
+from model import Lang, Empresa, Setor, NivelAcesso, Cargo
 from model.Usuario import Usuario
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False

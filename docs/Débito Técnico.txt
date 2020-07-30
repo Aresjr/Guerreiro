@@ -1,0 +1,6 @@
+#   Logar com GitHub
+#   Logar com Linkedin
+#   Logar com Google
+#   Logar com Microsoft
+#   Criar um quadro de fluxo de atividades (similar ao Trello)
+#   Criar um BaseModel com as colunas comuns das tabelas (usuarioCriacao, dataCriacao, del, etc)
