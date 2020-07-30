@@ -1,4 +1,0 @@
-#   Freemium?
-#       Recursos pagos:
-#           Mestre (ai career coach)
-#           Trello-like system
