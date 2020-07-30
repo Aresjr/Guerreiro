@@ -1,6 +1,5 @@
     $(document).ready(function() {
       $().ready(function() {
-          alert('teste 2');
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');

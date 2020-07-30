@@ -14,7 +14,7 @@ app.config['FLASK_ENV'] = 'development'
 db = SQLAlchemy(app)
 
 # MIGRATION
-import migration
+# import migration
 
 from routes import index, perfil, api
 
