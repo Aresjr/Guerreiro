@@ -12,8 +12,8 @@
           </a>
         </div>
         <div class="card-body">
-            <h4 class="card-title">{{ usuario.nickname }}</h4>
-            <h6 class="card-description">{{ usuario.cargo.desc }} Level {{ usuario.level }}</h6>
+            <h4 class="card-title">{{ usuario.username }}</h4>
+            <h6 class="card-description">Usuário Nível {{ usuario.level }}</h6>
         </div>
       </div>
     </div>
@@ -41,18 +41,18 @@
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Nickname</label>
-                  <input type="text" value="{{ usuario.nickname }}" class="form-control" disabled>
+                  <label class="bmd-label-floating">Username</label>
+                  <input type="text" value="{{ usuario.username }}" class="form-control" disabled>
                 </div>
               </div>
               <div class="col-md-5">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Email address</label>
+                  <label class="bmd-label-floating">Email</label>
                   <input type="email" value="{{ usuario.email }}" class="form-control">
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Atualizar</button>
+{#            <button type="submit" class="btn btn-primary pull-right">Atualizar</button>#}
             <div class="clearfix"></div>
           </form>
         </div>

@@ -13,4 +13,4 @@ dbsession = Session()
 # dbsession.commit()
 
 usuario = dbsession.query(Usuario).get(4)
-print(usuario.nickname)
+print(usuario.username)

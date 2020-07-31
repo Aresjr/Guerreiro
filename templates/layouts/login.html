@@ -22,38 +22,38 @@
                 <div class="col-md-3">
                   <form method="POST" action="/login">
 
-{#                    {{ form.csrf_token }}#}
-{#                    {{ form.email.label }} {{ form.email(size=20) }}#}
-{#                    {{ form.password.label }} {{ form.password(size=20) }}#}
-{#                    <input type="submit" value="Login">#}
+                    {{ form.csrf_token }}
+                    {{ form.username.label }} {{ form.username(size=20) }}
+                    {{ form.password.label }} {{ form.password(size=20) }}
+                    <input type="submit" value="Login">
 
-                      <div class="card">
-                        <div class="card-body">
-                          <span class="bmd-form-group">
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="material-icons">face</i>
-                                </span>
-                              </div>
-                              <input type="text" class="form-control" placeholder="Usuário ou email">
-                            </div>
-                          </span>
-                          <span class="bmd-form-group">
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="material-icons">lock_outline</i>
-                                </span>
-                              </div>
-                              <input type="password" class="form-control" placeholder="Senha">
-                            </div>
-                          </span>
-                        </div>
-                        <div class="card-footer justify-content-center">
-                            <button type="submit" class="btn btn-primary pull-right">Login</button>
-                        </div>
-                      </div>
+{#                      <div class="card">#}
+{#                        <div class="card-body">#}
+{#                          <span class="bmd-form-group">#}
+{#                            <div class="input-group">#}
+{#                              <div class="input-group-prepend">#}
+{#                                <span class="input-group-text">#}
+{#                                  <i class="material-icons">face</i>#}
+{#                                </span>#}
+{#                              </div>#}
+{#                              <input type="text" class="form-control" placeholder="Usuário ou username">#}
+{#                            </div>#}
+{#                          </span>#}
+{#                          <span class="bmd-form-group">#}
+{#                            <div class="input-group">#}
+{#                              <div class="input-group-prepend">#}
+{#                                <span class="input-group-text">#}
+{#                                  <i class="material-icons">lock_outline</i>#}
+{#                                </span>#}
+{#                              </div>#}
+{#                              <input type="password" class="form-control" placeholder="password">#}
+{#                            </div>#}
+{#                          </span>#}
+{#                        </div>#}
+{#                        <div class="card-footer justify-content-center">#}
+{#                            <button type="submit" class="btn btn-primary pull-right">Login</button>#}
+{#                        </div>#}
+{#                      </div>#}
 
                     </form>
                 </div>

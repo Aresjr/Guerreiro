@@ -2,9 +2,9 @@ import logging
 
 from flask import Flask
 from flask_login import LoginManager
-from flask_sqlalchemy import SQLAlchemy
 from logging import Formatter, FileHandler
 
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = 'sqgtjqzAbk'
@@ -33,3 +33,6 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('errors')
 
+
+def get_app():
+    return app

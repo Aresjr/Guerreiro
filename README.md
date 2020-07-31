@@ -6,8 +6,10 @@
   ```
   $ git clone https://github.com/Aresjr/Guerreiro.git
   $ cd Guerreiro
+  $ pip install virtualenv
   $ virtualenv env
-  $ source env/bin/activate
+[Linux]     $ source env/bin/activate
+[Windows]   env/Scripts/activate.bat
   $ pip install -r requirements.txt
   $ flask run
   ```
@@ -20,12 +22,7 @@
   ```
 #### Conexão local com a base
   ```
-  $ psql -h localhost -p 5432 -d guerreiro -U postgres -W
-  ```
-
-#### Carga Inicial
-  ```
-  $ python dataload.py
+  [PostgreSQL] $ psql -h localhost -p 5432 -d guerreiro -U postgres -W
   ```
 
 #### Documentacão API
