@@ -14,9 +14,9 @@
 
 #### Criar Base / Migration
   ```
-  $ flask db init
-  $ flask db migrate
-  $ flask db upgrade
+  $ python migrate.py db init
+  $ python migrate.py db migrate
+  $ python migrate.py db upgrade
   ```
 #### Conexão local com a base
   ```

@@ -4,8 +4,15 @@ from app import db
 class NivelAcesso(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     descricao = db.Column(db.String(128))
-    criaUsuario = db.Column(db.Boolean, default=False)
-    criaAtividades = db.Column(db.Boolean, default=False)
+    # FUNCIONÁRIO
+    fazAtividades = db.Column(db.Boolean, default=True)
+
+    # ADM
     criaCargo = db.Column(db.Boolean, default=False)
+    criaUsuario = db.Column(db.Boolean, default=False)
+
+    # RH / ADM
+    criaAtividades = db.Column(db.Boolean, default=False)
     criaVaga = db.Column(db.Boolean, default=False)
+
     del_ = db.Column(db.Boolean, key='del', default=False)

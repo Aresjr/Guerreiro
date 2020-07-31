@@ -1,22 +1,27 @@
 import logging
-import os
+
 from flask import Flask
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from logging import Formatter, FileHandler
 
 
 app = Flask(__name__)
+app.secret_key = 'sqgtjqzAbk'
+
 app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:pgroot@localhost/guerreiro'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['TESTING'] = True
 app.config['FLASK_ENV'] = 'development'
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
 db = SQLAlchemy(app)
 
-# MIGRATION
-# import migration
-
-from routes import index, perfil, api
+from routes import routes_import
 
 if not app.debug:
     file_handler = FileHandler('error.log')
@@ -27,6 +32,4 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
     app.logger.info('errors')
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+

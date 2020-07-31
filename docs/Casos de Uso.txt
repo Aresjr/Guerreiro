@@ -1,7 +1,9 @@
 #   ADM (Qualquer usuário que possa realizar cadastro)
 #       Cadastra e edita (API ou pela tela de cadastro)
 #           Funcionários
-#           Atividades (E respectivos XPx)
+#           Atividades (E respectivos XPs)
+#           Quadro de Missões (Kanban) - Raias, Grupos de Atividades (Projetos) e Atividades
+#
 #   Funcionário
 #       Visualizar páginas
 #           Notificações
@@ -12,7 +14,9 @@
 #               - Atividades feitas agrupadas por dia com o total de XP adquirido
 #               - Cargos alterados
 #           Cargos
-#               Seleciona cargo desejado (com base nas possíveis a partir do cargo atual, verificar requisito do cargo)
+#               Seleciona cargo desejado (analisa opções com base nos possíveis cargos a partir do cargo atual, verifica requisitos do cargo)
+#           Apontamento de Horas (através das atividades realizadas)
+#       Ganha Badges (títulos) conforme atividades específicas
 #       Faz pergunta ao Mestre
 #
 #   Mestre

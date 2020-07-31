@@ -1,7 +1,7 @@
 from app import db
 
 
-class TipoItemLinhaTempo(db.Model):
+class TipoConquista(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     descricao = db.Column(db.String(128), nullable=False)
     destaque = db.Column(db.Boolean, default=False)

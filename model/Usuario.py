@@ -1,7 +1,6 @@
 from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import db
-from helper.XpHelper import XpHelper
+from app import db, login_manager
 
 
 class Usuario(db.Model):
@@ -28,6 +27,7 @@ class Usuario(db.Model):
     darkMode = db.Column(db.Boolean, default=False)
     lang = db.Column(db.Integer, ForeignKey('lang.id'))
 
+    authenticated = db.Column(db.Boolean, default=False)
     del_ = db.Column(db.Boolean, key='del', default=False)
 
     def set_password(self, senha):
@@ -36,5 +36,18 @@ class Usuario(db.Model):
     def check_password(self, senha):
         return check_password_hash(self.senha, senha)
 
-    def add_xp(self, xp):
-        XpHelper.add_xp(self, xp)
+    def is_active(self):
+        return not self.del_
+
+    def get_id(self):
+        return self.email
+
+    def is_authenticated(self):
+        return self.authenticated
+
+    def is_anonymous(self):
+        return False
+
+    @login_manager.user_loader
+    def user_loader(id):
+        return Usuario.query.get(id)
