@@ -1,29 +1,29 @@
-import os
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-# psql -h localhost -p 5432 -d guerreiro -U postgres -W
-
-
 class Config(object):
-    DEBUG = True
+    DEBUG = False
     TESTING = False
-    CSRF_ENABLED = True
-    SECRET_KEY = 'sqgtjqzAbk'
+
+    DB_SERVER = "localhost"
+    DB_NAME = "guerreiro"
+    DB_USERNAME = "postgres"
+    DB_PASSWORD = "pgroot"
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql://' + DB_USERNAME + ':' + DB_PASSWORD + '@' + DB_SERVER + '/' + DB_NAME
+
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    FLASK_ENV = 'development'
+    SESSION_COOKIE_SECURE = True
 
 
 class ProductionConfig(Config):
-    DEBUG = False
-
-
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
+    pass
 
 
 class DevelopmentConfig(Config):
-    DEVELOPMENT = True
     DEBUG = True
+    TESTING = True
+    SESSION_COOKIE_SECURE = False
 
 
 class TestingConfig(Config):
     TESTING = True
+    SESSION_COOKIE_SECURE = False

@@ -8,12 +8,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = 'sqgtjqzAbk'
-
 app.debug = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:pgroot@localhost/guerreiro'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['TESTING'] = True
-app.config['FLASK_ENV'] = 'development'
+app.config.from_object("config.DevelopmentConfig")
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -23,7 +19,7 @@ db = SQLAlchemy(app)
 
 from routes import routes_import
 
-if not app.debug:
+if app.debug:
     file_handler = FileHandler('error.log')
     file_handler.setFormatter(
         Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')

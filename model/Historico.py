@@ -1,5 +1,6 @@
 from sqlalchemy import ForeignKey, func
 from app import db
+from model.Usuario import Usuario
 
 
 class Historico(db.Model):
@@ -8,5 +9,5 @@ class Historico(db.Model):
     idTabela = db.Column(db.Integer, nullable=False)
     valorNovo = db.Column(db.String(255), nullable=False)
     valorAntigo = db.Column(db.String(255), nullable=False)
-    usuarioAlteracao = db.Column(db.Integer, ForeignKey('usuario.id'))
+    usuarioAlteracao = db.Column(db.Integer, ForeignKey(Usuario.id))
     dataAlteracao = db.Column(db.Date, default=func.now())

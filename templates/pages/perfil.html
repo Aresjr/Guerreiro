@@ -4,23 +4,31 @@
 
 {% block content %}
   <div class="row">
-    <div class="col-md-4">
-      <div class="card card-profile">
-        <div class="card-avatar">
-          <a href="#">
-            <img class="img" src="/static/img/profile.png" />
-          </a>
+    <div class="col-md-5">
+      <div class="card card-stats">
+        <div class="card-header card-header-success card-header-icon">
+            <div class="gr-card-avatar">
+              <img class="img" src="/static/img/profile.png"/>
+            </div>
+            <div>
+              <p class="card-category">{{ usuario.nome }}</p>
+              <h3 class="card-title">Programador</h3>
+              <h3 class="card-title">Nível {{ usuario.level }}</h3>
+            </div>
         </div>
-        <div class="card-body">
-            <h4 class="card-title">{{ usuario.username }}</h4>
-            <h6 class="card-description">Usuário Nível {{ usuario.level }}</h6>
+        <div class="card-footer">
+            <div>
+              <p>Progamação Nível 20</p>
+              <p>Análise de Sistemas Nível 20</p>
+              <p>Análise de Dados Nível 10</p>
+            </div>
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Editar Informações</h4>
+          <h4 class="card-title">Informações</h4>
         </div>
         <div class="card-body">
           <form>
@@ -36,7 +44,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Empresa</label>
-                  <input type="text" value="Philips" class="form-control" disabled>
+                  <input type="text" value="{{ usuario.setor }}" class="form-control" disabled>
                 </div>
               </div>
               <div class="col-md-3">

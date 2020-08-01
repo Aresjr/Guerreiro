@@ -1,18 +1,6 @@
 <!doctype html>
 <html lang="pt">
-<head>
-  <title>Guerreiro | {{ title }}</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://nagoshiashumari.github.io/Rpg-Awesome/stylesheets/rpg-awesome.min.css">
-  <!-- Material Kit CSS -->
-  <link href="/static/css/light/material-dashboard.min.css" rel="stylesheet" />
-</head>
+{% include 'layouts/head.html' %}
 <body class="dark-edition">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="/static/img/sidebar.jpg">
@@ -63,6 +51,7 @@
             </form>
           {% endblock %}
             <ul class="navbar-nav">
+              {% block notificacoes %}
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
@@ -79,6 +68,8 @@
                   <a class="dropdown-item" href="javascript:void(0)">Another One</a>
                 </div>
               </li>
+              {% endblock %}
+              {% block usuario_menu %}
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -90,6 +81,7 @@
                   <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
                 </div>
               </li>
+              {% endblock %}
             </ul>
           </div>
         </div>
@@ -101,17 +93,6 @@
       </div>
     </div>
   </div>
-  <!--   Core JS Files   -->
-  <script src="/static/js/core/jquery.min.js"></script>
-  <script src="/static/js/core/popper.min.js"></script>
-  <script src="/static/js/core/bootstrap-material-design.min.js"></script>
-  <script src="/static/js/plugins/passive-events.js"></script>
-  <script src="/static/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="/static/js/plugins/buttons.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="/static/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="/static/js/material-dashboard.js"></script>
+  {% include 'layouts/scripts_js.html' %}
 </body>
 </html>
