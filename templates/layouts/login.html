@@ -7,9 +7,20 @@
         <div class="container-fluid">
             <div class="row justify-content-md-center">
                 <div class="col-md-3">
-                  <form method="POST" action="/login">
+                  <form method="POST">
                     {{ form.csrf_token }}
                       <div class="card">
+                        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                            {% if errors %}
+                                <div class="card-header">
+                                    {% for message in errors %}
+                                        <div class="alert alert-danger" role="alert">
+                                          {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endwith %}
                         <div class="card-body">
                           <span class="bmd-form-group">
                             <div class="input-group">
@@ -32,6 +43,7 @@
                             </div>
                           </span>
                         </div>
+                        {{ form.next(value=get_flashed_messages(category_filter=["next"])[0]) }}
                         <div class="card-footer justify-content-center">
                             <button type="submit" class="btn btn-primary pull-right">Login</button>
                         </div>

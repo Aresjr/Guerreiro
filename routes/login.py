@@ -1,6 +1,6 @@
 from app import app, db
 from flask import render_template, redirect, url_for
-from flask_login import login_user, login_required, current_user, logout_user
+from flask_login import login_user, current_user, logout_user
 from forms.forms import LoginForm
 from model.Usuario import Usuario
 
@@ -16,17 +16,17 @@ def login():
                 db.session.add(usuario)
                 db.session.commit()
                 login_user(usuario, remember=True)
-                return redirect(url_for('perfil'))
-
+                return redirect(form.next.data or url_for('index'))
     return render_template('layouts/login.html', title="Login", form=form)
 
 
-@app.route("/logout", methods=["GET"])
-@login_required
+@app.route("/logout", methods=['GET'])
 def logout():
     usuario = current_user
-    usuario.authenticated = False
-    db.session.add(usuario)
-    db.session.commit()
-    logout_user()
-    return render_template("pages/logout.html")
+    if usuario:
+        usuario.authenticated = False
+        db.session.add(usuario)
+        db.session.commit()
+        logout_user()
+    return redirect(url_for('login'))
+

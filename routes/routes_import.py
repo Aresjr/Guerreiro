@@ -1,1 +1,1 @@
-from routes import index, perfil, api, login
+from routes import index, perfil, api, login, atividades

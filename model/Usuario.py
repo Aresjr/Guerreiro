@@ -1,5 +1,8 @@
+from flask import url_for, flash, request
 from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import redirect
+
 from app import db, login_manager
 from model.Cargo import Cargo
 from model.Lang import Lang
@@ -25,7 +28,8 @@ class Usuario(db.Model):
     username = db.Column(db.String(20), unique=True, nullable=False)
     level = db.Column(db.Integer, default=1)
     currentXp = db.Column(db.Integer, default=0)
-    nextLevelXp = db.Column(db.Integer, default=1000)
+    nextLevelXp = db.Column(db.Integer, default=10)
+    hp = db.Column(db.Integer, default=100)
 
     # PREFS
     darkMode = db.Column(db.Boolean, default=False)
@@ -44,7 +48,7 @@ class Usuario(db.Model):
         return not self.del_
 
     def get_id(self):
-        return self.username
+        return self.id
 
     def is_authenticated(self):
         return self.authenticated
@@ -53,5 +57,11 @@ class Usuario(db.Model):
         return False
 
     @login_manager.user_loader
-    def user_loader(username):
-        return Usuario.query.filter(Usuario.username == username).first()
+    def user_loader(user_id):
+        return Usuario.query.get(user_id)
+
+    @login_manager.unauthorized_handler
+    def unauthorized():
+        flash('Você deve realizar o login para acessar essa página', 'error')
+        flash(request.url, 'next')
+        return redirect(url_for('login'))

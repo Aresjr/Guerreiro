@@ -1,0 +1,29 @@
+<div class="sidebar" data-color="purple" data-background-color="black" data-image="/static/img/sidebar.jpg">
+  <div class="logo">
+    <a href="/" class="simple-text logo-normal">
+      Guerreiro
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+        <a class="nav-link" href="/">
+          <i class="fa fa-fort-awesome" aria-hidden="true"></i>
+          <p>Início</p>
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == '/perfil' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('perfil') }}">
+          <i class="ra ra-sword" aria-hidden="true"></i>
+          <p>Perfil</p>
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == '/atividades' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('atividades') }}">
+          <i class="ra ra-scroll-unfurled" aria-hidden="true"></i>
+          <p>Atividades</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

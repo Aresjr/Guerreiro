@@ -5,6 +5,6 @@ from app import app
 
 
 @app.route('/')
-def home():
+def index():
     usuario = current_user
     return render_template('pages/home.html', title="Início", pageTitle="Início", usuario=usuario)
