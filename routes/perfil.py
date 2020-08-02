@@ -6,5 +6,4 @@ from flask_login import login_required, current_user
 @app.route('/perfil', methods=['GET'])
 @login_required
 def perfil():
-    usuario = current_user
-    return render_template('pages/perfil.html', title="Perfil", usuario=usuario)
+    return render_template('pages/perfil.html', title="Perfil", usuario=current_user)

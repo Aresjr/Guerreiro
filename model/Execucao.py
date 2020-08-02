@@ -4,12 +4,12 @@ from model.Usuario import Usuario
 from sqlalchemy import ForeignKey, func
 
 
-class Penalidade(db.Model):
+class Execucao(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
-    descricao = db.Column(db.String(255))
+    usuario = db.Column(db.Integer, ForeignKey(Usuario.id), nullable=False)
     atividade = db.relationship(Atividade, lazy=True)
-    usuario = db.relationship(Usuario, lazy=True)
-    dataPenalidade = db.Column(db.Date, default=func.now)
+    dataInicio = db.Column(db.Date, nullable=False, default=func.now)
+    dataFim = db.Column(db.Date)
+
     atividadeId = db.Column(db.Integer, ForeignKey(Atividade.id), nullable=False)
-    usuarioId = db.Column(db.Integer, ForeignKey(Usuario.id), nullable=False)
-    del_ = db.Column(db.Boolean, key='del', default=False)

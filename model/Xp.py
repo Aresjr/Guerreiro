@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, func
 from app import db
 from model.Atividade import Atividade
 from model.Habilidade import Habilidade
@@ -6,7 +6,9 @@ from model.Habilidade import Habilidade
 
 class Xp(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    totalXp = db.Column(db.Integer)
-    atividade = db.Column(db.Integer, ForeignKey(Atividade.id))
-    habilidade = db.Column(db.Integer, ForeignKey(Habilidade.id))
-    contabilizado = db.Column(db.Boolean, default=False)
+    atividade = db.relationship(Atividade, lazy=False)
+    dataCriacao = db.Column(db.Date, default=func.now)
+    dataContabilizacao = db.Column(db.Date)
+
+    atividadeId = db.Column(db.Integer, ForeignKey(Atividade.id))
+    habilidadeId = db.Column(db.Integer, ForeignKey(Habilidade.id))

@@ -4,20 +4,23 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
 from app import db, login_manager
+from model.manyToMany.AtividadeUsuario import AtividadeUsuario
 from model.Cargo import Cargo
 from model.Lang import Lang
 from model.NivelAcesso import NivelAcesso
 from model.Setor import Setor
+from model.Atividade import Atividade
 
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nivelAcesso = db.Column(db.Integer, ForeignKey(NivelAcesso.id))
+    nivelAcesso = db.relationship(NivelAcesso, lazy=True)
+    atividades = db.relationship(Atividade, secondary=AtividadeUsuario, lazy=True)
 
     # FUNCIONÁRIO
-    setor = db.Column(db.Integer, ForeignKey(Setor.id))
-    cargo = db.Column(db.Integer, ForeignKey(Cargo.id))
-    cargoDesejado = db.Column(db.Integer, ForeignKey(Cargo.id))
+    # cargoDesejado = db.Column(db.Integer, ForeignKey(Cargo.id))
+    setor = db.relationship(Setor, lazy=True)
+    cargo = db.relationship(Cargo, lazy=True)
 
     # PESSOAL
     nome = db.Column(db.String(255), nullable=False)
@@ -34,6 +37,11 @@ class Usuario(db.Model):
     # PREFS
     darkMode = db.Column(db.Boolean, default=False)
     lang = db.Column(db.Integer, ForeignKey(Lang.id))
+
+    # FKs
+    nivelAcessoId = db.Column(db.Integer, ForeignKey(NivelAcesso.id))
+    setorId = db.Column(db.Integer, ForeignKey(Setor.id))
+    cargoId = db.Column(db.Integer, ForeignKey(Cargo.id))
 
     authenticated = db.Column(db.Boolean, default=False)
     del_ = db.Column(db.Boolean, key='del', default=False)
