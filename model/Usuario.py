@@ -16,9 +16,9 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nivelAcesso = db.relationship(NivelAcesso, lazy=True)
     atividades = db.relationship(Atividade, secondary=AtividadeUsuario, lazy=True)
+    # niveisHabilidade = db.relationship(NivelHabilidade, secondary=NivelHabilidadeUsuario, lazy=True)
 
     # FUNCIONÁRIO
-    # cargoDesejado = db.Column(db.Integer, ForeignKey(Cargo.id))
     setor = db.relationship(Setor, lazy=True)
     cargo = db.relationship(Cargo, lazy=True)
 

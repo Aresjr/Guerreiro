@@ -22,11 +22,11 @@ def login():
 
 @app.route("/logout", methods=['GET'])
 def logout():
-    # usuario = current_user
-    # if usuario:
-    #     usuario.authenticated = False
-    #     db.session.add(usuario)
-    #     db.session.commit()
-    #     logout_user()
+    usuario = current_user
+    if usuario:
+        usuario.authenticated = False
+        db.session.add(usuario)
+        db.session.commit()
+        logout_user()
     return redirect(url_for('login'))
 

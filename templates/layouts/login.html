@@ -14,11 +14,9 @@
                         {% with errors = get_flashed_messages(category_filter=["error"]) %}
                             {% if errors %}
                                 <div class="card-header">
-                                    {% for message in errors %}
-                                        <div class="alert alert-danger" role="alert">
-                                          {{ message }}
-                                        </div>
-                                    {% endfor %}
+                                    <div class="alert alert-danger" role="alert">
+                                      {{ errors[0] }}
+                                    </div>
                                 </div>
                             {% endif %}
                         {% endwith %}
