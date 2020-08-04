@@ -40,13 +40,3 @@
     -ms-filter: blur(4px);
     filter: blur(4px);
 }
-
-.gr-navbar-brand {
-    position: relative;
-    color: inherit;
-    height: 50px;
-    line-height: 30px;
-    padding: .625rem 0;
-    font-weight: 300;
-    margin-left: 1rem;
-}

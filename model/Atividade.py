@@ -11,6 +11,7 @@ class Atividade(db.Model):
     dataInicio = db.Column(db.Date, default=func.now)
     dataFim = db.Column(db.Date)
     xpContabilizado = db.Column(db.Boolean, default=False, nullable=False)
+    atividadePaiId = db.Column(db.Integer)
 
     tipoAtividadeId = db.Column(db.Integer, ForeignKey(TipoAtividade.id))
     del_ = db.Column(db.Boolean, key='del', default=False)
