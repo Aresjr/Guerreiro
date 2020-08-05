@@ -9,4 +9,4 @@ class Setor(db.Model):
     nome = db.Column(db.String(128))
     empresa = db.Column(db.Integer, ForeignKey(Empresa.id))
     setorPai = db.Column(db.Integer, ForeignKey('setor.id'))
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)

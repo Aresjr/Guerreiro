@@ -40,3 +40,8 @@
     -ms-filter: blur(4px);
     filter: blur(4px);
 }
+
+#myKanban{
+    overflow-x: auto;
+    padding:20px 0;
+}

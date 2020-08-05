@@ -16,4 +16,4 @@ class Empresa(db.Model):
     nivelConfigHpUp = db.Column(db.Integer, default=100)
     penalidadeConfigHpDown = db.Column(db.Integer, default=100)
 
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)

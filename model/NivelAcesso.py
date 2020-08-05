@@ -8,6 +8,7 @@ class NivelAcesso(db.Model):
 
     # FUNCIONÁRIO
     fazAtividades = db.Column(db.Boolean, default=True)
+    fazTeste = db.Column(db.Boolean, default=False)
 
     # ADM
     criaCargo = db.Column(db.Boolean, default=False)
@@ -20,4 +21,4 @@ class NivelAcesso(db.Model):
     criaAtividades = db.Column(db.Boolean, default=False)
     criaVaga = db.Column(db.Boolean, default=False)
 
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)

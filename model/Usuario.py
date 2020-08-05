@@ -4,19 +4,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
 from app import db, login_manager
-from model.manyToMany.AtividadeUsuario import AtividadeUsuario
 from model.Cargo import Cargo
 from model.Lang import Lang
 from model.NivelAcesso import NivelAcesso
 from model.Setor import Setor
-from model.Atividade import Atividade
 
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nivelAcesso = db.relationship(NivelAcesso, lazy=True)
-    atividades = db.relationship(Atividade, secondary=AtividadeUsuario, lazy=True)
-    # niveisHabilidade = db.relationship(NivelHabilidade, secondary=NivelHabilidadeUsuario, lazy=True)
 
     # FUNCIONÁRIO
     setor = db.relationship(Setor, lazy=True)
@@ -44,7 +40,7 @@ class Usuario(db.Model):
     cargoId = db.Column(db.Integer, ForeignKey(Cargo.id))
 
     authenticated = db.Column(db.Boolean, default=False)
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

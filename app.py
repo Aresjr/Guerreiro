@@ -13,7 +13,7 @@ login_manager.login_view = 'login'
 
 db = SQLAlchemy(app)
 
-from routes import routes_import
+from routes import index, perfil, api, login, atividades, quadro
 
 
 def get_app():

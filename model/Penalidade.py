@@ -12,4 +12,4 @@ class Penalidade(db.Model):
     dataPenalidade = db.Column(db.Date, default=func.now)
     atividadeId = db.Column(db.Integer, ForeignKey(Atividade.id), nullable=False)
     usuarioId = db.Column(db.Integer, ForeignKey(Usuario.id), nullable=False)
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)

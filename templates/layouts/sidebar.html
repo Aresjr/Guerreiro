@@ -20,8 +20,14 @@
       </li>
       <li class="nav-item {% if request.path == '/atividades' %}active{% endif %}">
         <a class="nav-link" href="{{ url_for('atividades') }}">
-          <i class="ra ra-scroll-unfurled" aria-hidden="true"></i>
+          <i class="ra ra-hammer-drop" aria-hidden="true"></i>
           <p>Atividades</p>
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == '/quadro' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('quadro') }}">
+          <i class="ra ra-scroll-unfurled" aria-hidden="true"></i>
+          <p>Quadro de Atividades</p>
         </a>
       </li>
     </ul>

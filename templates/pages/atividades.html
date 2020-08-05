@@ -1,7 +1,7 @@
 {% extends 'layouts/main.html' %}
 
 {% block content %}
-    {% for atividade in usuario.atividades %}
+    {% for atividade in atividades %}
         {% if loop.index0 % qt_atividade_linha == 0 %}
             <div class="row">
         {% endif %}
@@ -12,7 +12,7 @@
                   <div class="card-icon">
                     <i class="ra ra-sword" aria-hidden="true"></i>
                   </div>
-                  <p class="card-category">{{ atividade.codigo }}</p>
+                  <p class="card-category">{{ atividade.codigo|default(atividade.id, True) }}</p>
                   <h3 class="card-title">{{ atividade.descricao }}</h3>
                 </div>
                 <div class="card-footer">

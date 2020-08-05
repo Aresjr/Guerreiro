@@ -10,4 +10,4 @@ class RequisitoCargo(db.Model):
     cargo = db.Column(db.Integer, ForeignKey(Cargo.id), nullable=False)
     habilidade = db.Column(db.Integer, ForeignKey(Habilidade.id), nullable=False)
     nivelMinimo = db.Column(db.Integer, nullable=False)
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)

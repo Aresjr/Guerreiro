@@ -8,4 +8,4 @@ class Vaga(db.Model):
     aberta = db.Column(db.Boolean, default=True)
     descricao = db.Column(db.String(255), nullable=False)
     cargo = db.Column(db.Integer, ForeignKey(Cargo.id))
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)

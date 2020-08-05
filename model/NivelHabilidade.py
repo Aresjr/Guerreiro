@@ -14,4 +14,4 @@ class NivelHabilidade(db.Model):
     # FKs
     usuarioId = db.Column(db.Integer, ForeignKey('usuario.id'))
     habilidadeId = db.Column(db.Integer, ForeignKey(Habilidade.id))
-    del_ = db.Column(db.Boolean, key='del', default=False)
+    del_ = db.Column(db.Boolean, default=False)
