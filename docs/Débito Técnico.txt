@@ -1,1 +1,0 @@
-#   Criar um BaseModel com as colunas comuns das tabelas (usuarioCriacao, dataCriacao, del, etc)

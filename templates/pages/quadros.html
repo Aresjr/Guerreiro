@@ -4,60 +4,24 @@
    <div class="row">
       <div class="col-md-12">
          <div id="kanban"></div>
-         <button class="btn btn-success" id="addDefault">Add "Default" board</button>
-         <button class="btn btn-success" id="addToDo">Add element in "To Do" Board</button>
       </div>
    </div>
 {% endblock %}
 
 {% block additional_js %}
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
     const Kanban = new jKanban({
             element : '#kanban',
             gutter  : '10px',
+            breakLine: true,
             click : function(el){
                 console.log(el);
             },
             boards  :{{ estagios|tojson }}
         });
 
-        $('#addToDo').click(function(){
-            Kanban.addElement(
-                'atividadeTeste',
-                {
-                    'title':'Test Add',
-                }
-            );
-        });
-
-        $('#addDefault').click(function(){
-            Kanban.addBoards(
-                [{
-                    'id' : '_default',
-                    'title'  : 'Default (Can\'t drop in Done)',
-                    'dragTo':['1','2','3'],
-                    'class' : 'kb-error',
-                    'item'  : [
-                        {
-                            'title':'Default Item',
-                        },
-                        {
-                            'title':'Default Item 2',
-                        },
-                        {
-                            'title':'Default Item 3',
-                        }
-                    ]
-                }]
-            )
-        });
-
-        var removeBoard = document.getElementById('removeBoard');
-        removeBoard.addEventListener('click',function(){
-            Kanban.removeBoard('4');
-        });
-    });
+});
 </script>
 {% endblock %}

@@ -41,6 +41,7 @@ var dragula = require("dragula");
       widthBoard: "250px",
       responsive: "700",
       responsivePercentage: false,
+      breakLine: false,
       boards: [],
       dragBoards: true,
       dragItems: true, //whether can drag cards or not, useful when set permissions on it.
@@ -248,7 +249,7 @@ var dragula = require("dragula");
           self.options.boards.push(board);
         }
 
-        if (!self.options.responsivePercentage) {
+        if (!self.options.responsivePercentage && !self.options.breakLine) {
           //add width to container
           if (self.container.style.width === "") {
             self.container.style.width =
@@ -928,8 +929,6 @@ function dragula (initialContainers, options) {
     if (e.type === 'mousedown') {
       if (isInput(item)) { // see also: https://github.com/bevacqua/dragula/issues/208
         item.focus(); // fixes https://github.com/bevacqua/dragula/issues/176
-      } else {
-        e.preventDefault(); // fixes https://github.com/bevacqua/dragula/issues/155
       }
     }
   }
@@ -1177,7 +1176,6 @@ function dragula (initialContainers, options) {
     if (!_mirror) {
       return;
     }
-    e.preventDefault();
 
     var clientX = getCoord('clientX', e);
     var clientY = getCoord('clientY', e);
