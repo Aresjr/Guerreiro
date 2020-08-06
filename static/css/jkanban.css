@@ -52,7 +52,7 @@
 
 .kanban-board .kanban-drag {
   min-height: 200px;
-  padding: 20px;
+  padding: 15px;
 }
 
 .kanban-board:after {
@@ -146,4 +146,20 @@
 
 .drag_handler_icon:after {
     bottom: 6px;
+}
+
+.kb-success{
+    background: #00B961; color:#fff
+}
+
+.kb-info{
+    background: #2A92BF; color:#fff
+}
+
+.kb-warning{
+    background: #F4CE46; color:#fff
+}
+
+.kb-error{
+    background: #FB7D44; color:#fff
 }
