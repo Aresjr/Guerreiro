@@ -1,6 +1,6 @@
 from app import db
-from model.Habilidade import Habilidade
-from model.manyToMany.HabilidadeTipoAtividade import HabilidadeTipoAtividade
+from gr.model.Habilidade import Habilidade
+from gr.model.manyToMany.HabilidadeTipoAtividade import HabilidadeTipoAtividade
 
 
 class TipoAtividade(db.Model):

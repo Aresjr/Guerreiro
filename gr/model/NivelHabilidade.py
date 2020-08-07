@@ -1,7 +1,5 @@
 from app import db
-from sqlalchemy import ForeignKey
-
-from model.Habilidade import Habilidade
+from gr.model.Habilidade import Habilidade
 
 
 class NivelHabilidade(db.Model):
@@ -12,6 +10,6 @@ class NivelHabilidade(db.Model):
     nextLevelXp = db.Column(db.Integer, default=10)
 
     # FKs
-    usuarioId = db.Column(db.Integer, ForeignKey('usuario.id'))
-    habilidadeId = db.Column(db.Integer, ForeignKey(Habilidade.id))
+    usuarioId = db.Column(db.Integer, db.ForeignKey('usuario.id'))
+    habilidadeId = db.Column(db.Integer, db.ForeignKey(Habilidade.id))
     del_ = db.Column(db.Boolean, default=False)

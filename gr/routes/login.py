@@ -1,8 +1,8 @@
 from app import app, db
 from flask import render_template, redirect, url_for
 from flask_login import login_user, current_user, logout_user
-from forms.forms import LoginForm
-from model.Usuario import Usuario
+from gr.forms.forms import LoginForm
+from gr.model.Usuario import Usuario
 
 
 @app.route('/login', methods=['GET', 'POST'])

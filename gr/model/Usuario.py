@@ -1,13 +1,12 @@
 from flask import url_for, flash, request
-from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
 from app import db, login_manager
-from model.Cargo import Cargo
-from model.Lang import Lang
-from model.NivelAcesso import NivelAcesso
-from model.Setor import Setor
+from gr.model.Cargo import Cargo
+from gr.model.Lang import Lang
+from gr.model.NivelAcesso import NivelAcesso
+from gr.model.Setor import Setor
 
 
 class Usuario(db.Model):
@@ -24,7 +23,7 @@ class Usuario(db.Model):
     password = db.Column(db.String(128), nullable=False)
 
     # PERSONAGEM
-    username = db.Column(db.String(20), unique=True, nullable=False)
+    username = db.Column(db.String(50), unique=True, nullable=False)
     level = db.Column(db.Integer, default=1)
     currentXp = db.Column(db.Integer, default=0)
     nextLevelXp = db.Column(db.Integer, default=10)
@@ -32,12 +31,12 @@ class Usuario(db.Model):
 
     # PREFS
     darkMode = db.Column(db.Boolean, default=False)
-    lang = db.Column(db.Integer, ForeignKey(Lang.id))
+    lang = db.Column(db.Integer, db.ForeignKey(Lang.id))
 
     # FKs
-    nivelAcessoId = db.Column(db.Integer, ForeignKey(NivelAcesso.id))
-    setorId = db.Column(db.Integer, ForeignKey(Setor.id))
-    cargoId = db.Column(db.Integer, ForeignKey(Cargo.id))
+    nivelAcessoId = db.Column(db.Integer, db.ForeignKey(NivelAcesso.id))
+    setorId = db.Column(db.Integer, db.ForeignKey(Setor.id))
+    cargoId = db.Column(db.Integer, db.ForeignKey(Cargo.id))
 
     authenticated = db.Column(db.Boolean, default=False)
     del_ = db.Column(db.Boolean, default=False)

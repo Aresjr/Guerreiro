@@ -2,7 +2,7 @@ from app import app
 from flask import render_template
 from flask_login import login_required, current_user
 
-from model.Estagio import Estagio
+from gr.model.Estagio import Estagio
 
 
 @app.route('/quadro', methods=['GET'])

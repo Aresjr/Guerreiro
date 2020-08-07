@@ -7,10 +7,10 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-from model import Lang, Atividade, Usuario, Cargo, Empresa, Habilidade, Historico, Conquista, \
+from gr.model import Lang, Atividade, Usuario, Cargo, Empresa, Habilidade, Conquista, \
     NivelAcesso, RequisitoCargo, Setor, TipoConquista, Xp, Vaga, Penalidade, Medalha, TipoAtividade, NivelHabilidade, \
-    Estagio
+    Estagio, TipoNotificacao, Notificacao
 
-from model.manyToMany import AtividadeHabilidade, HabilidadeTipoAtividade, NivelHabilidadeUsuario, AtividadeEstagio
+from gr.model.manyToMany import AtividadeHabilidade, HabilidadeTipoAtividade, NivelHabilidadeUsuario, AtividadeEstagio
 
 manager.run()
