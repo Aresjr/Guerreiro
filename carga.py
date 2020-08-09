@@ -1,10 +1,10 @@
 from datetime import datetime
 
 from app import db
-from gr.model.Atividade import Atividade
-from gr.model.Estagio import Estagio
-from gr.model.Usuario import Usuario
-from gr.model.manyToMany.AtividadeEstagio import AtividadeEstagio
+from gr.model.atividades.Atividade import Atividade
+from gr.model.atividades.Estagio import Estagio
+from gr.model.usuario.TipoConquista import TipoConquista
+from gr.model.usuario.Usuario import Usuario
 
 ares = Usuario.query.filter(Usuario.username == 'ares').first()
 if not ares:
@@ -38,10 +38,48 @@ if Estagio.query.count() == 0:
     db.session.add_all([estagioTodo, estagioDoing, estagioTesting, estagioDone])
     db.session.commit()
 
-if db.session.query(AtividadeEstagio).count() == 0:
-    atividade1 = Atividade.query.get(1)
-    estagioTodo = Estagio.query.get(1)
-    atividadeEstagio1 = AtividadeEstagio.insert(atividade_id=atividade1.id, usuario_id=ares.id,
-                                                estagio_id=estagioTodo.id)
-    db.session.add_all([atividadeEstagio1])
-    db.session.commit()
+# if db.session.query(AtividadeEstagio).count() == 0:
+#     atividade1 = Atividade.query.get(1)
+#     estagioTodo = Estagio.query.get(1)
+#     atividadeEstagio1 = AtividadeEstagio.insert(atividade_id=atividade1.id, usuario_id=ares.id,
+#                                                 estagio_id=estagioTodo.id)
+#     db.session.add_all([atividadeEstagio1])
+#     db.session.commit()
+
+# if TipoConquista.query.count() == 0
+    '''
+tipoNotificacao = {
+    'levelUp': {
+        'id': 1,
+        'titulo': 'Level Up!',
+        'size': 'large',
+        'icon': 'lvlup',
+    },
+    'skillUp': {
+        'id': 2,
+        'titulo': 'Habilidade Subiu',
+        'size': 'small',
+        'icon': 'skillup'
+    },
+    'aniversario': {
+        'id': 3,
+        'size': 'large',
+        'icon': 'birthday-cake'
+    },
+    'aniversarioEmpresa': {
+        'id': 4,
+        'size': 'large',
+        'icon': 'shield'
+    },
+    'feedback': {
+        'id': 5,
+        'size': 'large',
+        'icon': 'talk'
+    },
+    'medalha': {
+
+    }
+}
+    '''
+    conquistaLevelUp = TipoConquista(titulo='Level Up!', destaque=True, icone='levelup')
+    conquistaSkillUp = TipoConquista(titulo='Nível de Habilidade Up', destaque=False, icone='skillup')

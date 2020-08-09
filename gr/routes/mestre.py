@@ -3,8 +3,8 @@ from flask import render_template
 from flask_login import login_required, current_user
 
 
-@app.route('/linhatempo', methods=['GET'])
+@app.route('/mestre', methods=['GET'])
 @login_required
-def linhatempo():
+def mestre():
     usuario = current_user
-    return render_template('pages/atividades.html', title="Atividades", usuario=usuario)
+    return render_template('pages/mestre.html', title="Mestre", usuario=usuario)

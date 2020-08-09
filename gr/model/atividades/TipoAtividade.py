@@ -1,5 +1,5 @@
 from app import db
-from gr.model.Habilidade import Habilidade
+from gr.model.usuario.Habilidade import Habilidade
 from gr.model.manyToMany.HabilidadeTipoAtividade import HabilidadeTipoAtividade
 
 

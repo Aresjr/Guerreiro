@@ -1,14 +1,32 @@
 tipoNotificacao = {
     'levelUp': {
         'id': 1,
-        'size': 'large'
+        'titulo': 'Level Up!',
+        'size': 'large',
+        'icon': 'lvlup',
     },
-    'skillLevelUp': {
+    'skillUp': {
         'id': 2,
-        'size': 'small'
+        'titulo': 'Habilidade Subiu',
+        'size': 'small',
+        'icon': 'skillup'
+    },
+    'aniversario': {
+        'id': 3,
+        'size': 'large',
+        'icon': 'birthday-cake'
+    },
+    'aniversarioEmpresa': {
+        'id': 4,
+        'size': 'large',
+        'icon': 'shield'
     },
     'feedback': {
-        'id': 3,
-        'size': 'large'
+        'id': 5,
+        'size': 'large',
+        'icon': 'talk'
     },
+    'medalha': {
+
+    }
 }

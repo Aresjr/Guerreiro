@@ -1,5 +1,5 @@
 from app import db
-from gr.model.Cargo import Cargo
+from gr.model.vaga.Cargo import Cargo
 
 
 class Vaga(db.Model):

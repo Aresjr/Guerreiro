@@ -2,7 +2,7 @@ from app import app
 from flask import render_template
 from flask_login import login_required, current_user
 
-from gr.model.Atividade import Atividade
+from gr.model.atividades.Atividade import Atividade
 
 
 @app.route('/atividades', methods=['GET'])

@@ -1,11 +1,12 @@
 from app import db
-from gr.model.Usuario import Usuario
+from gr.model.TipoNotificacao import TipoNotificacao
+from gr.model.usuario.Usuario import Usuario
 
 
 class Notificacao(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    tipoNotificacaoId = db.Column(db.Integer, nullable=False)
+    tipoNotificacaoId = db.Column(db.ForeignKey(TipoNotificacao))
     titulo = db.Column(db.String(128))
     descricao = db.Column(db.String(255))
     lida = db.Column(db.Boolean, default=False)

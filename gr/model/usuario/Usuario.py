@@ -3,10 +3,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
 from app import db, login_manager
-from gr.model.Cargo import Cargo
+from gr.model.vaga.Cargo import Cargo
 from gr.model.Lang import Lang
-from gr.model.NivelAcesso import NivelAcesso
-from gr.model.Setor import Setor
+from gr.model.usuario.NivelAcesso import NivelAcesso
+from gr.model.empresa.Setor import Setor
 
 
 class Usuario(db.Model):
@@ -26,7 +26,7 @@ class Usuario(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     level = db.Column(db.Integer, default=1)
     currentXp = db.Column(db.Integer, default=0)
-    nextLevelXp = db.Column(db.Integer, default=10)
+    nextLevelXp = db.Column(db.Integer, default=100)
     hp = db.Column(db.Integer, default=100)
 
     # PREFS

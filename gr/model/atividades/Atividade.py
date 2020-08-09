@@ -1,6 +1,6 @@
 from app import db
-from gr.model.TipoAtividade import TipoAtividade
-from gr.model.Usuario import Usuario
+from gr.model.atividades.TipoAtividade import TipoAtividade
+from gr.model.usuario.Usuario import Usuario
 
 
 class Atividade(db.Model):

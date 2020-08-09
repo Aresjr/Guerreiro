@@ -1,6 +1,6 @@
 from app import db
-from gr.model.Atividade import Atividade
-from gr.model.Habilidade import Habilidade
+from gr.model.atividades.Atividade import Atividade
+from gr.model.usuario.Habilidade import Habilidade
 
 
 class Xp(db.Model):

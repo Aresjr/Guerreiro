@@ -1,6 +1,6 @@
 from app import db
-from gr.model.Cargo import Cargo
-from gr.model.Habilidade import Habilidade
+from gr.model.vaga.Cargo import Cargo
+from gr.model.usuario.Habilidade import Habilidade
 
 
 class RequisitoCargo(db.Model):

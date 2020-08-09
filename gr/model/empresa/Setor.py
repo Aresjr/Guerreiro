@@ -1,5 +1,5 @@
 from app import db
-from gr.model.Empresa import Empresa
+from gr.model.empresa.Empresa import Empresa
 
 
 class Setor(db.Model):

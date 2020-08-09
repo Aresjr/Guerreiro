@@ -6,28 +6,40 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+      <li class="nav-item {% if request.path == url_for('index') %}active{% endif %}">
         <a class="nav-link" href="/">
           <i class="fa fa-fort-awesome" aria-hidden="true"></i>
           <p>Início</p>
         </a>
       </li>
-      <li class="nav-item {% if request.path == '/perfil' %}active{% endif %}">
-        <a class="nav-link" href="{{ url_for('perfil') }}">
-          <i class="ra ra-sword" aria-hidden="true"></i>
-          <p>Perfil</p>
-        </a>
-      </li>
-      <li class="nav-item {% if request.path == '/atividades' %}active{% endif %}">
+      <li class="nav-item {% if request.path == url_for('atividades') %}active{% endif %}">
         <a class="nav-link" href="{{ url_for('atividades') }}">
           <i class="ra ra-hammer-drop" aria-hidden="true"></i>
           <p>Atividades</p>
         </a>
       </li>
-      <li class="nav-item {% if request.path == '/quadro' %}active{% endif %}">
+      <li class="nav-item {% if request.path == url_for('quadro') %}active{% endif %}">
         <a class="nav-link" href="{{ url_for('quadro') }}">
           <i class="ra ra-scroll-unfurled" aria-hidden="true"></i>
           <p>Quadro de Atividades</p>
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == url_for('apontamentos') %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('apontamentos') }}">
+          <i class="ra ra-hourglass" aria-hidden="true"></i>
+          <p>Apontamentos</p>
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == url_for('conquistas') %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('conquistas') }}">
+          <i class="ra ra-trophy" aria-hidden="true"></i>
+          <p>Conquistas</p>
+        </a>
+      </li>
+      <li class="nav-item {% if request.path == url_for('sobre') %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('sobre') }}">
+          <i class="material-icons">info</i>
+          <p>Sobre</p>
         </a>
       </li>
     </ul>

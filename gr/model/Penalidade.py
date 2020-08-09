@@ -1,6 +1,6 @@
 from app import db
-from gr.model.Atividade import Atividade
-from gr.model.Usuario import Usuario
+from gr.model.atividades.Atividade import Atividade
+from gr.model.usuario.Usuario import Usuario
 
 
 class Penalidade(db.Model):
