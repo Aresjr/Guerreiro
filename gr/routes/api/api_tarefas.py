@@ -1,6 +1,5 @@
-from flask import jsonify
-
 from app import app
+from flask import jsonify
 
 
 @app.route('/api/tarefas', methods=["POST"])

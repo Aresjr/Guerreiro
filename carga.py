@@ -6,80 +6,35 @@ from gr.model.atividades.Estagio import Estagio
 from gr.model.usuario.TipoConquista import TipoConquista
 from gr.model.usuario.Usuario import Usuario
 
-ares = Usuario.query.filter(Usuario.username == 'ares').first()
-if not ares:
-    ares = Usuario(nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br')
-    ares.set_password('aresroot')
+ares = Usuario(id=1, nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br')
+ares.set_password('aresroot')
+if not Usuario.query.filter(Usuario.username == 'ares').first():
     db.session.add(ares)
-    db.session.commit()
 
-dante = Usuario.query.filter(Usuario.username == 'dante').first()
-if not dante:
-    dante = Usuario(nome='Dante', username='dante', email='dante@ares.dev.br')
-    dante.set_password('danteroot')
+dante = Usuario(id=2, nome='Dante', username='dante', email='dante@ares.dev.br')
+dante.set_password('danteroot')
+if not Usuario.query.filter(Usuario.username == 'dante').first():
     db.session.add(dante)
-    db.session.commit()
 
+atividade1 = Atividade(id=1, codigo='1', descricao='Primeira Atividade', usuarioExecucao=ares.id)
+atividade2 = Atividade(id=2, codigo='Dois', descricao='Segunda Atividade', usuarioExecucao=ares.id)
+atividade3 = Atividade(id=3, codigo='3-A', descricao='Terceira Atividade', usuarioExecucao=ares.id)
+atividade4 = Atividade(id=4, codigo=None, descricao='Quarta Atividade', usuarioExecucao=ares.id)
+atividade5 = Atividade(id=5, codigo='5', descricao='Quinta Atividade', usuarioExecucao=ares.id)
+atividade6 = Atividade(id=6, codigo='OS-123', descricao='Sexta Atividade', usuarioExecucao=ares.id)
 if Atividade.query.count() == 0:
-    atividade1 = Atividade(codigo='1',      descricao='Primeira Atividade', usuarioExecucao=ares.id)
-    atividade2 = Atividade(codigo='Dois',   descricao='Segunda Atividade',  usuarioExecucao=ares.id)
-    atividade3 = Atividade(codigo='3-A',    descricao='Terceira Atividade', usuarioExecucao=ares.id)
-    atividade4 = Atividade(descricao='Quarta Atividade',   usuarioExecucao=ares.id)
-    atividade5 = Atividade(codigo='5',      descricao='Quinta Atividade',   usuarioExecucao=ares.id)
-    atividade6 = Atividade(codigo='OS-123', descricao='Sexta Atividade',    usuarioExecucao=ares.id)
     db.session.add_all([atividade1, atividade2, atividade3, atividade4, atividade5, atividade6])
-    db.session.commit()
 
+estagioTodo = Estagio(id=1, titulo='TO DO', dataVigenciaInicio=datetime.now(), ordem=1)
+estagioDoing = Estagio(id=2, titulo='Doing', dataVigenciaInicio=datetime.now(), ordem=2)
+estagioTesting = Estagio(id=3, titulo='Testing', dataVigenciaInicio=datetime.now(), estagioTeste=True, ordem=3)
+estagioDone = Estagio(id=4, titulo='Done', dataVigenciaInicio=datetime.now(), estagioFinal=True, ordem=4)
 if Estagio.query.count() == 0:
-    estagioTodo = Estagio(titulo='TO DO', dataVigenciaInicio=datetime.now(), ordem=1)
-    estagioDoing = Estagio(titulo='Doing', dataVigenciaInicio=datetime.now(), ordem=2)
-    estagioTesting = Estagio(titulo='Testing', dataVigenciaInicio=datetime.now(), estagioTeste=True, ordem=3)
-    estagioDone = Estagio(titulo='Done', dataVigenciaInicio=datetime.now(), estagioFinal=True, ordem=4)
     db.session.add_all([estagioTodo, estagioDoing, estagioTesting, estagioDone])
-    db.session.commit()
 
-# if db.session.query(AtividadeEstagio).count() == 0:
-#     atividade1 = Atividade.query.get(1)
-#     estagioTodo = Estagio.query.get(1)
-#     atividadeEstagio1 = AtividadeEstagio.insert(atividade_id=atividade1.id, usuario_id=ares.id,
-#                                                 estagio_id=estagioTodo.id)
-#     db.session.add_all([atividadeEstagio1])
-#     db.session.commit()
+conquistaLevelUp = TipoConquista(id=1, titulo='Level Up!', destaque=True, icone='levelup')
+conquistaSkillUp = TipoConquista(id=2, titulo='Habilidade Subiu de Nível', destaque=False, icone='skillup')
+if TipoConquista.query.count() == 0:
+    db.session.add_all([conquistaLevelUp, conquistaSkillUp])
 
-# if TipoConquista.query.count() == 0
-    '''
-tipoNotificacao = {
-    'levelUp': {
-        'id': 1,
-        'titulo': 'Level Up!',
-        'size': 'large',
-        'icon': 'lvlup',
-    },
-    'skillUp': {
-        'id': 2,
-        'titulo': 'Habilidade Subiu',
-        'size': 'small',
-        'icon': 'skillup'
-    },
-    'aniversario': {
-        'id': 3,
-        'size': 'large',
-        'icon': 'birthday-cake'
-    },
-    'aniversarioEmpresa': {
-        'id': 4,
-        'size': 'large',
-        'icon': 'shield'
-    },
-    'feedback': {
-        'id': 5,
-        'size': 'large',
-        'icon': 'talk'
-    },
-    'medalha': {
-
-    }
-}
-    '''
-    conquistaLevelUp = TipoConquista(titulo='Level Up!', destaque=True, icone='levelup')
-    conquistaSkillUp = TipoConquista(titulo='Nível de Habilidade Up', destaque=False, icone='skillup')
+db.session.commit()

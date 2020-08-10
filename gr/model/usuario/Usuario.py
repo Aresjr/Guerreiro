@@ -68,3 +68,6 @@ class Usuario(db.Model):
         flash('Você deve realizar o login para acessar essa página', 'error')
         flash(request.url, 'next')
         return redirect(url_for('login'))
+
+    def addXp(self, xp):
+        return self

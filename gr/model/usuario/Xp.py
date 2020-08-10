@@ -5,9 +5,7 @@ from gr.model.usuario.Habilidade import Habilidade
 
 class Xp(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    atividade = db.relationship(Atividade, lazy=False)
-    dataCriacao = db.Column(db.Date, default=db.func.now)
+    atividadeId = db.Column(db.Integer, db.ForeignKey(Atividade.id))
+    habilidadeId = db.Column(db.Integer, db.ForeignKey(Habilidade.id))
+    contabilizado = db.Column(db.Boolean, nullable=False, default=False)
     dataContabilizacao = db.Column(db.Date)
-
-    atividadeId = db.Column(db.Integer,db.ForeignKey(Atividade.id))
-    habilidadeId = db.Column(db.Integer,db.ForeignKey(Habilidade.id))
