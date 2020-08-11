@@ -13,7 +13,6 @@
   $ pip install -r requirements.txt
   $ flask run
   ```
-
 #### Criar Base / Migration
   ```
   $ python migrate.py db init
@@ -24,6 +23,9 @@
   ```
   [PostgreSQL] $ psql -h localhost -p 5432 -d guerreiro -U postgres -W
   ```
-
+#### Testes Unitários
+  ```
+  $ pytest
+  ```
 #### Documentacão API
 https://app.swaggerhub.com/apis-docs/Aresjr/guerreiro/0.0.1

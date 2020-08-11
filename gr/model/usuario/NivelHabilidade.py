@@ -9,7 +9,6 @@ class NivelHabilidade(db.Model):
     currentXp = db.Column(db.Integer, default=0)
     nextLevelXp = db.Column(db.Integer, default=10)
 
-    # FKs
     usuarioId = db.Column(db.Integer, db.ForeignKey('usuario.id'))
     habilidadeId = db.Column(db.Integer, db.ForeignKey(Habilidade.id))
     del_ = db.Column(db.Boolean, default=False)

@@ -13,30 +13,26 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nivelAcesso = db.relationship(NivelAcesso, lazy=True)
 
-    # FUNCIONÁRIO
     setor = db.relationship(Setor, lazy=True)
     cargo = db.relationship(Cargo, lazy=True)
 
-    # PESSOAL
     nome = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(128), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
 
-    # PERSONAGEM
     username = db.Column(db.String(50), unique=True, nullable=False)
     level = db.Column(db.Integer, default=1)
     currentXp = db.Column(db.Integer, default=0)
     nextLevelXp = db.Column(db.Integer, default=100)
     hp = db.Column(db.Integer, default=100)
 
-    # PREFS
     darkMode = db.Column(db.Boolean, default=False)
-    lang = db.Column(db.Integer, db.ForeignKey(Lang.id))
+    lang = db.relationship(Lang)
 
-    # FKs
+    langId = db.Column(db.ForeignKey(Lang.id))
     nivelAcessoId = db.Column(db.Integer, db.ForeignKey(NivelAcesso.id))
-    setorId = db.Column(db.Integer, db.ForeignKey(Setor.id))
-    cargoId = db.Column(db.Integer, db.ForeignKey(Cargo.id))
+    setorId = db.Column(db.ForeignKey(Setor.id))
+    cargoId = db.Column(db.ForeignKey(Cargo.id))
 
     authenticated = db.Column(db.Boolean, default=False)
     del_ = db.Column(db.Boolean, default=False)
