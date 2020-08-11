@@ -10,8 +10,9 @@ class Empresa(db.Model):
     lang = db.Column(db.Integer, db.ForeignKey(Lang.id))
 
     # CONFIG
-    xpFator = db.Column(db.Float, default=15)
-    xpValorBase = db.Column(db.Integer, default=100)
+    xpFator = db.Column(db.Float, default=0.15)
+    xpPrimeiroNivel = db.Column(db.Integer, default=100)
+    xpPorAtividade = db.Column(db.Integer, default=12)
     hpInicial = db.Column(db.Integer, default=1000)
     nivelHpUp = db.Column(db.Integer, default=10)
     penalidadeConfigHpDown = db.Column(db.Integer, default=10)

@@ -2,7 +2,7 @@
 
 ## Bem-vindo, Guerreiro
 
-#### Só baixar e rodar
+#### Baixar e preparar o ambiente
   ```
   $ git clone https://github.com/Aresjr/Guerreiro.git
   $ cd Guerreiro
@@ -11,21 +11,33 @@
 [Linux]     $ source env/bin/activate
 [Windows]   env/Scripts/activate.bat
   $ pip install -r requirements.txt
-  $ flask run
   ```
+
 #### Criar Base / Migration
   ```
   $ python migrate.py db init
   $ python migrate.py db migrate
   $ python migrate.py db upgrade
   ```
+
+#### Rodar
+  ```
+  $ flask run
+  ```
+ou descomentar a linha ```# get_app().run()``` e
+  ```
+  $ python app.py
+  ```
+
 #### Conexão local com a base
   ```
   [PostgreSQL] $ psql -h localhost -p 5432 -d guerreiro -U postgres -W
   ```
+
 #### Testes Unitários
   ```
   $ pytest
   ```
+
 #### Documentacão API
 https://app.swaggerhub.com/apis-docs/Aresjr/guerreiro/0.0.1

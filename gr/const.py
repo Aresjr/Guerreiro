@@ -1,13 +1,13 @@
 tipoNotificacao = {
     'levelUp': {
         'id': 1,
-        'titulo': 'Level Up!',
+        'descricao': 'Level Up!',
         'size': 'large',
         'icon': 'lvlup',
     },
     'skillUp': {
         'id': 2,
-        'titulo': 'Habilidade Subiu',
+        'descricao': 'Habilidade Subiu',
         'size': 'small',
         'icon': 'skillup'
     },
