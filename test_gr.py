@@ -11,54 +11,79 @@ from gr.model.empresa.Setor import Setor
 from gr.model.usuario.Habilidade import Habilidade
 from gr.model.usuario.TipoConquista import TipoConquista
 from gr.model.usuario.Usuario import Usuario
+from gr.model.usuario.Xp import Xp
 
 
-def test_models():
-    # assert usuario.setor.empresa.nome == 'NemeIA'
-    assert 1 == 1
+def test_levelup():
+    usuario = Usuario.query.filter(Usuario.username == 'ares').first()
+    atividades = Atividade.query.filter(Atividade.xpContabilizado == False, Atividade.usuarioExecucao == usuario.id).all()
+    xp_fator = usuario.setor.empresa.xpFator
+    for atividade in atividades:
+        xps = Xp.query.filter(Xp.atividadeId == atividade.id).all()
+        for xp in xps:
+            while usuario.currentXp + xp.valor > usuario.nextLevelXp:
+                usuario.level += 1
+                xp.valor -= usuario.nextLevelXp
+                usuario.nextLevelXp *= xp_fator
+            usuario.currentXp += xp.valor
+        atividade.xpContabilizado = True
+        db.session.add(atividade)
+    db.session.add(usuario)
+    db.session.commit()
+
+    # 120 XP -> 100 sobe para o nível 2 e sobra 20
+    assert usuario.level == 2
+    assert usuario.currentXp == 20
+
 
 @pytest.fixture
-def carga_inicial():
+def carga():
+    # EMPRESA
     empresa = Empresa(id=1, nome='NemeIA', xpFator=0.15, xpPrimeiroNivel=100, xpPorAtividade=12)
     if Empresa.query.count() == 0:
         db.session.add(empresa)
 
+    # SETOR
     setor = Setor(empresa=empresa)
     if Setor.query.count() == 0:
         db.session.add(setor)
 
+    # USUARIOS
     ares = Usuario(id=1, nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br')
     ares.set_password('aresroot')
-    if not Usuario.query.filter(Usuario.username == 'ares').first():
-        db.session.add(ares)
-
     dante = Usuario(id=2, nome='Dante', username='dante', email='dante@ares.dev.br')
     dante.set_password('danteroot')
-    if not Usuario.query.filter(Usuario.username == 'dante').first():
-        db.session.add(dante)
+    if Usuario.query.count() == 0:
+        db.session.add_all([ares, dante])
 
-    ativ1 = Atividade(id=1, codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucao=ares.id)
+    # ATIVIDADES
+    ativ_tela_atividades = Atividade(id=1, codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucao=ares.id)
     ativ2 = Atividade(id=2, codigo='Dois', descricao='Desenvolver tela de Apontamentos', usuarioExecucao=ares.id)
     ativ3 = Atividade(id=3, codigo='3-A', descricao='Modelagem de Dados', usuarioExecucao=ares.id)
     ativ4 = Atividade(id=4, codigo=None, descricao='Quarta Atividade', usuarioExecucao=ares.id)
     ativ5 = Atividade(id=5, codigo='5', descricao='Quinta Atividade', usuarioExecucao=ares.id)
     ativ6 = Atividade(id=6, codigo='OS-123', descricao='Sexta Atividade', usuarioExecucao=ares.id)
-    atividades = [ativ1, ativ2, ativ3, ativ4, ativ5, ativ6]
+    atividades = [ativ_tela_atividades, ativ2, ativ3, ativ4, ativ5, ativ6]
     if Atividade.query.count() == 0:
         db.session.add_all(atividades)
 
+    # ESTAGIOS
     estagio1 = Estagio(id=1, titulo='TO DO', ordem=1, estagioInicial=True)
     estagio2 = Estagio(id=2, titulo='Doing', ordem=2)
     estagio3 = Estagio(id=3, titulo='Testing', ordem=3, estagioTeste=True)
     estagio4 = Estagio(id=4, titulo='Done', ordem=4, estagioFinal=True)
+    estagios = [estagio1, estagio2, estagio3, estagio4]
     if Estagio.query.count() == 0:
-        db.session.add_all([estagio1, estagio2, estagio3, estagio4])
+        db.session.add_all(estagios)
 
+    # TIPO CONQUISTA
     tipo_conq1 = TipoConquista(id=1, titulo='Level Up!', destaque=True, icone='levelup')
     tipo_conq2 = TipoConquista(id=2, titulo='Habilidade Subiu de Nível', destaque=False, icone='skillup')
+    tipo_conqs = [tipo_conq1, tipo_conq2]
     if TipoConquista.query.count() == 0:
-        db.session.add_all([tipo_conq1, tipo_conq2])
+        db.session.add_all(tipo_conqs)
 
+    # HABILIDADES
     hab_prog = Habilidade(id=1, descricao='Programação')
     hab_python = Habilidade(id=2, descricao='Python', habPaiId=hab_prog.id)
     hab_js = Habilidade(id=3, descricao='Javascript', habPaiId=hab_prog.id)
@@ -95,4 +120,23 @@ def carga_inicial():
     if Habilidade.query.count() == 0:
         db.session.add_all(habilidades)
 
+    # TIPO ATIVIDADE
+    ta1 = TipoAtividade(id=1, descricao='Desenvolvimento Tela')
+    ta2 = TipoAtividade(id=2, descricao='Desenvolvimento API')
+    ta3 = TipoAtividade(id=3, descricao='Estrutura de Dados')
+    ta4 = TipoAtividade(id=4, descricao='Desenvolvimento do Mestre')
+    tas = [ta1, ta2, ta3, ta4]
+    if TipoAtividade.query.count() == 0:
+        db.session.add_all(tas)
+
+    # XP
+    xp1 = Xp(id=1, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_python.id, valor=40)
+    xp2 = Xp(id=2, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_js.id, valor=40)
+    xp3 = Xp(id=3, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_css.id, valor=20)
+    xp4 = Xp(id=4, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_python.id, valor=20)
+    xps = [xp1, xp2, xp3, xp4]
+    if Xp.query.count() == 0:
+        db.session.add_all(xps)
+
     db.session.commit()
+    return habilidades, tipo_conqs, atividades, tas, xps

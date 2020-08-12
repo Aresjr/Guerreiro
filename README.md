@@ -8,8 +8,8 @@
   $ cd Guerreiro
   $ pip install virtualenv
   $ virtualenv env
-[Linux]     $ source env/bin/activate
-[Windows]   env/Scripts/activate.bat
+[Linux / MacOS] $ source env/bin/activate
+[Windows]       env/Scripts/activate.bat
   $ pip install -r requirements.txt
   ```
 
@@ -20,7 +20,7 @@
   $ python migrate.py db upgrade
   ```
 
-#### Rodar
+#### Rodar projeto
   ```
   $ flask run
   ```
@@ -34,7 +34,7 @@ ou descomentar a linha ```# get_app().run()``` e
   [PostgreSQL] $ psql -h localhost -p 5432 -d guerreiro -U postgres -W
   ```
 
-#### Testes Unitários
+#### Criar Carga Inicial / Testes Unitários
   ```
   $ pytest
   ```

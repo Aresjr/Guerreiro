@@ -12,6 +12,6 @@ class Atividade(db.Model):
     xpContabilizado = db.Column(db.Boolean, default=False, nullable=False)
     atividadePaiId = db.Column(db.Integer)
 
-    usuarioExecucao = db.Column(db.Integer, db.ForeignKey(Usuario.id))
-    tipoAtividadeId = db.Column(db.Integer, db.ForeignKey(TipoAtividade.id))
+    usuarioExecucao = db.Column(db.ForeignKey(Usuario.id))
+    tipoAtividadeId = db.Column(db.ForeignKey(TipoAtividade.id))
     del_ = db.Column(db.Boolean, default=False)
