@@ -1,8 +1,13 @@
+import math
 from datetime import datetime
 
 import pytest
 # noinspection PyUnresolvedReferences
+from sqlalchemy import func
+
 from app import app, db
+from gr.dao.AtividadeDao import atividade_dao
+from gr.dao.UsuarioDao import usuario_dao
 from gr.model.atividades.Atividade import Atividade
 from gr.model.atividades.Estagio import Estagio
 from gr.model.atividades.TipoAtividade import TipoAtividade
@@ -15,31 +20,39 @@ from gr.model.usuario.Xp import Xp
 
 
 def test_levelup():
-    usuario = Usuario.query.filter(Usuario.username == 'ares').first()
-    atividades = Atividade.query.filter(Atividade.xpContabilizado == False, Atividade.usuarioExecucao == usuario.id).all()
+    usuario = usuario_dao.get_by_username('ares')
+    usuario.level = 1
+    usuario.currentXp = 0
+    usuario.nextLevelXp = 100
+    # atividades = atividade_dao.get_xp_nao_contabilizados(usuario.id)
+    atividades = atividade_dao.get_by_userid(usuario.id)
     xp_fator = usuario.setor.empresa.xpFator
     for atividade in atividades:
         xps = Xp.query.filter(Xp.atividadeId == atividade.id).all()
         for xp in xps:
-            while usuario.currentXp + xp.valor > usuario.nextLevelXp:
+            xp_total = xp.valor
+            while usuario.currentXp + xp_total > usuario.nextLevelXp:
                 usuario.level += 1
-                xp.valor -= usuario.nextLevelXp
-                usuario.nextLevelXp *= xp_fator
-            usuario.currentXp += xp.valor
+                xp_total -= usuario.nextLevelXp
+                usuario.nextLevelXp = math.floor(usuario.nextLevelXp * xp_fator)
+            usuario.currentXp += math.floor(xp_total)
+            # xp.dataContabilizacao = func.now
+            # db.session.add(xp)
         atividade.xpContabilizado = True
-        db.session.add(atividade)
-    db.session.add(usuario)
-    db.session.commit()
+        # db.session.add(atividade)
+    # db.session.add(usuario)
+    # db.session.commit()
 
-    # 120 XP -> 100 sobe para o nível 2 e sobra 20
-    assert usuario.level == 2
-    assert usuario.currentXp == 20
+    # 220 XP -> 100 sobe para o nível 2 e sobra 120
+    # 120 XP -> 115 sobe para o nível 2 e sobra 5
+    assert usuario.level == 3
+    assert usuario.currentXp == 5
 
 
 @pytest.fixture
 def carga():
     # EMPRESA
-    empresa = Empresa(id=1, nome='NemeIA', xpFator=0.15, xpPrimeiroNivel=100, xpPorAtividade=12)
+    empresa = Empresa(id=1, nome='NemeIA', xpFator=1.15, xpPrimeiroNivel=100, xpPorAtividade=12)
     if Empresa.query.count() == 0:
         db.session.add(empresa)
 
