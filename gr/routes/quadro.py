@@ -9,7 +9,7 @@ from gr.model.atividades.Estagio import Estagio
 @login_required
 def quadro():
     usuario = current_user
-    estagios = Estagio.query.filter(Estagio.del_ == False, Estagio.dataVigenciaFim == None)
+    estagios = Estagio.query.filter(Estagio.del_ == False)
     qt_atividade_linha = estagios.count()
 
     estagios_json = []
@@ -19,7 +19,7 @@ def quadro():
         drag_to.append(str(estagio.id))
         estagios_json.append({
                 'id': str(estagio.id),
-                'title': estagio.descricao,
+                'title': estagio.titulo,
                 'class': 'kb-info',
                 'item': [{'title': 'Atividade X'}],
                 'dragTo': ['3', '4']
