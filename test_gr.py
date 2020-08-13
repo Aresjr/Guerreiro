@@ -17,6 +17,7 @@ from gr.model.usuario.Habilidade import Habilidade
 from gr.model.usuario.TipoConquista import TipoConquista
 from gr.model.usuario.Usuario import Usuario
 from gr.model.usuario.Xp import Xp
+from gr.service.XpService import xp_service
 
 
 def test_levelup():
@@ -24,29 +25,11 @@ def test_levelup():
     usuario.level = 1
     usuario.currentXp = 0
     usuario.nextLevelXp = 100
-    # atividades = atividade_dao.get_xp_nao_contabilizados(usuario.id)
-    atividades = atividade_dao.get_by_userid(usuario.id)
-    xp_fator = usuario.setor.empresa.xpFator
-    for atividade in atividades:
-        xps = Xp.query.filter(Xp.atividadeId == atividade.id).all()
-        for xp in xps:
-            xp_total = xp.valor
-            while usuario.currentXp + xp_total > usuario.nextLevelXp:
-                usuario.level += 1
-                xp_total -= usuario.nextLevelXp
-                usuario.nextLevelXp = math.floor(usuario.nextLevelXp * xp_fator)
-            usuario.currentXp += math.floor(xp_total)
-            # xp.dataContabilizacao = func.now
-            # db.session.add(xp)
-        atividade.xpContabilizado = True
-        # db.session.add(atividade)
-    # db.session.add(usuario)
-    # db.session.commit()
-
+    xp_service.levelup_by_usuario(usuario)
     # 220 XP -> 100 sobe para o nível 2 e sobra 120
     # 120 XP -> 115 sobe para o nível 2 e sobra 5
+
     assert usuario.level == 3
-    assert usuario.currentXp == 5
 
 
 @pytest.fixture

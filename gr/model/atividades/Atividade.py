@@ -9,9 +9,10 @@ class Atividade(db.Model):
     tipoAtividade = db.relationship(TipoAtividade, lazy=True)
     descricao = db.Column(db.String(255))
     prioridade = db.Column(db.Integer)
+    usuarioExecucao = db.relationship(Usuario)
     xpContabilizado = db.Column(db.Boolean, default=False, nullable=False)
-    atividadePaiId = db.Column(db.Integer)
 
-    usuarioExecucao = db.Column(db.ForeignKey(Usuario.id))
+    atividadePaiId = db.Column(db.ForeignKey(id))
+    usuarioExecucaoId = db.Column(db.ForeignKey(Usuario.id))
     tipoAtividadeId = db.Column(db.ForeignKey(TipoAtividade.id))
     del_ = db.Column(db.Boolean, default=False)
