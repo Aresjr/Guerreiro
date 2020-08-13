@@ -30,7 +30,7 @@ class Usuario(db.Model):
     lang = db.relationship(Lang)
 
     langId = db.Column(db.ForeignKey(Lang.id))
-    nivelAcessoId = db.Column(db.Integer, db.ForeignKey(NivelAcesso.id))
+    nivelAcessoId = db.Column(db.ForeignKey(NivelAcesso.id))
     setorId = db.Column(db.ForeignKey(Setor.id))
     cargoId = db.Column(db.ForeignKey(Cargo.id))
 
@@ -64,6 +64,3 @@ class Usuario(db.Model):
         flash('Você deve realizar o login para acessar essa página', 'error')
         flash(request.url, 'next')
         return redirect(url_for('login'))
-
-    def addXp(self, xp):
-        return self

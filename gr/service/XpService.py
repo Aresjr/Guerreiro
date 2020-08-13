@@ -3,6 +3,7 @@ from gr.dao.XpDao import xp_dao
 
 
 class XpService:
+
     def levelup_by_usuario(self, usuario):
         atividades = atividade_dao.get_by_userid(usuario.id)
         xp_fator = usuario.setor.empresa.xpFator
@@ -16,9 +17,6 @@ class XpService:
                     usuario.nextLevelXp = round(usuario.nextLevelXp * xp_fator)
                 usuario.currentXp += xp_total
             atividade.xpContabilizado = True
-
-    # def levelup_by_atividade(self, atividade, usuario):
-
 
 
 xp_service = XpService()

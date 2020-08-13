@@ -20,7 +20,7 @@ from gr.model.usuario.Xp import Xp
 from gr.service.XpService import xp_service
 
 
-def test_levelup():
+def test_levelup(carga):
     usuario = usuario_dao.get_by_username('ares')
     usuario.level = 1
     usuario.currentXp = 0
@@ -52,17 +52,6 @@ def carga():
     if Usuario.query.count() == 0:
         db.session.add_all([ares, dante])
 
-    # ATIVIDADES
-    ativ_tela_atividades = Atividade(id=1, codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucao=ares.id)
-    ativ2 = Atividade(id=2, codigo='Dois', descricao='Desenvolver tela de Apontamentos', usuarioExecucao=ares.id)
-    ativ3 = Atividade(id=3, codigo='3-A', descricao='Modelagem de Dados', usuarioExecucao=ares.id)
-    ativ4 = Atividade(id=4, codigo=None, descricao='Quarta Atividade', usuarioExecucao=ares.id)
-    ativ5 = Atividade(id=5, codigo='5', descricao='Quinta Atividade', usuarioExecucao=ares.id)
-    ativ6 = Atividade(id=6, codigo='OS-123', descricao='Sexta Atividade', usuarioExecucao=ares.id)
-    atividades = [ativ_tela_atividades, ativ2, ativ3, ativ4, ativ5, ativ6]
-    if Atividade.query.count() == 0:
-        db.session.add_all(atividades)
-
     # ESTAGIOS
     estagio1 = Estagio(id=1, titulo='TO DO', ordem=1, estagioInicial=True)
     estagio2 = Estagio(id=2, titulo='Doing', ordem=2)
@@ -71,6 +60,17 @@ def carga():
     estagios = [estagio1, estagio2, estagio3, estagio4]
     if Estagio.query.count() == 0:
         db.session.add_all(estagios)
+
+    # ATIVIDADES
+    ativ_tela_atividades = Atividade(id=1, codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucao=ares.id, estagioId=estagio1.id)
+    ativ2 = Atividade(id=2, codigo='Dois', descricao='Desenvolver tela de Apontamentos', usuarioExecucao=ares.id, estagioId=estagio1.id)
+    ativ3 = Atividade(id=3, codigo='3-A', descricao='Modelagem de Dados', usuarioExecucao=ares.id, estagioId=estagio1.id)
+    ativ4 = Atividade(id=4, codigo=None, descricao='Quarta Atividade', usuarioExecucao=ares.id, estagioId=estagio1.id)
+    ativ5 = Atividade(id=5, codigo='5', descricao='Quinta Atividade', usuarioExecucao=ares.id, estagioId=estagio1.id)
+    ativ6 = Atividade(id=6, codigo='OS-123', descricao='Sexta Atividade', usuarioExecucao=ares.id, estagioId=estagio1.id)
+    atividades = [ativ_tela_atividades, ativ2, ativ3, ativ4, ativ5, ativ6]
+    if Atividade.query.count() == 0:
+        db.session.add_all(atividades)
 
     # TIPO CONQUISTA
     tipo_conq1 = TipoConquista(id=1, titulo='Level Up!', destaque=True, icone='levelup')

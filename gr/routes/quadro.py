@@ -17,11 +17,18 @@ def quadro():
 
     for estagio in estagios:
         drag_to.append(str(estagio.id))
+
+        itens = []
+        for atividade in estagio.atividades:
+            itens.append({
+                'title': atividade.descricao
+            })
+
         estagios_json.append({
                 'id': str(estagio.id),
                 'title': estagio.titulo,
                 'class': 'kb-info',
-                'item': [{'title': 'Atividade X'}],
+                'item': itens,
                 'dragTo': ['3', '4']
         })
 
