@@ -12,15 +12,35 @@
 <script>
 $(document).ready(function() {
 
-    const Kanban = new jKanban({
-            element : '#kanban',
-            gutter  : '10px',
-            breakLine: true,
-            click : function(el){
-                console.log(el);
-            },
-            boards  :{{ estagios|tojson }}
+    $.ajax({
+        url: '/api/atividades'
+    }).done(function(quadros){
+        const Kanban = new jKanban({
+                element : '#kanban',
+                gutter  : '10px',
+                widthBoard  : '300px',
+                breakLine: true,
+                dropEl: function (el, target) {
+
+                    $.post({
+                        url: '/api/atividade_estagio',
+                        data: {
+                            'atividade_id': $(el).data('eid'),
+                            'estagio_id': $(target).parent().data('id')
+                        },
+                        dataType: 'json'
+                    }).done(function(response) {
+                        console.log(response);
+                    }).fail(function(error) {
+                        console.log(error);
+                    }).always(function(el){
+                        console.log(el);
+                    });
+
+                },
+                boards  :quadros
         });
+    });
 
 });
 </script>

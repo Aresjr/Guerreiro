@@ -1,12 +1,5 @@
-import math
-from datetime import datetime
-
 import pytest
-# noinspection PyUnresolvedReferences
-from sqlalchemy import func
-
-from app import app, db
-from gr.dao.AtividadeDao import atividade_dao
+from app import db
 from gr.dao.UsuarioDao import usuario_dao
 from gr.model.atividades.Atividade import Atividade
 from gr.model.atividades.Estagio import Estagio
