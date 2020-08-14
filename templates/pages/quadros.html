@@ -29,12 +29,8 @@ $(document).ready(function() {
                             'estagio_id': $(target).parent().data('id')
                         },
                         dataType: 'json'
-                    }).done(function(response) {
-                        console.log(response);
                     }).fail(function(error) {
                         console.log(error);
-                    }).always(function(el){
-                        console.log(el);
                     });
 
                 },

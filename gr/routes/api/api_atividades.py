@@ -1,8 +1,9 @@
 from flask_login import login_required
 
-from app import app
+from app import app, db
 from flask import jsonify, request
 
+from gr.model.atividades.Atividade import Atividade
 from gr.model.atividades.Estagio import Estagio
 
 
@@ -36,6 +37,10 @@ def api_atividades_get():
 def api_atividade_estagio():
     atividade_id = request.form['atividade_id']
     estagio_id = request.form['estagio_id']
-    print(atividade_id)
-    print(estagio_id)
+
+    atividade = Atividade.query.get(atividade_id)
+    atividade.estagioId = estagio_id
+    db.session.add(atividade)
+    db.session.commit()
+
     return jsonify({'response':'OK'})
