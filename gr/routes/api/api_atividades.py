@@ -1,16 +1,15 @@
-from flask_login import login_required
-
 from app import app, db
 from flask import jsonify, request
-
+from flask_login import login_required, current_user
+from gr.dao.EstagioDao import estagio_dao
 from gr.model.atividades.Atividade import Atividade
-from gr.model.atividades.Estagio import Estagio
 
 
 @app.route('/api/atividades', methods=["GET"])
 @login_required
 def api_atividades_get():
-    estagios = Estagio.query.filter(Estagio.del_ == False)
+    usuario = current_user
+    estagios = estagio_dao.get_by_empresa(usuario.setor.empresa.id)
     estagios_json = []
 
     for estagio in estagios:
@@ -18,7 +17,9 @@ def api_atividades_get():
         itens = []
         for atividade in estagio.atividades:
             itens.append({
-                'title': atividade.descricao,
+                'title': atividade.codigo,
+                'descricao': atividade.descricao,
+                'executor': atividade.usuarioExecucao.username,
                 'id': str(atividade.id)
             })
 
@@ -27,7 +28,7 @@ def api_atividades_get():
                 'title': estagio.titulo,
                 'class': 'kb-info',
                 'item': itens,
-                'dragTo': ['3', '4']
+                'dragTo': ['1', '2', '3', '4']
         })
 
     return jsonify(estagios_json)

@@ -191,28 +191,29 @@ var dragula = require("dragula");
       var board = self.element.querySelector(
         '[data-id="' + boardID + '"] .kanban-drag'
       );
-      var nodeItem = document.createElement("div");
-      nodeItem.classList.add("kanban-item");
+
+      var cardKanban = this.createCard(element);
+
       if (typeof element.id !== "undefined" && element.id !== "") {
-        nodeItem.setAttribute("data-eid", element.id);
+        cardKanban.setAttribute("data-eid", element.id);
       }
       if(element.class && Array.isArray(element.class)) {
 	element.class.forEach( function(cl){
-	  nodeItem.classList.add(cl);
+	  cardKanban.classList.add(cl);
 	})
       }
-      nodeItem.innerHTML = __buildItemTitle(element.title);
+      // cardKanban.innerHTML = __buildItemTitle(element.title);
       //add function
-      nodeItem.clickfn = element.click;
-      nodeItem.dragfn = element.drag;
-      nodeItem.dragendfn = element.dragend;
-      nodeItem.dropfn = element.drop;
-      __appendCustomProperties(nodeItem, element);
-      __onclickHandler(nodeItem);
+      cardKanban.clickfn = element.click;
+      cardKanban.dragfn = element.drag;
+      cardKanban.dragendfn = element.dragend;
+      cardKanban.dropfn = element.drop;
+      __appendCustomProperties(cardKanban, element);
+      __onclickHandler(cardKanban);
       if (self.options.itemHandleOptions.enabled) {
-        nodeItem.style.cursor = "default";
+        cardKanban.style.cursor = "default";
       }
-      board.appendChild(nodeItem);
+      board.appendChild(cardKanban);
       return self;
     };
 
@@ -313,8 +314,9 @@ var dragula = require("dragula");
         for (var itemkey in board.item) {
           //create item
           var itemKanban = board.item[itemkey];
-          var nodeItem = document.createElement("div");
-          nodeItem.classList.add("kanban-item");
+
+          var nodeItem = this.createCard(itemKanban);
+
           if (itemKanban.id) {
             nodeItem.dataset.eid = itemKanban.id;
           }
@@ -323,7 +325,7 @@ var dragula = require("dragula");
               nodeItem.classList.add(cl);
             })
           }
-          nodeItem.innerHTML = __buildItemTitle(itemKanban.title);
+          // nodeItem.innerHTML = __buildItemTitle(itemKanban.title);
           //add function
           nodeItem.clickfn = itemKanban.click;
           nodeItem.dragfn = itemKanban.drag;
@@ -348,6 +350,38 @@ var dragula = require("dragula");
       }
       return self;
     };
+
+    this.createCard = function(itemKanban){
+      var cardKanban = document.createElement("div");
+      cardKanban.classList.add("kanban-item");
+      cardKanban.classList.add("card");
+      cardKanban.classList.add("card-stats");
+
+      var cardHeader = document.createElement("div");
+      cardHeader.classList.add("card-header");
+
+      var cardTitle = document.createElement("h4");
+      cardTitle.classList.add("card-title");
+      cardTitle.innerHTML = itemKanban.title;
+
+      var cardCategory = document.createElement("p");
+      cardCategory.classList.add("card-category");
+      cardCategory.innerHTML = itemKanban.descricao;
+
+      var cardFooter = document.createElement("div");
+      cardFooter.classList.add("card-footer");
+
+      var cardFooterStats = document.createElement("div");
+      cardFooterStats.classList.add("stats");
+      cardFooterStats.innerHTML = itemKanban.executor;
+
+      cardHeader.appendChild(cardTitle);
+      cardHeader.appendChild(cardCategory);
+      cardKanban.appendChild(cardHeader);
+      cardFooter.appendChild(cardFooterStats);
+      cardKanban.appendChild(cardFooter);
+      return cardKanban;
+    }
 
     this.findBoard = function(id) {
       var el = self.element.querySelector('[data-id="' + id + '"]');
@@ -1581,6 +1615,8 @@ Item.prototype.run = function () {
     this.fun.apply(null, this.array);
 };
 process.title = 'browser';
+process.descricao = '';
+process.executor = '';
 process.browser = true;
 process.env = {};
 process.argv = [];
