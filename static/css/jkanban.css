@@ -1,3 +1,7 @@
+#kanban {
+    overflow-x: auto;
+}
+
 .kanban-container {
   position: relative;
   box-sizing: border-box;

@@ -17221,6 +17221,8 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
   align-items: center;
   background-color: transparent;
   border: 0;
+  margin: 5px 0px 0px 5px;
+  padding: 2px 0 0;!important;
 }
 
 .card .card-footer .author,

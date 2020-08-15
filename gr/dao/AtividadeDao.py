@@ -4,6 +4,9 @@ class AtividadeDao:
     def __init__(self, model):
         self.model = model
 
+    def get_by_id(self, id):
+        return self.model.query.get(id)
+
     def get_by_userid(self, userid):
         return self.model.query.filter(self.model.del_ == False, self.model.usuarioExecucaoId == userid).all()
 
