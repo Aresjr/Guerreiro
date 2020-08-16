@@ -1,3 +1,4 @@
+from app import db
 from gr.model.atividades.Atividade import Atividade
 
 class AtividadeDao:
@@ -12,6 +13,10 @@ class AtividadeDao:
 
     def get_xp_nao_contabilizados(self, userid):
         return self.model.query.filter(self.model.xpContabilizado == False).filter(self.model.usuarioExecucaoId == userid).all()
+
+    def update(self, atividade):
+        db.session.add(atividade)
+        return db.session.commit()
 
 
 atividade_dao = AtividadeDao(Atividade)
