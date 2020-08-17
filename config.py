@@ -3,7 +3,8 @@ class Config(object):
     TESTING = False
 
     DB_SERVER = "localhost"
-    DB_NAME = "guerreiro"
+    # DB_NAME = "guerreiro"
+    DB_NAME = "gr_teste"
     DB_USERNAME = "postgres"
     DB_PASSWORD = "pgroot"
 

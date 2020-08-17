@@ -8,5 +8,5 @@ class Xp(db.Model):
     atividade = db.relationship(Atividade)
     habilidade = db.relationship(Habilidade)
     valor = db.Column(db.Integer)
-    atividadeId = db.Column(db.Integer, db.ForeignKey(Atividade.id))
-    habilidadeId = db.Column(db.Integer, db.ForeignKey(Habilidade.id))
+    atividadeId = db.Column(db.ForeignKey(Atividade.id))
+    habilidadeId = db.Column(db.ForeignKey(Habilidade.id))

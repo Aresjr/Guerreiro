@@ -1,6 +1,5 @@
 import pytest
 from app import db
-from gr.dao.UsuarioDao import usuario_dao
 from gr.model.atividades.Atividade import Atividade
 from gr.model.atividades.Estagio import Estagio
 from gr.model.atividades.TipoAtividade import TipoAtividade
@@ -10,58 +9,50 @@ from gr.model.usuario.Habilidade import Habilidade
 from gr.model.usuario.TipoConquista import TipoConquista
 from gr.model.usuario.Usuario import Usuario
 from gr.model.usuario.Xp import Xp
-from gr.service.XpService import xp_service
 
 
-def test_levelup():
-    usuario = usuario_dao.get_by_username('ares')
-    usuario.level = 1
-    usuario.currentXp = 0
-    usuario.nextLevelXp = 100
-    xp_service.levelup_by_usuario(usuario)
-    # 220 XP -> 100 sobe para o nível 2 e sobra 120
-    # 120 XP -> 115 sobe para o nível 2 e sobra 5
-
-    assert usuario.level == 3
+def test_carga(carga):
+    assert True
 
 
 @pytest.fixture
 def carga():
+
     # EMPRESA
     empresa = Empresa(id=1, nome='Nemeia', xpFator=1.15, xpPrimeiroNivel=100, xpPorAtividade=12)
     if Empresa.query.count() == 0:
         db.session.add(empresa)
 
     # SETOR
-    setor = Setor(empresa=empresa)
+    setor = Setor(id=1, empresaId=empresa.id)
     if Setor.query.count() == 0:
         db.session.add(setor)
 
     # USUARIOS
-    ares = Usuario(id=1, nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br')
+    ares = Usuario(id=1, nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br', setorId=setor.id)
     ares.set_password('aresroot')
-    dante = Usuario(id=2, nome='Dante', username='dante', email='dante@ares.dev.br')
+    dante = Usuario(id=2, nome='Dante', username='dante', email='dante@ares.dev.br', setorId=setor.id)
     dante.set_password('danteroot')
     if Usuario.query.count() == 0:
         db.session.add_all([ares, dante])
 
     # ESTAGIOS
-    estagio1 = Estagio(id=1, titulo='TO DO', ordem=1, estagioInicial=True)
-    estagio2 = Estagio(id=2, titulo='Doing', ordem=2)
-    estagio3 = Estagio(id=3, titulo='Testing', ordem=3, estagioTeste=True)
-    estagio4 = Estagio(id=4, titulo='Done', ordem=4, estagioFinal=True)
+    estagio1 = Estagio(id=1, titulo='TO DO', ordem=1, empresaId=empresa.id, estagioInicial=True)
+    estagio2 = Estagio(id=2, titulo='Doing', ordem=2, empresaId=empresa.id)
+    estagio3 = Estagio(id=3, titulo='Testing', ordem=3, empresaId=empresa.id, estagioTeste=True)
+    estagio4 = Estagio(id=4, titulo='Done', ordem=4, empresaId=empresa.id, estagioFinal=True)
     estagios = [estagio1, estagio2, estagio3, estagio4]
     if Estagio.query.count() == 0:
         db.session.add_all(estagios)
 
     # ATIVIDADES
-    ativ_tela_atividades = Atividade(id=1, codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucao=ares.id, estagioId=estagio1.id)
-    ativ2 = Atividade(id=2, codigo='Dois', descricao='Desenvolver tela de Apontamentos', usuarioExecucao=ares.id, estagioId=estagio1.id)
-    ativ3 = Atividade(id=3, codigo='3-A', descricao='Modelagem de Dados', usuarioExecucao=ares.id, estagioId=estagio1.id)
-    ativ4 = Atividade(id=4, codigo=None, descricao='Quarta Atividade', usuarioExecucao=ares.id, estagioId=estagio1.id)
-    ativ5 = Atividade(id=5, codigo='5', descricao='Quinta Atividade', usuarioExecucao=ares.id, estagioId=estagio1.id)
-    ativ6 = Atividade(id=6, codigo='OS-123', descricao='Sexta Atividade', usuarioExecucao=ares.id, estagioId=estagio1.id)
-    atividades = [ativ_tela_atividades, ativ2, ativ3, ativ4, ativ5, ativ6]
+    ativ1 = Atividade(id=1, codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
+    ativ2 = Atividade(id=2, codigo='Dois', descricao='Desenvolver tela de Apontamentos', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
+    ativ3 = Atividade(id=3, codigo='3-A', descricao='Modelagem de Dados', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
+    ativ4 = Atividade(id=4, codigo=None, descricao='Quarta Atividade', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
+    ativ5 = Atividade(id=5, codigo='5', descricao='Quinta Atividade', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
+    ativ6 = Atividade(id=6, codigo='OS-123', descricao='Sexta Atividade', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
+    atividades = [ativ1, ativ2, ativ3, ativ4, ativ5, ativ6]
     if Atividade.query.count() == 0:
         db.session.add_all(atividades)
 
@@ -100,8 +91,8 @@ def carga():
     hab_nlp = Habilidade(id=20, descricao='Natural Language Processing', habPaiId=hab_ia.id)
 
     hab_ds = Habilidade(id=21, descricao='Ciência de Dados')
-    hab_ds_da = Habilidade(id=22, descricao='Análise de Dados', habPaiId=hab_ia.id)
-    hab_ds_etl = Habilidade(id=23, descricao='ETL', habPaiId=hab_ia.id)
+    hab_ds_da = Habilidade(id=22, descricao='Análise de Dados', habPaiId=hab_ds.id)
+    hab_ds_etl = Habilidade(id=23, descricao='ETL', habPaiId=hab_ds.id)
 
     habilidades = [hab_prog, hab_python, hab_js, hab_java, hab_db, hab_postgresql, hab_mongodb, hab_oracle,
                    hab_frontend, hab_css, hab_vue, hab_angular, hab_engsoft, hab_mod_dados, hab_analise,
@@ -119,19 +110,27 @@ def carga():
         db.session.add_all(tas)
 
     # XP
-    xp1 = Xp(id=1, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_python.id, valor=40)
-    xp2 = Xp(id=2, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_js.id, valor=40)
-    xp3 = Xp(id=3, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_css.id, valor=20)
-    xp4 = Xp(id=4, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_python.id, valor=20)
-    xp5 = Xp(id=5, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_an_neg.id, valor=40)
-    xp6 = Xp(id=6, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_python.id, valor=40)
-    xp7 = Xp(id=7, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_js.id, valor=20)
-    xp8 = Xp(id=8, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_an_sis.id, valor=20)
+    xp1 = Xp(id=1, atividadeId=ativ1.id, habilidadeId=hab_python.id, valor=40)
+    xp2 = Xp(id=2, atividadeId=ativ1.id, habilidadeId=hab_js.id, valor=40)
+    xp3 = Xp(id=3, atividadeId=ativ1.id, habilidadeId=hab_css.id, valor=20)
+    xp4 = Xp(id=4, atividadeId=ativ1.id, habilidadeId=hab_python.id, valor=20)
+    xp5 = Xp(id=5, atividadeId=ativ1.id, habilidadeId=hab_an_neg.id, valor=40)
+    xp6 = Xp(id=6, atividadeId=ativ1.id, habilidadeId=hab_python.id, valor=40)
+    xp7 = Xp(id=7, atividadeId=ativ1.id, habilidadeId=hab_js.id, valor=20)
+    xp8 = Xp(id=8, atividadeId=ativ1.id, habilidadeId=hab_an_sis.id, valor=20)
     xp9 = Xp(id=9, atividadeId=ativ2.id, habilidadeId=hab_angular.id, valor=40)
     xp10 = Xp(id=10, atividadeId=ativ2.id, habilidadeId=hab_java.id, valor=40)
     xp11 = Xp(id=11, atividadeId=ativ2.id, habilidadeId=hab_js.id, valor=20)
-    xp12 = Xp(id=12, atividadeId=ativ2.id, habilidadeId=hab_an_sis, valor=20)
-    xps = [xp1, xp2, xp3, xp4, xp5, xp6, xp7, xp8, xp9, xp10, xp11, xp12]
+    xp12 = Xp(id=12, atividadeId=ativ2.id, habilidadeId=hab_an_sis.id, valor=20)
+    xp13 = Xp(id=13, atividadeId=ativ2.id, habilidadeId=hab_angular.id, valor=40)
+    xp14 = Xp(id=14, atividadeId=ativ2.id, habilidadeId=hab_java.id, valor=40)
+    xp15 = Xp(id=15, atividadeId=ativ2.id, habilidadeId=hab_js.id, valor=20)
+    xp16 = Xp(id=16, atividadeId=ativ2.id, habilidadeId=hab_an_sis.id, valor=20)
+    xp17 = Xp(id=17, atividadeId=ativ2.id, habilidadeId=hab_angular.id, valor=40)
+    xp18 = Xp(id=18, atividadeId=ativ2.id, habilidadeId=hab_java.id, valor=40)
+    xp19 = Xp(id=19, atividadeId=ativ2.id, habilidadeId=hab_js.id, valor=20)
+    xp20 = Xp(id=20, atividadeId=ativ2.id, habilidadeId=hab_an_sis.id, valor=20)
+    xps = [xp1, xp2, xp3, xp4, xp5, xp6, xp7, xp8, xp9, xp10, xp11, xp12, xp13, xp14, xp15, xp16, xp17, xp18, xp19, xp20]
     if Xp.query.count() == 0:
         db.session.add_all(xps)
 

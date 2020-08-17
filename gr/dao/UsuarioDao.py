@@ -13,7 +13,8 @@ class UsuarioDao:
 
     def update(self, usuario):
         db.session.add(usuario)
-        return db.session.commit()
+        db.session.commit()
+        return usuario
 
 
 usuario_dao = UsuarioDao(Usuario)

@@ -23,7 +23,7 @@ class EstagioService:
                 'title': estagio.titulo,
                 'class': 'kb-info',
                 'item': itens,
-                'dragTo': ['1', '2', '3', '4']
+                'dragTo': ['2', '3', '4']
             })
 
         return estagios_json

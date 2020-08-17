@@ -6,16 +6,22 @@ class NivelHabilidadeDao:
     def __init__(self, model):
         self.model = model
 
-    def get_nivel_by_usuario_habilidade(self, usuarioid, habilidadeid):
-        return self.model.query.filter(self.model.usuarioId == usuarioid).filter(self.model.habilidadeId == habilidadeid).first()
+    def get_or_insert_nh(self, usuarioid, habilidadeid):
+        nh = self.model.query.filter(self.model.usuarioId == usuarioid).filter(self.model.habilidadeId == habilidadeid).first()
+        if not nh:
+            nh = self.insert(usuarioid, habilidadeid)
+        return nh
 
     def insert(self, usuarioid, habilidadeid):
-        db.session.add(NivelHabilidade(usuarioId=usuarioid, habilidadeId=habilidadeid))
-        return db.session.commit()
+        nh = NivelHabilidade(usuarioId=usuarioid, habilidadeId=habilidadeid)
+        db.session.add(nh)
+        db.session.commit()
+        return nh
 
     def update(self, nivel_habilidade):
         db.session.add(nivel_habilidade)
-        return db.session.commit()
+        db.session.commit()
+        return nivel_habilidade
 
 
 nivel_habilidade_dao = NivelHabilidadeDao(NivelHabilidade)

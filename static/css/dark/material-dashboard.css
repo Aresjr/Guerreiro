@@ -17633,7 +17633,8 @@ label {
 
 .card-stats .card-header+.card-footer {
   border-top: 1px solid #eee;
-  margin-top: 0px;
+  padding:2px;
+  margin: 2px 10px 2px 10px;
 }
 
 .card-stats .card-header.card-header-icon i {

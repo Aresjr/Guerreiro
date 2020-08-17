@@ -11,6 +11,15 @@
                   <form method="POST">
                     {{ form.csrf_token }}
                       <div class="card">
+                        {% with infos = get_flashed_messages(category_filter=["info"]) %}
+                            {% if infos %}
+                                <div class="card-header">
+                                    <div class="alert alert-info" role="alert">
+                                      {{ infos[0] }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
                         {% with errors = get_flashed_messages(category_filter=["error"]) %}
                             {% if errors %}
                                 <div class="card-header">

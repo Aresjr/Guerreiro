@@ -13,7 +13,7 @@
 $(document).ready(function() {
 
     $.ajax({
-        url: '/api/atividades'
+        url: '{{ url_for('api_atividades_get') }}'
     }).done(function(quadros){
         const Kanban = new jKanban({
                 element : '#kanban',
@@ -23,7 +23,7 @@ $(document).ready(function() {
                 dropEl: function (el, target) {
 
                     $.post({
-                        url: '/api/atividade_estagio',
+                        url: '{{ url_for('api_atividade_estagio') }}',
                         data: {
                             'atividade_id': $(el).data('eid'),
                             'estagio_id': $(target).parent().data('id')

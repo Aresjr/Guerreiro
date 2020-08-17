@@ -7,4 +7,5 @@ from flask_login import login_required, current_user
 @login_required
 def quadro():
     usuario = current_user
+    print(usuario)
     return render_template('pages/quadros.html', title="Quadro de Atividades", usuario=usuario)

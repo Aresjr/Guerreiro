@@ -1,20 +1,16 @@
-from gr.dao.AtividadeDao import atividade_dao
-from gr.dao.AtividadeEstagioDao import atividade_estagio_dao
+from gr.dao.NivelHabilidadeDao import nivel_habilidade_dao
 
 
 class NivelHabilidadeService:
 
-    def iniciar_atividade(self, usuarioid, atividadeid, estagioid):
-        atividade = atividade_dao.get_by_id(atividadeid)
-
-        # finaliza atividade estagio anterior
-        estagio_anterior = atividade.estagioId
-        atividade_estagio_dao.finalizar_atividade_estagio(atividadeid, estagio_anterior)
-
-        # atualiza estagio atual
-        atividade.estagioId = estagioid
-        atividade_dao.update(atividade)
-        atividade_estagio_dao.inserir(atividadeid, estagioid, usuarioid)
+    def add_xp(self, usuario, nh, total_xp):
+        xp_fator = usuario.setor.empresa.xpFator
+        while nh.currentXp + total_xp > nh.nextLevelXp:
+            nh.level += 1
+            total_xp -= nh.nextLevelXp
+            nh.nextLevelXp = round(nh.nextLevelXp * xp_fator)
+        nh.currentXp += total_xp  # total_xp que sobra
+        return nivel_habilidade_dao.update(nh)
 
 
 nivel_habilidade_service = NivelHabilidadeService()
