@@ -13,7 +13,7 @@ from gr.model.usuario.Xp import Xp
 from gr.service.XpService import xp_service
 
 
-def test_levelup(carga):
+def test_levelup():
     usuario = usuario_dao.get_by_username('ares')
     usuario.level = 1
     usuario.currentXp = 0
@@ -28,7 +28,7 @@ def test_levelup(carga):
 @pytest.fixture
 def carga():
     # EMPRESA
-    empresa = Empresa(id=1, nome='NemeIA', xpFator=1.15, xpPrimeiroNivel=100, xpPorAtividade=12)
+    empresa = Empresa(id=1, nome='Nemeia', xpFator=1.15, xpPrimeiroNivel=100, xpPorAtividade=12)
     if Empresa.query.count() == 0:
         db.session.add(empresa)
 
@@ -123,7 +123,15 @@ def carga():
     xp2 = Xp(id=2, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_js.id, valor=40)
     xp3 = Xp(id=3, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_css.id, valor=20)
     xp4 = Xp(id=4, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_python.id, valor=20)
-    xps = [xp1, xp2, xp3, xp4]
+    xp5 = Xp(id=5, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_an_neg.id, valor=40)
+    xp6 = Xp(id=6, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_python.id, valor=40)
+    xp7 = Xp(id=7, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_js.id, valor=20)
+    xp8 = Xp(id=8, atividadeId=ativ_tela_atividades.id, habilidadeId=hab_an_sis.id, valor=20)
+    xp9 = Xp(id=9, atividadeId=ativ2.id, habilidadeId=hab_angular.id, valor=40)
+    xp10 = Xp(id=10, atividadeId=ativ2.id, habilidadeId=hab_java.id, valor=40)
+    xp11 = Xp(id=11, atividadeId=ativ2.id, habilidadeId=hab_js.id, valor=20)
+    xp12 = Xp(id=12, atividadeId=ativ2.id, habilidadeId=hab_an_sis, valor=20)
+    xps = [xp1, xp2, xp3, xp4, xp5, xp6, xp7, xp8, xp9, xp10, xp11, xp12]
     if Xp.query.count() == 0:
         db.session.add_all(xps)
 

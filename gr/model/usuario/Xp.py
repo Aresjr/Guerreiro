@@ -8,6 +8,5 @@ class Xp(db.Model):
     atividade = db.relationship(Atividade)
     habilidade = db.relationship(Habilidade)
     valor = db.Column(db.Integer)
-    dataContabilizacao = db.Column(db.Date)
     atividadeId = db.Column(db.Integer, db.ForeignKey(Atividade.id))
     habilidadeId = db.Column(db.Integer, db.ForeignKey(Habilidade.id))

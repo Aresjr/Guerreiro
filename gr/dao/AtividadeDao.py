@@ -12,7 +12,7 @@ class AtividadeDao:
         return self.model.query.filter(self.model.del_ == False, self.model.usuarioExecucaoId == userid).all()
 
     def get_xp_nao_contabilizados(self, userid):
-        return self.model.query.filter(self.model.xpContabilizado == False).filter(self.model.usuarioExecucaoId == userid).all()
+        return self.model.query.filter(self.model.del_ == False, self.model.usuarioExecucaoId == userid, self.model.xpContabilizado == False).all()
 
     def update(self, atividade):
         db.session.add(atividade)

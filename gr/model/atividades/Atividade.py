@@ -13,6 +13,7 @@ class Atividade(db.Model):
     prioridade = db.Column(db.Integer)
     usuarioExecucao = db.relationship(Usuario)
     xpContabilizado = db.Column(db.Boolean, default=False, nullable=False)
+    dataContabilizacao = db.Column(db.Date)
 
     atividadePaiId = db.Column(db.ForeignKey(id))
     usuarioExecucaoId = db.Column(db.ForeignKey(Usuario.id))

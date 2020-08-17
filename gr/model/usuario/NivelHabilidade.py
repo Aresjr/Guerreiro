@@ -7,7 +7,7 @@ class NivelHabilidade(db.Model):
     habilidade = db.relationship(Habilidade, lazy=True)
     level = db.Column(db.Integer, default=1)
     currentXp = db.Column(db.Integer, default=0)
-    nextLevelXp = db.Column(db.Integer, default=10)
+    nextLevelXp = db.Column(db.Integer, default=100)
 
     usuarioId = db.Column(db.Integer, db.ForeignKey('usuario.id'))
     habilidadeId = db.Column(db.Integer, db.ForeignKey(Habilidade.id))

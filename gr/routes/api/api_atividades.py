@@ -14,5 +14,5 @@ def api_atividades_get():
 @app.route('/api/atividade_estagio', methods=["POST"])
 def api_atividade_estagio():
     usuario = current_user
-    atividade_service.iniciar_atividade(usuario.id, request.form['atividade_id'], request.form['estagio_id'])
+    atividade_service.iniciar_atividade(usuario.id, int(request.form['atividade_id']), int(request.form['estagio_id']))
     return jsonify({'response': 'OK'})
