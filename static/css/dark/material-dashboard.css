@@ -17040,6 +17040,7 @@ label {
 .card .card-header {
   border-bottom: none;
   background: transparent;
+  padding: 10px 15px 5px 15px;
 }
 
 .card .card-header .title {
@@ -17634,7 +17635,7 @@ label {
 .card-stats .card-header+.card-footer {
   border-top: 1px solid #eee;
   padding:2px;
-  margin: 2px 10px 2px 10px;
+  margin: 2px 15px;
 }
 
 .card-stats .card-header.card-header-icon i {

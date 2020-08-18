@@ -312,7 +312,6 @@ var dragula = require("dragula");
         //add drag to array for dragula
         self.boardContainer.push(contentBoard);
         for (var itemkey in board.item) {
-          //create item
           var itemKanban = board.item[itemkey];
 
           var nodeItem = this.createCard(itemKanban);
@@ -325,27 +324,21 @@ var dragula = require("dragula");
               nodeItem.classList.add(cl);
             })
           }
-          // nodeItem.innerHTML = __buildItemTitle(itemKanban.title);
-          //add function
           nodeItem.clickfn = itemKanban.click;
           nodeItem.dragfn = itemKanban.drag;
           nodeItem.dragendfn = itemKanban.dragend;
           nodeItem.dropfn = itemKanban.drop;
           __appendCustomProperties(nodeItem, itemKanban);
-          //add click handler of item
           __onclickHandler(nodeItem);
           if (self.options.itemHandleOptions.enabled) {
             nodeItem.style.cursor = "default";
           }
           contentBoard.appendChild(nodeItem);
         }
-        //footer board
         var footerBoard = document.createElement("footer");
-        //board assembly
         boardNode.appendChild(headerBoard);
         boardNode.appendChild(contentBoard);
         boardNode.appendChild(footerBoard);
-        //board add
         self.container.appendChild(boardNode);
       }
       return self;
@@ -362,7 +355,7 @@ var dragula = require("dragula");
 
       var cardTitle = document.createElement("h4");
       cardTitle.classList.add("card-title");
-      cardTitle.innerHTML = itemKanban.title;
+      cardTitle.innerHTML = itemKanban.title || itemKanban.id;
 
       var cardCategory = document.createElement("p");
       cardCategory.classList.add("card-category");
