@@ -8,6 +8,9 @@ class AtividadeDao:
     def get_by_id(self, id):
         return self.model.query.get(id)
 
+    def get_all(self):
+        return self.model.query.all()
+
     def get_by_userid(self, userid):
         return self.model.query.filter(self.model.del_ == False, self.model.usuarioExecucaoId == userid).all()
 

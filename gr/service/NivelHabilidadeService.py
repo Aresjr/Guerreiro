@@ -5,7 +5,7 @@ class NivelHabilidadeService:
 
     def add_xp(self, usuario, nh, total_xp):
         xp_fator = usuario.setor.empresa.xpFator
-        while nh.currentXp + total_xp > nh.nextLevelXp:
+        while nh.currentXp + total_xp >= nh.nextLevelXp:
             nh.level += 1
             total_xp -= nh.nextLevelXp
             nh.nextLevelXp = round(nh.nextLevelXp * xp_fator)

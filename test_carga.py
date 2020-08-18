@@ -9,10 +9,11 @@ from gr.model.usuario.Habilidade import Habilidade
 from gr.model.usuario.TipoConquista import TipoConquista
 from gr.model.usuario.Usuario import Usuario
 from gr.model.usuario.Xp import Xp
+from gr.model.vaga.Cargo import Cargo
 
 
 def test_carga(carga):
-    assert True
+    assert carga
 
 
 @pytest.fixture
@@ -24,12 +25,20 @@ def carga():
         db.session.add(empresa)
 
     # SETOR
-    setor = Setor(id=1, empresaId=empresa.id)
+    setor = Setor(id=1, nome='Tecnologia', empresaId=empresa.id)
     if Setor.query.count() == 0:
         db.session.add(setor)
 
+    # CARGO
+    cargo_prog_sr = Cargo(id=1, titulo='Programador Sênior')
+    cargo_prog_pl = Cargo(id=2, titulo='Programador Pleno', cargoSuperiorId=cargo_prog_sr.id)
+    cargo_prog_jr = Cargo(id=3, titulo='Programador Júnior', cargoSuperiorId=cargo_prog_pl.id)
+    if Cargo.query.count() == 0:
+        db.session.add_all([cargo_prog_jr, cargo_prog_pl, cargo_prog_sr])
+        db.session.commit()
+
     # USUARIOS
-    ares = Usuario(id=1, nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br', setorId=setor.id)
+    ares = Usuario(id=1, nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br', setorId=setor.id, cargoId=cargo_prog_sr.id)
     ares.set_password('aresroot')
     dante = Usuario(id=2, nome='Dante', username='dante', email='dante@ares.dev.br', setorId=setor.id)
     dante.set_password('danteroot')
@@ -124,12 +133,12 @@ def carga():
     xp12 = Xp(id=12, atividadeId=ativ2.id, habilidadeId=hab_an_sis.id, valor=20)
     xp13 = Xp(id=13, atividadeId=ativ2.id, habilidadeId=hab_angular.id, valor=40)
     xp14 = Xp(id=14, atividadeId=ativ2.id, habilidadeId=hab_java.id, valor=40)
-    xp15 = Xp(id=15, atividadeId=ativ2.id, habilidadeId=hab_js.id, valor=20)
-    xp16 = Xp(id=16, atividadeId=ativ2.id, habilidadeId=hab_an_sis.id, valor=20)
-    xp17 = Xp(id=17, atividadeId=ativ2.id, habilidadeId=hab_angular.id, valor=40)
-    xp18 = Xp(id=18, atividadeId=ativ2.id, habilidadeId=hab_java.id, valor=40)
-    xp19 = Xp(id=19, atividadeId=ativ2.id, habilidadeId=hab_js.id, valor=20)
-    xp20 = Xp(id=20, atividadeId=ativ2.id, habilidadeId=hab_an_sis.id, valor=20)
+    xp15 = Xp(id=15, atividadeId=ativ3.id, habilidadeId=hab_js.id, valor=20)
+    xp16 = Xp(id=16, atividadeId=ativ3.id, habilidadeId=hab_an_sis.id, valor=20)
+    xp17 = Xp(id=17, atividadeId=ativ3.id, habilidadeId=hab_angular.id, valor=40)
+    xp18 = Xp(id=18, atividadeId=ativ3.id, habilidadeId=hab_java.id, valor=40)
+    xp19 = Xp(id=19, atividadeId=ativ3.id, habilidadeId=hab_js.id, valor=20)
+    xp20 = Xp(id=20, atividadeId=ativ3.id, habilidadeId=hab_an_sis.id, valor=20)
     xps = [xp1, xp2, xp3, xp4, xp5, xp6, xp7, xp8, xp9, xp10, xp11, xp12, xp13, xp14, xp15, xp16, xp17, xp18, xp19, xp20]
     if Xp.query.count() == 0:
         db.session.add_all(xps)

@@ -23,30 +23,30 @@ class AtividadeService:
 
             atividade_estagio_dao.inserir(atividadeid, estagioid, usuarioid)
 
-    def contabiliza_xp_usuario(selfself, usuario):
+    def contabiliza_xp_usuario(self, usuario):
         atividades = atividade_dao.get_xp_nao_contabilizados(usuario.id)
         for atividade in atividades:
-            xps = xp_dao.get_by_atividadeid(atividade.id)
-            for xp in xps:
-                print(xp.valor)
-                usuario_service.add_xp(usuario, xp.valor)
-                print(xp.valor)
-
-                # acumula o total_xp total da habilidade pai atual (programacao, analise de dados, bd, ciencia de dados, etc)
-                # xp_total_habilidade_pai = xp.valor
-                # nh = nivel_habilidade_dao.get_or_insert_nh(usuario.id, xp.habilidadeId)
-                # nivel_habilidade_service.add_xp(usuario, nh, xp.valor)
-
-                # acumula o total_xp para o nivel de habilidade do usuario
-                # xp_total_habilidade = xp.valor
-                nh = nivel_habilidade_dao.get_or_insert_nh(usuario.id, xp.habilidadeId)
-                print(nh.currentXp)
-                nivel_habilidade_service.add_xp(usuario, nh, xp.valor)
-                print(nh.currentXp)
-
-            atividade.xpContabilizado = True
-            atividade_dao.update(atividade)
+            self.contabiliza_xp_atividade(usuario, atividade)
         usuario_dao.update(usuario)
+
+    def contabiliza_xp_atividade(self, usuario, atividade):
+        xps = xp_dao.get_by_atividadeid(atividade.id)
+        for xp in xps:
+            self.contabiliza_xp(usuario, xp)
+        atividade.xpContabilizado = True
+        atividade_dao.update(atividade)
+
+    def contabiliza_xp(self, usuario, xp):
+        usuario_service.add_xp(usuario, xp.valor)
+
+        # acumula o total_xp para o nivel de habilidade do usuario
+        nh = nivel_habilidade_dao.get_or_insert_nh(usuario.id, xp.habilidadeId)
+        nivel_habilidade_service.add_xp(usuario, nh, xp.valor)
+
+        # acumula o total_xp para o nivel pai da habilidade
+        if nh.habilidade.habPaiId:
+            nh_pai = nivel_habilidade_dao.get_or_insert_nh(usuario.id, nh.habilidade.habPaiId)
+            nivel_habilidade_service.add_xp(usuario, nh_pai, xp.valor)
 
 
 atividade_service = AtividadeService()

@@ -27,7 +27,7 @@ class UsuarioService:
 
     def add_xp(self, usuario, total_xp):
         xp_fator = usuario.setor.empresa.xpFator
-        while usuario.currentXp + total_xp > usuario.nextLevelXp:
+        while usuario.currentXp + total_xp >= usuario.nextLevelXp:
             usuario.level += 1
             total_xp -= usuario.nextLevelXp
             usuario.nextLevelXp = round(usuario.nextLevelXp * xp_fator)
