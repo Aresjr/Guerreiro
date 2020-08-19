@@ -20,6 +20,6 @@ from gr.model.usuario import Conquista, Habilidade, Medalha, NivelAcesso, NivelH
 # noinspection PyUnresolvedReferences
 from gr.model.vaga import Cargo, RequisitoCargo, Vaga
 # noinspection PyUnresolvedReferences
-from gr.model import Apontamento, Lang, Penalidade
+from gr.model.misc import Apontamento, Lang, Penalidade
 
 manager.run()

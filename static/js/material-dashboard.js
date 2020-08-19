@@ -14,24 +14,6 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
  */
-
-(function() {
-  isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
-
-  if (isWindows) {
-    // if we are on windows OS we activate the perfectScrollbar function
-    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-    $('html').addClass('perfect-scrollbar-on');
-  } else {
-    $('html').addClass('perfect-scrollbar-off');
-  }
-})();
-
-
-var breakCards = true;
-
-var searchVisible = 0;
 var transparent = true;
 
 var mobile_menu_visible = 0,

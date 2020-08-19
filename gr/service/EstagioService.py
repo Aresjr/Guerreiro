@@ -21,7 +21,6 @@ class EstagioService:
             estagios_json.append({
                 'id': str(estagio.id),
                 'title': estagio.titulo,
-                'class': 'kb-info',
                 'item': itens,
                 'dragTo': ['2', '3', '4']
             })

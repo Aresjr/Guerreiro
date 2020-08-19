@@ -4,7 +4,7 @@ from werkzeug.utils import redirect
 
 from app import db, login_manager
 from gr.model.vaga.Cargo import Cargo
-from gr.model.Lang import Lang
+from gr.model.misc.Lang import Lang
 from gr.model.usuario.NivelAcesso import NivelAcesso
 from gr.model.empresa.Setor import Setor
 
@@ -26,7 +26,6 @@ class Usuario(db.Model):
     nextLevelXp = db.Column(db.Integer, default=100)
     hp = db.Column(db.Integer, default=100)
 
-    darkMode = db.Column(db.Boolean, default=False)
     lang = db.relationship(Lang)
 
     langId = db.Column(db.ForeignKey(Lang.id))

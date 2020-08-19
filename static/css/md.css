@@ -14953,10 +14953,14 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 2;
-  width: 260px;
+  z-index: 1080;
+  width: 60px;
   background: #fff;
-  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 260px;
 }
 
 .sidebar .caret {
@@ -14972,14 +14976,13 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar[data-background-color="black"] {
-  background-color: #191919;
+  background-color: #000;
 }
 
 .sidebar .sidebar-wrapper {
   position: relative;
   height: calc(100vh - 75px);
-  overflow: auto;
-  width: 260px;
+  overflow: hidden;
   z-index: 4;
   padding-bottom: 30px;
 }
@@ -15044,10 +15047,6 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   outline: none;
 }
 
-.sidebar .nav li:first-child>a {
-  margin: 0 15px;
-}
-
 .sidebar .nav li:hover>a,
 .sidebar .nav li .dropdown-menu a:hover,
 .sidebar .nav li .dropdown-menu a:focus,
@@ -15105,7 +15104,6 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 .sidebar .nav li a,
 .sidebar .nav li .dropdown-menu a {
-  margin: 10px 15px 0;
   border-radius: 3px;
   color: #3C4858;
   padding-left: 10px;
@@ -15334,7 +15332,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .main-panel {
   position: relative;
   float: right;
-  width: calc(100% - 260px);
+  width: calc(100% - 60px);
   transition: 0.33s, cubic-bezier(0.685, 0.0473, 0.346, 1);
 }
 
@@ -15359,12 +15357,6 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .main-panel .header .title {
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.perfect-scrollbar-on .sidebar,
-.perfect-scrollbar-on .main-panel {
-  height: 100%;
-  max-height: 100%;
 }
 
 .sidebar,
@@ -18020,170 +18012,6 @@ Copyright (c) 2015 Daniel Eden
 .ct-chart .ct-series-c .ct-slice-donut-solid,
 .ct-chart .ct-series-c .ct-area {
   fill: #ff9800;
-}
-
-/* perfect-scrollbar v0.6.13 */
-.ps-container {
-  -ms-touch-action: auto;
-  touch-action: auto;
-  overflow: hidden !important;
-  -ms-overflow-style: none;
-}
-
-@supports (-ms-overflow-style: none) {
-  .ps-container {
-    overflow: auto !important;
-  }
-}
-
-@media screen and (-ms-high-contrast: active),
-(-ms-high-contrast: none) {
-  .ps-container {
-    overflow: auto !important;
-  }
-}
-
-.ps-container.ps-active-x>.ps-scrollbar-x-rail,
-.ps-container.ps-active-y>.ps-scrollbar-y-rail {
-  display: block;
-  background-color: transparent;
-}
-
-.ps-container.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail {
-  background-color: #eee;
-  opacity: 0.9;
-}
-
-.ps-container.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail>.ps-scrollbar-x {
-  background-color: #999;
-  height: 11px;
-}
-
-.ps-container.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail {
-  background-color: #eee;
-  opacity: 0.9;
-}
-
-.ps-container.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail>.ps-scrollbar-y {
-  background-color: #999;
-  width: 11px;
-}
-
-.ps-container>.ps-scrollbar-x-rail {
-  display: none;
-  position: absolute;
-  /* please don't change 'position' */
-  opacity: 0;
-  -webkit-transition: background-color .2s linear, opacity .2s linear;
-  -o-transition: background-color .2s linear, opacity .2s linear;
-  -moz-transition: background-color .2s linear, opacity .2s linear;
-  transition: background-color .2s linear, opacity .2s linear;
-  bottom: 0px;
-  /* there must be 'bottom' for ps-scrollbar-x-rail */
-  height: 15px;
-}
-
-.ps-container>.ps-scrollbar-x-rail>.ps-scrollbar-x {
-  position: absolute;
-  /* please don't change 'position' */
-  background-color: #aaa;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
-  -o-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
-  -moz-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -webkit-border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
-  bottom: 2px;
-  /* there must be 'bottom' for ps-scrollbar-x */
-  height: 6px;
-}
-
-.ps-container>.ps-scrollbar-x-rail:hover>.ps-scrollbar-x,
-.ps-container>.ps-scrollbar-x-rail:active>.ps-scrollbar-x {
-  height: 11px;
-}
-
-.ps-container>.ps-scrollbar-y-rail {
-  display: none;
-  position: absolute;
-  /* please don't change 'position' */
-  opacity: 0;
-  -webkit-transition: background-color .2s linear, opacity .2s linear;
-  -o-transition: background-color .2s linear, opacity .2s linear;
-  -moz-transition: background-color .2s linear, opacity .2s linear;
-  transition: background-color .2s linear, opacity .2s linear;
-  right: 0;
-  /* there must be 'right' for ps-scrollbar-y-rail */
-  width: 15px;
-}
-
-.ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
-  position: absolute;
-  /* please don't change 'position' */
-  background-color: #aaa;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, -webkit-border-radius .2s ease-in-out;
-  -o-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
-  -moz-transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
-  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out, -webkit-border-radius .2s ease-in-out, -moz-border-radius .2s ease-in-out;
-  right: 2px;
-  /* there must be 'right' for ps-scrollbar-y */
-  width: 6px;
-}
-
-.ps-container>.ps-scrollbar-y-rail:hover>.ps-scrollbar-y,
-.ps-container>.ps-scrollbar-y-rail:active>.ps-scrollbar-y {
-  width: 11px;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail {
-  background-color: #eee;
-  opacity: 0.9;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail>.ps-scrollbar-x {
-  background-color: #999;
-  height: 11px;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail {
-  background-color: #eee;
-  opacity: 0.9;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail>.ps-scrollbar-y {
-  background-color: #999;
-  width: 11px;
-}
-
-.ps-container:hover>.ps-scrollbar-x-rail,
-.ps-container:hover>.ps-scrollbar-y-rail {
-  opacity: 0.6;
-}
-
-.ps-container:hover>.ps-scrollbar-x-rail:hover {
-  background-color: #eee;
-  opacity: 0.9;
-}
-
-.ps-container:hover>.ps-scrollbar-x-rail:hover>.ps-scrollbar-x {
-  background-color: #999;
-}
-
-.ps-container:hover>.ps-scrollbar-y-rail:hover {
-  background-color: #eee;
-  opacity: 0.9;
-}
-
-.ps-container:hover>.ps-scrollbar-y-rail:hover>.ps-scrollbar-y {
-  background-color: #999;
 }
 
 @media all and (max-width: 991px) {

@@ -1,12 +1,11 @@
 from app import db
-from gr.model.Lang import Lang
+from gr.model.misc.Lang import Lang
 
 
 class Empresa(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     nomeFantasia = db.Column(db.String(255))
-    darkMode = db.Column(db.Boolean)
     lang = db.Column(db.Integer, db.ForeignKey(Lang.id))
 
     # CONFIG
