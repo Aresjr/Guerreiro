@@ -17,13 +17,15 @@ $(document).ready(function() {
     }).done(function(quadros){
         const Kanban = new jKanban({
                 element : '#kanban',
-                gutter  : '10px',
-                widthBoard  : '320px',
-                {#breakLine: true,#}
+                addItemButton: true,
+                buttonClick: function(btn, estagioId){
+                  console.log(btn);
+                  console.log(estagioId);
+                },
                 dropEl: function (el, target) {
 
                     $.post({
-                        url: '{{ url_for('api_atividade_estagio') }}',
+                        url: '{{ url_for('api_trocar_estagio_atividade') }}',
                         data: {
                             'atividade_id': $(el).data('eid'),
                             'estagio_id': $(target).parent().data('id')
@@ -33,6 +35,21 @@ $(document).ready(function() {
                         console.log(error);
                     });
 
+                },
+                dragendBoard: function(board){
+
+                    $.post({
+                        url: '{{ url_for('api_trocar_ordem_estagio') }}',
+                        data: {
+                            'atividade_id': $(el).data('eid'),
+                            'estagio_id': $(target).parent().data('id')
+                        },
+                        dataType: 'json'
+                    }).fail(function(error) {
+                        console.log(error);
+                    });
+
+                    console.log(board.dataset);
                 },
                 boards  :quadros
         });

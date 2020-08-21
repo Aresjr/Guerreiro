@@ -23,6 +23,10 @@
   float: left;
   background: #e2e4e6;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 320px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 6px;
 }
 
 .kanban-board.disabled-board {
@@ -52,6 +56,8 @@
 
 .kanban-board header .kanban-title-button {
   float: right;
+    margin: 0px;
+    padding: 5px 10px
 }
 
 .kanban-board .kanban-drag {

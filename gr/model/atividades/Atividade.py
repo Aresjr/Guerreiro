@@ -1,5 +1,6 @@
 from app import db
 from gr.model.atividades.Estagio import Estagio
+from gr.model.atividades.Projeto import Projeto
 from gr.model.atividades.TipoAtividade import TipoAtividade
 from gr.model.usuario.Usuario import Usuario
 
@@ -19,4 +20,5 @@ class Atividade(db.Model):
     usuarioExecucaoId = db.Column(db.ForeignKey(Usuario.id))
     tipoAtividadeId = db.Column(db.ForeignKey(TipoAtividade.id))
     estagioId = db.Column(db.ForeignKey(Estagio.id))
+    projetoId = db.Column(db.ForeignKey(Projeto.id))
     del_ = db.Column(db.Boolean, default=False)

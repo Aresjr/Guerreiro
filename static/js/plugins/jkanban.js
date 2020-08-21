@@ -37,8 +37,6 @@ var dragula = require("dragula");
     this.itemHandleOptions = __DEFAULT_ITEM_HANDLE_OPTIONS;
     var defaults = {
       element: "",
-      gutter: "15px",
-      widthBoard: "250px",
       responsive: "700",
       responsivePercentage: false,
       breakLine: false,
@@ -202,7 +200,6 @@ var dragula = require("dragula");
 	  cardKanban.classList.add(cl);
 	})
       }
-      // cardKanban.innerHTML = __buildItemTitle(element.title);
       //add function
       cardKanban.clickfn = element.click;
       cardKanban.dragfn = element.drag;
@@ -230,14 +227,6 @@ var dragula = require("dragula");
     this.addBoards = function(boards, isInit) {
       if (self.options.responsivePercentage) {
         self.container.style.width = "100%";
-        self.options.gutter = "1%";
-        if (window.innerWidth > self.options.responsive) {
-          var boardWidth = (100 - boards.length * 2) / boards.length;
-        } else {
-          var boardWidth = 100 - boards.length * 2;
-        }
-      } else {
-        var boardWidth = self.options.widthBoard;
       }
       var addButton = self.options.addItemButton;
       var buttonContent = self.options.buttonContent;
@@ -249,33 +238,11 @@ var dragula = require("dragula");
         if (!isInit) {
           self.options.boards.push(board);
         }
-
-        if (!self.options.responsivePercentage && !self.options.breakLine) {
-          //add width to container
-          if (self.container.style.width === "") {
-            self.container.style.width =
-              parseInt(boardWidth) + parseInt(self.options.gutter) * 2 + "px";
-          } else {
-            self.container.style.width =
-              parseInt(self.container.style.width) +
-              parseInt(boardWidth) +
-              parseInt(self.options.gutter) * 2 +
-              "px";
-          }
-        }
         //create node
         var boardNode = document.createElement("div");
         boardNode.dataset.id = board.id;
         boardNode.dataset.order = self.container.childNodes.length + 1;
         boardNode.classList.add("kanban-board");
-        //set style
-        if (self.options.responsivePercentage) {
-          boardNode.style.width = boardWidth + "%";
-        } else {
-          boardNode.style.width = boardWidth;
-        }
-        boardNode.style.marginLeft = self.options.gutter;
-        boardNode.style.marginRight = self.options.gutter;
         // header board
         var headerBoard = document.createElement("header");
         if (board.class !== "" && board.class !== undefined)
@@ -293,10 +260,9 @@ var dragula = require("dragula");
           var t = document.createTextNode(buttonContent);
           btn.setAttribute(
             "class",
-            "kanban-title-button btn btn-default btn-xs"
+            "kanban-title-button btn btn-sm"
           );
           btn.appendChild(t);
-          //var buttonHtml = '<button class="kanban-title-button btn btn-default btn-xs">'+buttonContent+'</button>'
           headerBoard.appendChild(btn);
           __onButtonClickHandler(btn, board.id);
         }
@@ -494,7 +460,9 @@ var dragula = require("dragula");
       nodeItem.addEventListener("click", function(e) {
         e.preventDefault();
         self.options.click(this);
-        if (typeof this.clickfn === "function") this.clickfn(this);
+        if (typeof this.clickfn === "function"){
+          this.clickfn(this);
+        }
       });
     }
 
@@ -502,8 +470,9 @@ var dragula = require("dragula");
       nodeItem.addEventListener("click", function(e) {
         e.preventDefault();
         self.options.buttonClick(this, boardId);
-        // if(typeof(this.clickfn) === 'function')
-        //     this.clickfn(this);
+        if(typeof(this.clickfn) === 'function'){
+          this.clickfn(this);
+        }
       });
     }
 
@@ -535,27 +504,6 @@ var dragula = require("dragula");
       for (var i = 0; i < self.container.childNodes.length; i++) {
         self.container.childNodes[i].dataset.order = index++;
       }
-    }
-
-    function __buildItemTitle(title) {
-      var result = title;
-      if (self.options.itemHandleOptions.enabled) {
-        if ((self.options.itemHandleOptions.customHandler || undefined) === undefined) {
-          var customCssHandler = self.options.itemHandleOptions.customCssHandler;
-          var customCssIconHandler = self.options.itemHandleOptions.customCssIconHandler;
-          if ((customCssHandler || undefined) === undefined) {
-            customCssHandler = "drag_handler";
-          }
-          if ((customCssIconHandler || undefined) === undefined) {
-            customCssIconHandler = customCssHandler + "_icon";
-          }
-
-          result = "<div class='item_handle "+customCssHandler+"'><i class='item_handle "+customCssIconHandler+"'></i></div><div>" + result + "</div>";
-        } else {
-          result = self.options.itemHandleOptions.customHandler.replace("%s", result);
-        }
-      }
-      return result;
     }
 
     //init plugin
