@@ -17,6 +17,5 @@ def api_trocar_estagio_atividade():
 
 @app.route('/api/trocar_ordem_estagio', methods=["POST"])
 def api_trocar_ordem_estagio():
-    usuario = current_user
-    atividade_service.iniciar_atividade(usuario.id, int(request.form['estagio_id']), int(request.form['ordem']))
+    estagio_service.alterar_ordem(int(request.form['estagio_id']), int(request.form['ordem']))
     return jsonify({'response': 'OK'})

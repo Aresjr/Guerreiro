@@ -2,7 +2,7 @@
 <html lang="pt">
 {% include 'layouts/head.html' %}
 <body>
-  <div class="wrapper ">
+  <div class="wrapper">
     {% include 'layouts/sidebar.html' %}
     <div class="main-panel">
       {% include 'layouts/navbar.html' %}
@@ -13,6 +13,7 @@
       </div>
     </div>
   </div>
+  {% block additional_html %}{% endblock %}
   {% include 'layouts/scripts_js.html' %}
   {% block additional_js %}{% endblock %}
 </body>

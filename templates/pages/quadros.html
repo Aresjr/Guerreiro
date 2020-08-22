@@ -19,7 +19,6 @@ $(document).ready(function() {
                 element : '#kanban',
                 addItemButton: true,
                 buttonClick: function(btn, estagioId){
-                  console.log(btn);
                   console.log(estagioId);
                 },
                 dropEl: function (el, target) {
@@ -41,15 +40,14 @@ $(document).ready(function() {
                     $.post({
                         url: '{{ url_for('api_trocar_ordem_estagio') }}',
                         data: {
-                            'atividade_id': $(el).data('eid'),
-                            'estagio_id': $(target).parent().data('id')
+                            'estagio_id': board.dataset.id,
+                            'ordem': board.dataset.order
                         },
                         dataType: 'json'
                     }).fail(function(error) {
                         console.log(error);
                     });
 
-                    console.log(board.dataset);
                 },
                 boards  :quadros
         });
