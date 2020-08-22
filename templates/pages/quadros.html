@@ -8,6 +8,28 @@
    </div>
 {% endblock %}
 
+{% block additional_html %}
+<div id="modal-atividade" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
 {% block additional_js %}
 <script>
 $(document).ready(function() {
@@ -19,7 +41,19 @@ $(document).ready(function() {
                 element : '#kanban',
                 addItemButton: true,
                 buttonClick: function(btn, estagioId){
-                  console.log(estagioId);
+                    $('#atividades-quadro-'+estagioId).prepend('' +
+                        '<div class="kanban-item card card-stats" data-eid="5" data-descricao="Quinta Atividade" data-executor="ares">' +
+                            '<div class="card-header">' +
+                                '<h4 class="card-title">código...</h4>' +
+                                '<p class="card-category">Descrição</p>' +
+                            '</div>' +
+                        '<div class="card-footer">' +
+                            '<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar<div class="ripple-container"></div></button>' +
+                            '<button type="button" class="btn btn-primary btn-sm">Salvar</button>' +
+                        '</div>' +
+                        '');
+                    console.log(btn);
+                    console.log(estagioId);
                 },
                 dropEl: function (el, target) {
 

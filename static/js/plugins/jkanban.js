@@ -33,7 +33,7 @@ var dragula = require("dragula");
     this.drake = "";
     this.drakeBoard = "";
     this.addItemButton = false;
-    this.buttonContent = "+";
+    this.buttonContent = "&times;";
     this.itemHandleOptions = __DEFAULT_ITEM_HANDLE_OPTIONS;
     var defaults = {
       element: "",
@@ -269,6 +269,7 @@ var dragula = require("dragula");
         //content board
         var contentBoard = document.createElement("main");
         contentBoard.classList.add("kanban-drag");
+        contentBoard.setAttribute('id', 'atividades-quadro-'+board.id);
         if (board.bodyClass !== "" && board.bodyClass !== undefined)
           var bodyClasses = board.bodyClass.split(",");
         else bodyClasses = [];
