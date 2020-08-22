@@ -12,10 +12,11 @@ class EstagioService:
             itens = []
             for atividade in estagio.atividades:
                 itens.append({
+                    'id': str(atividade.id),
                     'title': atividade.codigo,
                     'descricao': atividade.descricao,
-                    'executor': atividade.usuarioExecucao.username,
-                    'id': str(atividade.id)
+                    'estagio': estagio.id,
+                    'executor': atividade.usuarioExecucao.username
                 })
 
             estagios_json.append({

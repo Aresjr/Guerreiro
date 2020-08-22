@@ -56,7 +56,7 @@
 .kanban-board header .kanban-title-button {
   float: right;
     margin: 0px;
-    padding: 5px 10px
+    padding: 5px;
 }
 
 .kanban-board .kanban-drag {

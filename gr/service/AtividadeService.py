@@ -3,6 +3,7 @@ from gr.dao.AtividadeEstagioDao import atividade_estagio_dao
 from gr.dao.NivelHabilidadeDao import nivel_habilidade_dao
 from gr.dao.UsuarioDao import usuario_dao
 from gr.dao.XpDao import xp_dao
+from gr.model.atividades.Atividade import Atividade
 from gr.service.NivelHabilidadeService import nivel_habilidade_service
 from gr.service.UsuarioService import usuario_service
 
@@ -48,5 +49,8 @@ class AtividadeService:
             nh_pai = nivel_habilidade_dao.get_or_insert_nh(usuario.id, nh.habilidade.habPaiId)
             nivel_habilidade_service.add_xp(usuario, nh_pai, xp.valor)
 
+    def add_atividade(self, titulo, descricao, usuario_execucao, usuario_criacao):
+        Atividade(titulo=titulo, descricao=descricao, usuarioExecucaoId=usuario_execucao, usuarioCriacao=usuario_criacao)
+        atividade_dao.add()
 
 atividade_service = AtividadeService()

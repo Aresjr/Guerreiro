@@ -11,7 +11,7 @@ class Atividade(db.Model):
     tipoAtividade = db.relationship(TipoAtividade, lazy=True)
     estagio = db.relationship(Estagio, lazy=True)
     descricao = db.Column(db.String(255))
-    prioridade = db.Column(db.Integer)
+    prioridade = db.Column(db.Integer)  # TODO
     usuarioExecucao = db.relationship(Usuario)
     xpContabilizado = db.Column(db.Boolean, default=False, nullable=False)
     dataContabilizacao = db.Column(db.Date)

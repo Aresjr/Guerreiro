@@ -257,12 +257,17 @@ var dragula = require("dragula");
         // if add button is true, add button to the board
         if (addButton) {
           var btn = document.createElement("BUTTON");
-          var t = document.createTextNode(buttonContent);
           btn.setAttribute(
             "class",
             "kanban-title-button btn btn-sm"
           );
-          btn.appendChild(t);
+          // const btnIcone = document.createElement('i');
+          // btnIcone.setAttribute('class', 'material-icons');
+          // btnIcone.innerHTML = 'more_vert';
+          // btn.appendChild(btnIcone);
+
+          btn.innerHTML = '<i class="material-icons">more_horiz</i>';
+
           headerBoard.appendChild(btn);
           __onButtonClickHandler(btn, board.id);
         }

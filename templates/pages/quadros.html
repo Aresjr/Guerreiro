@@ -1,33 +1,7 @@
 {% extends 'layouts/main.html' %}
 
 {% block content %}
-   <div class="row">
-      <div class="col-md-12">
          <div id="kanban"></div>
-      </div>
-   </div>
-{% endblock %}
-
-{% block additional_html %}
-<div id="modal-atividade" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Salvar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
 
 {% block additional_js %}
@@ -37,54 +11,54 @@ $(document).ready(function() {
     $.ajax({
         url: '{{ url_for('api_atividades_get') }}'
     }).done(function(quadros){
+
+        const buttonClick = function(btn, estagioId){
+            const card_novo = '{% include 'layouts/card_atividade_nova.html' %}';
+            $('#atividades-quadro-'+estagioId).prepend(card_novo);
+            const btn_salvar = $(card_novo).find('#salvar_atividade_nova')[0];
+            $(document).on('click', '#salvar_atividade_nova', function(event){
+                console.log(event);
+            });
+        };
+
+        const dragendBoard = function(board){
+            $.post({
+                url: '{{ url_for('api_trocar_ordem_estagio') }}',
+                data: {
+                    'estagio_id': board.dataset.id,
+                    'ordem': board.dataset.order
+                },
+                dataType: 'json'
+            }).fail(function(error) {
+                console.log(error);
+            });
+        };
+
+        const dropEl = function (el, target) {
+            el.dataset.estagio = $(target).parent().data('id');
+
+            $.post({
+                url: '{{ url_for('api_trocar_estagio_atividade') }}',
+                data: {
+                    'atividade_id': el.dataset.eid,
+                    'estagio_id': el.dataset.estagio
+                },
+                dataType: 'json'
+            }).fail(function(error) {
+                console.log(error);
+            });
+        };
+
         const Kanban = new jKanban({
                 element : '#kanban',
+                buttonClick: buttonClick,
+                dropEl: dropEl,
+                dragendBoard: dragendBoard,
+                boards: quadros,
                 addItemButton: true,
-                buttonClick: function(btn, estagioId){
-                    $('#atividades-quadro-'+estagioId).prepend('' +
-                        '<div class="kanban-item card card-stats" data-eid="5" data-descricao="Quinta Atividade" data-executor="ares">' +
-                            '<div class="card-header">' +
-                                '<h4 class="card-title">código...</h4>' +
-                                '<p class="card-category">Descrição</p>' +
-                            '</div>' +
-                        '<div class="card-footer">' +
-                            '<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar<div class="ripple-container"></div></button>' +
-                            '<button type="button" class="btn btn-primary btn-sm">Salvar</button>' +
-                        '</div>' +
-                        '');
-                    console.log(btn);
-                    console.log(estagioId);
-                },
-                dropEl: function (el, target) {
-
-                    $.post({
-                        url: '{{ url_for('api_trocar_estagio_atividade') }}',
-                        data: {
-                            'atividade_id': $(el).data('eid'),
-                            'estagio_id': $(target).parent().data('id')
-                        },
-                        dataType: 'json'
-                    }).fail(function(error) {
-                        console.log(error);
-                    });
-
-                },
-                dragendBoard: function(board){
-
-                    $.post({
-                        url: '{{ url_for('api_trocar_ordem_estagio') }}',
-                        data: {
-                            'estagio_id': board.dataset.id,
-                            'ordem': board.dataset.order
-                        },
-                        dataType: 'json'
-                    }).fail(function(error) {
-                        console.log(error);
-                    });
-
-                },
-                boards  :quadros
+                buttonContent: '<i class="material-icons">more_vert</i>'
         });
+
     });
 
 });
