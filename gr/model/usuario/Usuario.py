@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
 
 from app import db, login_manager
+from gr.model.empresa.Empresa import Empresa
 from gr.model.vaga.Cargo import Cargo
 from gr.model.misc.Lang import Lang
 from gr.model.usuario.NivelAcesso import NivelAcesso
@@ -13,6 +14,7 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nivelAcesso = db.relationship(NivelAcesso, lazy=True)
 
+    empresa = db.relationship(Empresa, lazy=True)
     setor = db.relationship(Setor, lazy=True)
     cargo = db.relationship(Cargo, lazy=True)
 
@@ -30,6 +32,7 @@ class Usuario(db.Model):
 
     langId = db.Column(db.ForeignKey(Lang.id))
     nivelAcessoId = db.Column(db.ForeignKey(NivelAcesso.id))
+    empresaId = db.Column(db.ForeignKey(Empresa.id))
     setorId = db.Column(db.ForeignKey(Setor.id))
     cargoId = db.Column(db.ForeignKey(Cargo.id))
 

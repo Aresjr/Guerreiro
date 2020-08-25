@@ -34,5 +34,16 @@ class UsuarioService:
         usuario.currentXp += total_xp  # total_xp que sobra
         return usuario_dao.update(usuario)
 
+    def get_usuarios_empresa(self, empresaId):
+        usuarios = usuario_dao.get_by_empresa(empresaId)
+        usuarios_json = []
+        print(usuarios)
+        for usuario in usuarios:
+            usuarios_json.append({
+                'label': usuario.nome,
+                'id': usuario.id
+            })
+        return usuarios_json
+
 
 usuario_service = UsuarioService()

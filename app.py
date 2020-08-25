@@ -16,7 +16,7 @@ db = SQLAlchemy(app)
 # noinspection PyUnresolvedReferences
 from gr.routes import index, login, perfil, quadro, conquistas, apontamentos, sobre
 # noinspection PyUnresolvedReferences
-from gr.routes.api import api_atividades
+from gr.routes.api import api_atividades, api_xp, api_tarefas, api_usuario
 
 
 def get_app():

@@ -11,6 +11,9 @@ class UsuarioDao:
     def get_by_username(self, username):
         return self.model.query.filter(self.model.username == username).first()
 
+    def get_by_empresa(self, empresaId):
+        return self.model.query.filter(self.model.empresaId == empresaId).all()
+
     def update(self, usuario):
         db.session.add(usuario)
         db.session.commit()

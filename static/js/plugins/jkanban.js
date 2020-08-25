@@ -38,8 +38,8 @@ var dragula = require("dragula");
     var defaults = {
       element: "",
       responsive: "700",
-      responsivePercentage: false,
       breakLine: false,
+      borderWidth: 330,
       boards: [],
       dragBoards: true,
       dragItems: true, //whether can drag cards or not, useful when set permissions on it.
@@ -225,11 +225,8 @@ var dragula = require("dragula");
     };
 
     this.addBoards = function(boards, isInit) {
-      if (self.options.responsivePercentage) {
-        self.container.style.width = "100%";
-      }
       var addButton = self.options.addItemButton;
-      var buttonContent = self.options.buttonContent;
+      var btnContent = self.options.buttonContent;
 
       //for on all the boards
       for (var boardkey in boards) {
@@ -261,12 +258,8 @@ var dragula = require("dragula");
             "class",
             "kanban-title-button btn btn-sm"
           );
-          // const btnIcone = document.createElement('i');
-          // btnIcone.setAttribute('class', 'material-icons');
-          // btnIcone.innerHTML = 'more_vert';
-          // btn.appendChild(btnIcone);
 
-          btn.innerHTML = '<i class="material-icons">more_horiz</i>';
+          btn.innerHTML = btnContent;
 
           headerBoard.appendChild(btn);
           __onButtonClickHandler(btn, board.id);
@@ -455,6 +448,9 @@ var dragula = require("dragula");
       //create container
       var boardContainer = document.createElement("div");
       boardContainer.classList.add("kanban-container");
+      if(!self.options.breakLine){
+        boardContainer.style.width = (self.options.boards.length * self.options.borderWidth) + 'px';
+      }
       self.container = boardContainer;
       //add boards
       self.addBoards(self.options.boards, true);

@@ -56,12 +56,12 @@
 .kanban-board header .kanban-title-button {
   float: right;
     margin: 0px;
-    padding: 5px;
+    padding: 5px 10px;
 }
 
 .kanban-board .kanban-drag {
   min-height: 200px;
-  padding: 0px 15px 15px 15px;
+  padding: 0px 10px 10px 10px;
 }
 
 .kanban-board:after {
