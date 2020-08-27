@@ -37,7 +37,6 @@ class UsuarioService:
     def get_usuarios_empresa(self, empresaId):
         usuarios = usuario_dao.get_by_empresa(empresaId)
         usuarios_json = []
-        print(usuarios)
         for usuario in usuarios:
             usuarios_json.append({
                 'label': usuario.nome,

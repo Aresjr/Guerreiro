@@ -19,7 +19,7 @@
                         <input id="titulo-atividade-nova" placeholder="Código" type="text" class="form-control" />
                     </div>
                     <div class="form-group bmd-form-group" style="padding: 0px;margin: 0px;">
-                        <textarea placeholder="Descrição" class="form-control"></textarea>
+                        <textarea id="descricao-atividade-nova" placeholder="Descrição" class="form-control" rows="1" maxlength="200"></textarea>
                     </div>
                     <div class="form-group bmd-form-group" style="margin: 0px;padding: 0px;">
                         <input id="usuario-atividade-nova" placeholder="Usuário Execução" type="text" class="form-control" />
@@ -50,11 +50,12 @@
 
                 const buttonClick = function(btn, estagioId){
 
+                    $('#modal').modal('show');
+
                     if(!usuarios.length) {
                         $.ajax({
                             url: '{{ url_for('api_get_usuarios_empresa') }}'
                         }).done(function (usuarios_json) {
-                            console.log(usuarios_json);
                             usuarios = usuarios_json;
 
                             $('#usuario-atividade-nova').autocomplete({
@@ -63,7 +64,6 @@
                                     response($.ui.autocomplete.filter(usuarios, request.term).slice(0, 5));
                                 },
                                 select: function(event, usuario){
-                                    {#$('#usuario-atividade-nova').val(usuario.label);#}
                                     $('#usuario-execucao').val(usuario.item.id);
                                 }
                             });
@@ -71,11 +71,15 @@
 
                     }
 
-                    $('#modal').modal('show');
-
-                    $(document).on('click', '#salvar_atividade_nova', function(event){
-                        console.log(event);
+                    $('#salvar_atividade_nova').click(function(event){
+                        const atividade_nova = {
+                            'titulo': $('#titulo-atividade-nova').val(),
+                            'descricao': $('#descricao-atividade-nova').val(),
+                            'usuarioExecucao': $('#usuario-execucao').val()
+                        }
+                        console.log(atividade_nova);
                     });
+
                 };
 
                 const dragendBoard = function(board){

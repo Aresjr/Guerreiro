@@ -143,4 +143,8 @@ $(document).ready(function() {
       }, 1000);
 
     });
+
+    $('textarea').bind('input propertychange', function() {
+        $(this).css('height', this.scrollHeight+'px');
+    })
 });
