@@ -41,6 +41,13 @@
     filter: blur(4px);
 }
 
+.gr-kanban-background {
+    background-image: url('/static/img/login-background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #myKanban{
     overflow-x: auto;
     padding:20px 0;
