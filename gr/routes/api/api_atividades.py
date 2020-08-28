@@ -1,6 +1,9 @@
 from app import app
 from flask import jsonify, request
 from flask_login import current_user
+
+from gr.dao.AtividadeDao import atividade_dao
+from gr.model.atividades.Atividade import Atividade
 from gr.service.AtividadeService import atividade_service
 from gr.service.EstagioService import estagio_service
 
@@ -19,3 +22,12 @@ def api_trocar_estagio_atividade():
 def api_trocar_ordem_estagio():
     estagio_service.alterar_ordem(int(request.form['estagio_id']), int(request.form['ordem']))
     return jsonify({'response': 'OK'})
+
+@app.route('/api/atividade_nova', methods=["POST"])
+def api_atividade_nova():
+    try:
+        atividade = Atividade(request.form['titulo'], request.form['descricao'], request.form['usuarioExecucaoId'], request.form['estagioId'])
+        atividade_dao.add(atividade)
+        return jsonify({'response': 'OK'})
+    except Exception as e:
+        return jsonify({'error': str(e)})
