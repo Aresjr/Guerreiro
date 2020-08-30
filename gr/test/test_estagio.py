@@ -2,21 +2,19 @@ import pytest
 
 from gr.dao.EstagioDao import estagio_dao
 from gr.service.EstagioService import estagio_service
+# noinspection PyUnresolvedReferences
+from gr.test.test_carga import carga
 
 @pytest.fixture
-def carga_estagios():
+def carga_estagios(carga):
     todo = estagio_dao.get_by_titulo('TODO')
-    todo.ordem = 1
     doing = estagio_dao.get_by_titulo('Doing')
-    doing.ordem = 2
     testing = estagio_dao.get_by_titulo('Testing')
-    testing.ordem = 3
     done = estagio_dao.get_by_titulo('Done')
-    done.ordem = 4
     estagios = [todo, doing, testing, done]
     return estagios
 
-def test_trocar_ordem_estagio_crescente(carga_estagios):
+def test_trocar_ordem_estagio_asc(carga_estagios):
 
     todo = carga_estagios[0]
     doing = carga_estagios[1]
@@ -35,7 +33,7 @@ def test_trocar_ordem_estagio_crescente(carga_estagios):
     assert done.ordem == 3
     assert doing.ordem == 4
 
-def test_trocar_ordem_estagio_decrescente(carga_estagios):
+def test_trocar_ordem_estagio_desc(carga_estagios):
 
     todo = carga_estagios[0]
     doing = carga_estagios[1]

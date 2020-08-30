@@ -1,29 +1,17 @@
-from gr.dao.AtividadeDao import atividade_dao
 from gr.dao.ConquistaDao import conquista_dao
 from gr.dao.NivelHabilidadeDao import nivel_habilidade_dao
 from gr.dao.UsuarioDao import usuario_dao
 from gr.service.AtividadeService import atividade_service
+# noinspection PyUnresolvedReferences
+from gr.test.test_carga import carga
 
 
-def test_levelup():
+def test_levelup(carga):
     usuario = usuario_dao.get_by_username('ares')
-
-    atividades = atividade_dao.get_all()
-    for atividade in atividades:
-        # marcar para ser contabilizado
-        atividade.xpContabilizado = False
-        atividade.dataContabilizacao = None
-        atividade_dao.update(atividade)
 
     # delete fisico
     nivel_habilidade_dao.purge_all()
     conquista_dao.purge_all()
-
-    # marca como novo para contabilizar o xp do zero
-    usuario.level = 1
-    usuario.currentXp = 0
-    usuario.nextLevelXp = 100
-    usuario.setor.empresa.xpFator = 1.15
     atividade_service.contabiliza_xp_usuario(usuario)
 
     assert usuario.level == 5

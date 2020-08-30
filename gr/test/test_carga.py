@@ -1,4 +1,6 @@
 import pytest
+
+from app import app
 from gr.dao.AtividadeDao import atividade_dao
 from gr.dao.CargoDao import cargo_dao
 from gr.dao.ConquistaDao import conquista_dao
@@ -30,6 +32,8 @@ def test_carga(carga):
 @pytest.fixture
 def carga():
 
+    # app.config.from_object("config.TestingConfig")
+
     # DELETA OS DADOS FISICAMENTE
     xp_dao.purge_all()
     atividade_dao.purge_all()
@@ -56,17 +60,14 @@ def carga():
     cargo_prog_sr = Cargo(titulo='Programador Sênior')
     cargo_prog_pl = Cargo(titulo='Programador Pleno', cargoSuperiorId=cargo_prog_sr.id)
     cargo_prog_jr = Cargo(titulo='Programador Júnior', cargoSuperiorId=cargo_prog_pl.id)
-    cargo_dao.add(cargo_prog_jr)
-    cargo_dao.add(cargo_prog_pl)
-    cargo_dao.add(cargo_prog_sr)
+    cargo_dao.add_all([cargo_prog_jr, cargo_prog_pl, cargo_prog_sr])
 
     # USUARIOS
     ares = Usuario(nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br', setorId=setor.id, cargoId=cargo_prog_sr.id)
     ares.set_password('aresroot')
     dante = Usuario(nome='Dante', username='dante', email='dante@ares.dev.br', setorId=setor.id)
     dante.set_password('danteroot')
-    usuario_dao.add(ares)
-    usuario_dao.add(dante)
+    usuario_dao.add_all([ares, dante])
 
     # ESTAGIOS
     estagio1 = Estagio(titulo='TODO', ordem=1, empresaId=empresa.id, estagioInicial=True)
@@ -74,10 +75,7 @@ def carga():
     estagio3 = Estagio(titulo='Testing', ordem=3, empresaId=empresa.id, estagioTeste=True)
     estagio4 = Estagio(titulo='Done', ordem=4, empresaId=empresa.id, estagioFinal=True)
     estagios = [estagio1, estagio2, estagio3, estagio4]
-    estagio_dao.add(estagio1)
-    estagio_dao.add(estagio2)
-    estagio_dao.add(estagio3)
-    estagio_dao.add(estagio4)
+    estagio_dao.add_all(estagios)
 
     # ATIVIDADES
     ativ1 = Atividade(codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
@@ -87,19 +85,13 @@ def carga():
     ativ5 = Atividade(codigo='5', descricao='Quinta Atividade', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
     ativ6 = Atividade(codigo='OS-123', descricao='Sexta Atividade', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
     atividades = [ativ1, ativ2, ativ3, ativ4, ativ5, ativ6]
-    atividade_dao.add(ativ1)
-    atividade_dao.add(ativ2)
-    atividade_dao.add(ativ3)
-    atividade_dao.add(ativ4)
-    atividade_dao.add(ativ5)
-    atividade_dao.add(ativ6)
+    atividade_dao.add_all(atividades)
 
     # TIPO CONQUISTA
     tipo_conq1 = TipoConquista(titulo='Level Up!', descricao='Subiu para o Nível {}', destaque=True, icone='levelup')
     tipo_conq2 = TipoConquista(titulo='Level Up de Habilidade', descricao='Habilidade {} subiu para o Nível {}', destaque=False, icone='skillup')
     tipo_conqs = [tipo_conq1, tipo_conq2]
-    tipo_conquista_dao.add(tipo_conq1)
-    tipo_conquista_dao.add(tipo_conq2)
+    tipo_conquista_dao.add_all(tipo_conqs)
 
     # HABILIDADES
     hab_prog = Habilidade(descricao='Programação')
@@ -143,10 +135,7 @@ def carga():
     ta3 = TipoAtividade(descricao='Estrutura de Dados')
     ta4 = TipoAtividade(descricao='Desenvolvimento do Mestre')
     tas = [ta1, ta2, ta3, ta4]
-    tipo_atividade_dao.add(ta1)
-    tipo_atividade_dao.add(ta2)
-    tipo_atividade_dao.add(ta3)
-    tipo_atividade_dao.add(ta4)
+    tipo_atividade_dao.add_all(tas)
 
     # XP
     xp1 = Xp(atividadeId=ativ1.id, habilidadeId=hab_python.id, valor=40)
