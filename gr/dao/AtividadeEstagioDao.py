@@ -1,13 +1,11 @@
 from datetime import datetime
 
 from app import db
+from gr.dao.BaseDao import BaseDao
 from gr.model.manyToMany.AtividadeEstagio import AtividadeEstagio
 
 
-class AtividadeEstagioDao:
-    def __init__(self, model):
-        self.model = model
-
+class AtividadeEstagioDao(BaseDao):
     def get_by_id(self, atividade, atividadeid):
         return db.session.query(self.model).filter_by(atividade_id=atividadeid,
                                                       estagio_id=atividade.estagioId,

@@ -5,13 +5,13 @@ from gr.service.EstagioService import estagio_service
 
 @pytest.fixture
 def carga_estagios():
-    todo = estagio_dao.get(1)
+    todo = estagio_dao.get_by_titulo('TODO')
     todo.ordem = 1
-    doing = estagio_dao.get(2)
+    doing = estagio_dao.get_by_titulo('Doing')
     doing.ordem = 2
-    testing = estagio_dao.get(3)
+    testing = estagio_dao.get_by_titulo('Testing')
     testing.ordem = 3
-    done = estagio_dao.get(4)
+    done = estagio_dao.get_by_titulo('Done')
     done.ordem = 4
     estagios = [todo, doing, testing, done]
     return estagios

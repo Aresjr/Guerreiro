@@ -1,19 +1,17 @@
 from app import db
+from gr.dao.BaseDao import BaseDao
 from gr.model.atividades.Estagio import Estagio
 
 
-class EstagioDao:
-    def __init__(self, model):
-        self.model = model
-
+class EstagioDao(BaseDao):
     def get_by_empresa(self, empresa_id):
         return self.model.query.filter(self.model.del_ == False).filter(self.model.empresaId == empresa_id).order_by(self.model.ordem.asc()).all()
 
+    def get_by_titulo(self, titulo):
+        return self.model.query.filter(self.model.titulo == titulo).first()
+
     def get(self, estagio_id):
         return self.model.query.get(estagio_id)
-
-    def get_all(self):
-        return self.model.query.all()
 
     def update(self, estagio):
         db.session.add(estagio)

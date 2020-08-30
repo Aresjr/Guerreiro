@@ -1,7 +1,14 @@
 {% extends 'layouts/main.html' %}
 
-{% block content %}
-<div id="kanban"></div>
+{% block main_panel %}
+    <div class="main-panel gr-kanban-background">
+      {% include 'layouts/navbar.html' %}
+      <div class="content" style="padding: 15px 0px 15px 15px;">
+        <div class="container-fluid">
+            <div id="kanban"></div>
+        </div>
+      </div>
+    </div>
 {% endblock %}
 
 {% block additional_css %}

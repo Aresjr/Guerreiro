@@ -23,9 +23,3 @@ class Atividade(db.Model):
     estagioId = db.Column(db.ForeignKey(Estagio.id))
     projetoId = db.Column(db.ForeignKey(Projeto.id))
     del_ = db.Column(db.Boolean, default=False)
-
-    def __init__(self, codigo, descricao, usuario_execucao_id, estagio_id):
-        self.codigo = codigo
-        self.descricao = descricao
-        self.usuarioExecucaoId = usuario_execucao_id
-        self.estagioId = estagio_id

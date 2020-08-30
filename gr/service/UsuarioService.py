@@ -1,6 +1,9 @@
 from flask_login import login_user, logout_user
 
+from gr.dao.ConquistaDao import conquista_dao
+from gr.dao.TipoConquistaDao import tipo_conquista_dao
 from gr.dao.UsuarioDao import usuario_dao
+from gr.model.usuario.Conquista import Conquista
 
 
 class UsuarioService:
@@ -26,11 +29,18 @@ class UsuarioService:
             logout_user()
 
     def add_xp(self, usuario, total_xp):
+        leveled_up = False
         xp_fator = usuario.setor.empresa.xpFator
+        conquista_level_up = tipo_conquista_dao.get_by_titulo('Level Up!')
+        print(usuario.currentXp)
+        print(total_xp)
         while usuario.currentXp + total_xp >= usuario.nextLevelXp:
             usuario.level += 1
             total_xp -= usuario.nextLevelXp
             usuario.nextLevelXp = round(usuario.nextLevelXp * xp_fator)
+            if conquista_level_up:
+                conquista_dao.add(Conquista(usuarioId=usuario.id, tipoId=conquista_level_up.id, descricao=conquista_level_up.descricao.format(str(usuario.level))))
+            leveled_up = True
         usuario.currentXp += total_xp  # total_xp que sobra
         return usuario_dao.update(usuario)
 

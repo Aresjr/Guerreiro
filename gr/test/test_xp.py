@@ -1,4 +1,5 @@
 from gr.dao.AtividadeDao import atividade_dao
+from gr.dao.ConquistaDao import conquista_dao
 from gr.dao.NivelHabilidadeDao import nivel_habilidade_dao
 from gr.dao.UsuarioDao import usuario_dao
 from gr.service.AtividadeService import atividade_service
@@ -14,8 +15,9 @@ def test_levelup():
         atividade.dataContabilizacao = None
         atividade_dao.update(atividade)
 
-    # delete fisicamente todos os niveis das habilidades
+    # delete fisico
     nivel_habilidade_dao.purge_all()
+    conquista_dao.purge_all()
 
     # marca como novo para contabilizar o xp do zero
     usuario.level = 1
@@ -27,3 +29,4 @@ def test_levelup():
     assert usuario.level == 5
     assert usuario.nextLevelXp == 175
     assert usuario.currentXp == 101
+    assert len(conquista_dao.get_all()) == 4

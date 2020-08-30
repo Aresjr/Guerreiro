@@ -32,6 +32,8 @@ class AtividadeService:
 
     def contabiliza_xp_atividade(self, usuario, atividade):
         xps = xp_dao.get_by_atividadeid(atividade.id)
+        print(atividade.id)
+        print(xps)
         for xp in xps:
             self.contabiliza_xp(usuario, xp)
         atividade.xpContabilizado = True

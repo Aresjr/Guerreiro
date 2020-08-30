@@ -1,13 +1,8 @@
 from app import db
+from gr.dao.BaseDao import BaseDao
 from gr.model.usuario.Usuario import Usuario
 
-class UsuarioDao:
-    def __init__(self, model):
-        self.model = model
-
-    def get_by_id(self, usuario_id):
-        return self.model.query.get(usuario_id).first()
-
+class UsuarioDao(BaseDao):
     def get_by_username(self, username):
         return self.model.query.filter(self.model.username == username).first()
 
