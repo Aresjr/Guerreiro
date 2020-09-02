@@ -4,6 +4,7 @@ from werkzeug.utils import redirect
 
 from app import db, login_manager
 from gr.model.empresa.Empresa import Empresa
+from gr.model.usuario.Conquista import Conquista
 from gr.model.vaga.Cargo import Cargo
 from gr.model.misc.Lang import Lang
 from gr.model.usuario.NivelAcesso import NivelAcesso
@@ -17,6 +18,7 @@ class Usuario(db.Model):
     empresa = db.relationship(Empresa, lazy=True)
     setor = db.relationship(Setor, lazy=True)
     cargo = db.relationship(Cargo, lazy=True)
+    conquistas = db.relationship(Conquista, lazy=True)
 
     nome = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(128), unique=True, nullable=False)

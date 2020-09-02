@@ -25,14 +25,10 @@ from gr.model.usuario.Xp import Xp
 from gr.model.vaga.Cargo import Cargo
 
 
-def test_carga(carga):
-    assert True
-
-
 @pytest.fixture
 def carga():
 
-    # app.config.from_object("config.TestingConfig")
+    app.config.from_object("config.TestingConfig")
 
     # DELETA OS DADOS FISICAMENTE
     xp_dao.purge_all()
@@ -162,3 +158,7 @@ def carga():
     xp_dao.add_all(xps)
 
     return habilidades, tipo_conqs, atividades, tas, xps, estagios
+
+def test_carga(carga):
+    assert True
+

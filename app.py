@@ -5,7 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.secret_key = 'sqgtjqzAbk'
 app.debug = True
-app.config.from_object("config.DevelopmentConfig")
+# app.config.from_object("config.DevelopmentConfig")
+app.config.from_object("config.TestingConfig")
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -20,7 +21,8 @@ from gr.routes.api import api_atividades, api_xp, api_tarefas, api_usuario
 
 
 def get_app():
-   return app
+    return app
 
 
-# get_app().run()
+if __name__ == "__main__":
+    get_app().run()
