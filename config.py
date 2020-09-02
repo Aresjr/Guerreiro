@@ -2,7 +2,8 @@ class Config(object):
     DEBUG = False
     TESTING = False
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:pgroot@localhost/guerreiro'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:pgroot@localhost/guerreiro'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:my3224!Sql@localhost:3306/guerreiro'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     FLASK_ENV = 'development'
@@ -22,5 +23,6 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     SESSION_COOKIE_SECURE = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:pgroot@localhost/gr_teste'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:pgroot@localhost/gr_teste'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:my3224!Sql@localhost:3306/guerreiro'
 

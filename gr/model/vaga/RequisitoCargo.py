@@ -5,7 +5,7 @@ from gr.model.usuario.Habilidade import Habilidade
 
 class RequisitoCargo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    descricao = db.Column(db.String, nullable=False)
+    descricao = db.Column(db.String(255), nullable=False)
     cargo = db.Column(db.Integer,db.ForeignKey(Cargo.id), nullable=False)
     habilidade = db.Column(db.Integer,db.ForeignKey(Habilidade.id), nullable=False)
     nivelMinimo = db.Column(db.Integer, nullable=False)

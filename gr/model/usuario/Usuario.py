@@ -6,7 +6,6 @@ from app import db, login_manager
 from gr.model.empresa.Empresa import Empresa
 from gr.model.usuario.Conquista import Conquista
 from gr.model.vaga.Cargo import Cargo
-from gr.model.misc.Lang import Lang
 from gr.model.usuario.NivelAcesso import NivelAcesso
 from gr.model.empresa.Setor import Setor
 
@@ -30,9 +29,6 @@ class Usuario(db.Model):
     nextLevelXp = db.Column(db.Integer, default=100)
     hp = db.Column(db.Integer, default=100)
 
-    lang = db.relationship(Lang)
-
-    langId = db.Column(db.ForeignKey(Lang.id))
     nivelAcessoId = db.Column(db.ForeignKey(NivelAcesso.id))
     empresaId = db.Column(db.ForeignKey(Empresa.id))
     setorId = db.Column(db.ForeignKey(Setor.id))

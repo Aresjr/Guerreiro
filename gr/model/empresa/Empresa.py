@@ -1,12 +1,10 @@
 from app import db
-from gr.model.misc.Lang import Lang
 
 
 class Empresa(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     nomeFantasia = db.Column(db.String(255))
-    lang = db.Column(db.Integer, db.ForeignKey(Lang.id))
 
     # CONFIG
     xpFator = db.Column(db.Float, default=0.15)
