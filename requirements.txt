@@ -5,8 +5,8 @@ Flask-Migrate==2.5.3
 Flask-Script==2.0.6
 Flask-SQLAlchemy==2.4.4
 Flask-WTF==0.14.3
+mysqlclient==2.0.1
 psycopg2-binary==2.8.5
-PyMySQL==0.10.0
 pytest==6.0.1
 SQLAlchemy==1.3.19
 Werkzeug==1.0.1
