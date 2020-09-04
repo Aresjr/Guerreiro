@@ -11,7 +11,7 @@
   <link href="/static/css/md.min.css" rel="stylesheet" />
   <link href="/static/css/guerreiro.min.css" rel="stylesheet" />
   <link href="/static/css/jkanban.min.css" rel="stylesheet" />
-    {% block additional_css %}{% endblock %}
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
   <div class="wrapper">
@@ -20,8 +20,10 @@
         <div class="main-panel">
           {% include 'layouts/navbar.html' %}
           <div class="content">
-            <div class="container-fluid">
-                {% block content %}{% endblock %}
+            <div id="main-content" class="container-fluid">
+                <keep-alive>
+                    <router-view></router-view>
+                </keep-alive>
             </div>
           </div>
         </div>

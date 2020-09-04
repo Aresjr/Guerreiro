@@ -7,6 +7,7 @@ app.secret_key = 'sqgtjqzAbk'
 app.debug = True
 # app.config.from_object("config.DevelopmentConfig")
 app.config.from_object("config.TestingConfig")
+# app.config.from_object("config.ProductionConfig")
 
 login_manager = LoginManager()
 login_manager.init_app(app)
