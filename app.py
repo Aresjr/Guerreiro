@@ -16,9 +16,11 @@ login_manager.login_view = 'login'
 db = SQLAlchemy(app)
 
 # noinspection PyUnresolvedReferences
-from gr.routes import index, login, perfil, quadro, conquistas, apontamentos, sobre
+from gr.routes import index, login, perfil, conquistas, apontamentos, sobre
 # noinspection PyUnresolvedReferences
 from gr.routes.api import api_atividades, api_xp, api_tarefas, api_usuario
+# noinspection PyUnresolvedReferences
+from gr.routes.view import v_kanban
 
 
 def get_app():

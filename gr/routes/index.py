@@ -7,4 +7,4 @@ from app import app
 @app.route('/')
 def index():
     usuario = current_user
-    return render_template('pages/home.html', title="Início", pageTitle="Início", usuario=usuario)
+    return render_template('pages/index.html', title="Início", pageTitle="Início", usuario=usuario)

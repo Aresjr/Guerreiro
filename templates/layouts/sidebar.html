@@ -4,13 +4,13 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item {% if request.path == url_for('index') %}active{% endif %}">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="#/">
           <i class="fa fa-fort-awesome" aria-hidden="true"></i>
           <p>Início</p>
         </a>
       </li>
-      <li class="nav-item {% if request.path == url_for('quadro') %}active{% endif %}">
-        <a class="nav-link" href="{{ url_for('quadro') }}">
+      <li class="nav-item">
+        <a class="nav-link" href="#/kanban">
           <i class="ra ra-scroll-unfurled" aria-hidden="true"></i>
           <p>Quadro de Atividades</p>
         </a>
