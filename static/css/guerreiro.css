@@ -1,3 +1,7 @@
+.gr-bg {
+  background-color: #000;
+}
+
 .gr-vertical-center {
     min-height: 100%;
     min-height: 100vh;
