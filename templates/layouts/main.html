@@ -1,35 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
-  <title>{{ title }} | Guerreiro</title>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Início | Guerreiro</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://nagoshiashumari.github.io/Rpg-Awesome/stylesheets/rpg-awesome.min.css">
-  <link href="/static/css/md.min.css" rel="stylesheet" />
+  <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="/static/css/guerreiro.min.css" rel="stylesheet" />
   <link href="/static/css/jkanban.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 </head>
-<body>
-  <div class="wrapper">
+<body id="page-top">
+  <div id="wrapper">
     {% include 'layouts/sidebar.html' %}
-    {% block main_panel %}
-        <div class="main-panel">
-          {% include 'layouts/navbar.html' %}
-          <div class="content">
-            <div id="main-content" class="container-fluid">
-                <keep-alive>
-                    <router-view></router-view>
-                </keep-alive>
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+          {% block content %}
+            {% include 'layouts/navbar.html' %}
+            <div class="container-fluid">
+                {% block container %}
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                  </div>
+                {% endblock %}
             </div>
-          </div>
-        </div>
-    {% endblock %}
+          {% endblock %}
+      </div>
+    </div>
   </div>
-  {% block additional_html %}{% endblock %}
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
   {% include 'layouts/scripts_js.html' %}
 </body>
 </html>

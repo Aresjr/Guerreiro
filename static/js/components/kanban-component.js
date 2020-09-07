@@ -1,6 +1,7 @@
 const KanbanComponent = {
     template: '<div id="kanban-content"></div>',
     mounted(){
+
         $.ajax({
             url: '/view/kanban'
         }).done(function(view) {
