@@ -1,3 +1,10 @@
 {% extends 'layouts/main.html' %}
 
-{% block searchbar %}{% endblock %}
+{% block content %}
+    {% include 'layouts/navbar.html' %}
+    <div id="main-content" style="padding-left:1rem;">
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
+{% endblock %}

@@ -7,7 +7,7 @@ const KanbanComponent = {
             $('#kanban-content').html(view);
             import('/static/js/pages/kanban-load.js');
         });
-    },
+    }
 };
 
 export default KanbanComponent;
