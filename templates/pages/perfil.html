@@ -3,12 +3,12 @@
 {% block content %}
   <div class="row">
     <div class="col-md-5">
-      <div class="card card-stats">
-        <div class="card-header card-header-success card-header-icon">
-            <div class="gr-card-avatar">
+      <div class="card">
+        <div class="card-header card-header-success gr-card-perfil">
+            <div class="gr-card-perfil-imagem">
               <img class="img" src="https://images.unsplash.com/photo-1502764088999-001291e403de" />
             </div>
-            <div class="gr-card-content">
+            <div class="gr-card-perfil-conteudo">
               <h4 class="card-title">{{ usuario.cargo.titulo }}</h4>
               <h5 class="card-title">Nível {{ usuario.level }}</h5>
             </div>
@@ -21,41 +21,41 @@
     <div class="col-md-7">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Informações</h4>
+          <h4 class="card-title">Atributos</h4>
         </div>
         <div class="card-body">
-          <form>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Nome</label>
-                  <input type="text" value="{{ usuario.nome }}" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Setor</label>
-                  <input type="text" value="{{ usuario.setor.nome }}" class="form-control" disabled>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Username</label>
-                  <input type="text" value="{{ usuario.username }}" class="form-control" disabled>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Email</label>
-                  <input type="email" value="{{ usuario.email }}" class="form-control">
-                </div>
-              </div>
-            </div>
+{#          <form>#}
+{#            <div class="row">#}
+{#              <div class="col-md-12">#}
+{#                <div class="form-group">#}
+{#                  <label class="bmd-label-floating">Nome</label>#}
+{#                  <input type="text" value="{{ usuario.nome }}" class="form-control">#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#              <div class="col-md-4">#}
+{#                <div class="form-group">#}
+{#                  <label class="bmd-label-floating">Setor</label>#}
+{#                  <input type="text" value="{{ usuario.setor.nome }}" class="form-control" disabled>#}
+{#                </div>#}
+{#              </div>#}
+{#              <div class="col-md-3">#}
+{#                <div class="form-group">#}
+{#                  <label class="bmd-label-floating">Username</label>#}
+{#                  <input type="text" value="{{ usuario.username }}" class="form-control" disabled>#}
+{#                </div>#}
+{#              </div>#}
+{#              <div class="col-md-5">#}
+{#                <div class="form-group">#}
+{#                  <label class="bmd-label-floating">Email</label>#}
+{#                  <input type="email" value="{{ usuario.email }}" class="form-control">#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
 {#            <button type="submit" class="btn btn-primary pull-right">Atualizar</button>#}
-            <div class="clearfix"></div>
-          </form>
+{#            <div class="clearfix"></div>#}
+{#          </form>#}
         </div>
       </div>
     </div>
