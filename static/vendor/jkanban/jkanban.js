@@ -39,7 +39,7 @@ var dragula = require("dragula");
       element: "",
       responsive: "700",
       breakLine: false,
-      borderWidth: 330,
+      borderWidth: 338,
       boards: [],
       dragBoards: true,
       dragItems: true, //whether can drag cards or not, useful when set permissions on it.

@@ -16,7 +16,7 @@ class BaseDao:
 
     def add(self, object):
         db.session.add(object)
-        db.session.flush()
+        db.session.commit()
         return object
 
     def add_all(self, objects):

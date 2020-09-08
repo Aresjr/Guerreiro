@@ -26,37 +26,37 @@
     height: auto;
 }
 
-.gr-card-content {
-    margin-top:15px;
-}
+/*.gr-card-content {*/
+/*    margin-top:15px;*/
+/*}*/
 
-.gr-login-background {
-    background-image: url('/static/img/login-background.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    -webkit-filter: blur(4px);
-    -moz-filter: blur(4px);
-    -o-filter: blur(4px);
-    -ms-filter: blur(4px);
-    filter: blur(4px);
-}
+/*.gr-login-background {*/
+/*    background-image: url('/static/img/login-background.jpg');*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    position: absolute;*/
+/*    -webkit-filter: blur(4px);*/
+/*    -moz-filter: blur(4px);*/
+/*    -o-filter: blur(4px);*/
+/*    -ms-filter: blur(4px);*/
+/*    filter: blur(4px);*/
+/*}*/
 
-.gr-kanban-background {
-    background-image: url('/static/img/login-background.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+/*.gr-kanban-background {*/
+/*    background-image: url('/static/img/login-background.jpg');*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*}*/
 
-#myKanban{
-    overflow-x: auto;
-    padding:20px 0;
-}
+/*#myKanban{*/
+/*    overflow-x: auto;*/
+/*    padding:20px 0;*/
+/*}*/
 
-.ui-autocomplete{
-   z-index: 1050 !important;
-}
+/*.ui-autocomplete{*/
+/*   z-index: 1050 !important;*/
+/*}*/

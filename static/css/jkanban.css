@@ -6,6 +6,9 @@
   position: relative;
   box-sizing: border-box;
   width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .kanban-container * {
@@ -24,7 +27,7 @@
   background: #e2e4e6;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     width: 320px;
-    margin: 0px 5px 10px 5px;
+    margin: 0px 5px;
     border-radius: 6px;
 }
 
@@ -55,8 +58,10 @@
 
 .kanban-board header .kanban-title-button {
   float: right;
+    font-size: 1.5rem;
+    line-height: 1;
     margin: 0px;
-    padding: 5px 10px;
+    padding: 0px;
 }
 
 .kanban-board .kanban-drag {

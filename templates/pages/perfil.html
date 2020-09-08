@@ -1,5 +1,3 @@
-{% extends 'layouts/main.html' %}
-
 {% block searchbar %}{% endblock %}
 
 {% block content %}
@@ -8,12 +6,11 @@
       <div class="card card-stats">
         <div class="card-header card-header-success card-header-icon">
             <div class="gr-card-avatar">
-              <img class="img" src="/static/img/profile.png"/>
+              <img class="img" src="https://images.unsplash.com/photo-1502764088999-001291e403de" />
             </div>
             <div class="gr-card-content">
-              <h4 class="card-title">{{ usuario.nome }}</h4>
-              <h3 class="card-title">{{ usuario.cargo.titulo }}</h3>
-              <h3 class="card-title">Nível {{ usuario.level }}</h3>
+              <h4 class="card-title">{{ usuario.cargo.titulo }}</h4>
+              <h5 class="card-title">Nível {{ usuario.level }}</h5>
             </div>
         </div>
         <div class="card-footer">

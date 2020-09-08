@@ -6,10 +6,10 @@ $(document).ready(function() {
 
         let usuarios = [];
 
-        const buttonClick = function(btn, estagioId){
+        const addAtividadeClick = function(btn, estagioId){
 
+            $('#modal-atividade-nova').modal('show');
             $('#atividade-estagio').val(estagioId);
-            $('#modal').modal('show');
 
             if(!usuarios.length) {
                 $.ajax({
@@ -62,20 +62,20 @@ $(document).ready(function() {
 
         new jKanban({
             element : '#kanban',
-            buttonClick: buttonClick,
+            buttonClick: addAtividadeClick,
             dropEl: dropEl,
             dragendBoard: dragendBoard,
             boards: quadros,
             addItemButton: true,
+            borderWidth: 338,
             breakLine: false,
-            borderWidth: 330,
             dragBoards: false
         });
 
     });
 
     $('#salvar_atividade_nova').click(function(){
-        $('#modal').modal('hide');
+        $('#modal-atividade-nova').modal('hide');
         const atividade_nova = $getFormData($('#form-atividade-nova'));
         //TODO - Adicionar visualmente o card ao estágio (coluna)
 

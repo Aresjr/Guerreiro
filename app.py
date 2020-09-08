@@ -20,7 +20,7 @@ from gr.routes import index, login, perfil, conquistas, apontamentos, sobre
 # noinspection PyUnresolvedReferences
 from gr.routes.api import api_atividades, api_xp, api_tarefas, api_usuario
 # noinspection PyUnresolvedReferences
-from gr.routes.view import v_kanban
+from gr.routes.view import v_kanban, v_perfil
 
 
 def get_app():

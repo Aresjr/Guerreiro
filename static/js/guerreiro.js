@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-    $('form.ajax').submit(function (event) {
-        event.preventDefault();
-    });
-
     $getFormData = function getFormData($form) {
         var unindexed_array = $form.serializeArray();
         var indexed_array = {};
@@ -14,6 +10,7 @@ $(document).ready(function() {
     }
 
     $('textarea').bind('input propertychange', function() {
+        console.log(this.scrollHeight);
         $(this).css('height', this.scrollHeight+'px');
     });
 
