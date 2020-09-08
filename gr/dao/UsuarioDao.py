@@ -9,14 +9,9 @@ class UsuarioDao(BaseDao):
     def get_by_empresa(self, empresaId):
         return self.model.query.filter(self.model.empresaId == empresaId).all()
 
-    def update(self, usuario):
-        db.session.add(usuario)
-        db.session.commit()
-        return usuario
-
     def delete(self, usuario):
         usuario.del_ = True
-        db.session.add(usuario)
+        db.session.upsert(usuario)
         return db.session.commit()
 
     def purge(self, usuario):

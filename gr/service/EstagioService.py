@@ -45,7 +45,7 @@ class EstagioService:
                     estagio.ordem -= 1
                 else:
                     estagio.ordem += 1
-        estagio_dao.update_all(estagios)
+        estagio_dao.upsert_all(estagios)
 
 
 estagio_service = EstagioService()

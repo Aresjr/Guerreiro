@@ -10,7 +10,10 @@ class NivelHabilidadeService:
             total_xp -= nh.nextLevelXp
             nh.nextLevelXp = round(nh.nextLevelXp * xp_fator)
         nh.currentXp += total_xp  # total_xp que sobra
-        return nivel_habilidade_dao.update(nh)
+        return nivel_habilidade_dao.upsert(nh)
+
+    # def get_nivel_habilidade_usuario(self, usuario):
+    #     return nivel_habilidade_dao.
 
 
 nivel_habilidade_service = NivelHabilidadeService()

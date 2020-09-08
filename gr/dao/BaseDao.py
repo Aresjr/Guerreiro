@@ -14,12 +14,13 @@ class BaseDao:
     def purge_all(self):
         return self.model.query.delete()
 
-    def add(self, object):
+    def upsert(self, object):
         db.session.add(object)
         db.session.commit()
         return object
 
-    def add_all(self, objects):
+    def upsert_all(self, objects):
         for object in objects:
-            self.add(object)
+            db.session.add(object)
+        db.session.commit()
         return objects

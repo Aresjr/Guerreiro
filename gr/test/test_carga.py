@@ -46,24 +46,24 @@ def carga():
 
     # EMPRESA
     empresa = Empresa(nome='Nemeia', xpFator=1.15, xpPrimeiroNivel=100, xpPorAtividade=12)
-    empresa_dao.add(empresa)
+    empresa_dao.upsert(empresa)
 
     # SETOR
     setor = Setor(nome='Tecnologia', empresaId=empresa.id)
-    setor_dao.add(setor)
+    setor_dao.upsert(setor)
 
     # CARGO
     cargo_prog_sr = Cargo(titulo='Programador Sênior')
     cargo_prog_pl = Cargo(titulo='Programador Pleno', cargoSuperiorId=cargo_prog_sr.id)
     cargo_prog_jr = Cargo(titulo='Programador Júnior', cargoSuperiorId=cargo_prog_pl.id)
-    cargo_dao.add_all([cargo_prog_jr, cargo_prog_pl, cargo_prog_sr])
+    cargo_dao.upsert_all([cargo_prog_jr, cargo_prog_pl, cargo_prog_sr])
 
     # USUARIOS
     ares = Usuario(nome='Aristides Cândido Júnior', username='ares', email='ares@ares.dev.br', setorId=setor.id, cargoId=cargo_prog_sr.id)
     ares.set_password('aresroot')
     dante = Usuario(nome='Dante', username='dante', email='dante@ares.dev.br', setorId=setor.id)
     dante.set_password('danteroot')
-    usuario_dao.add_all([ares, dante])
+    usuario_dao.upsert_all([ares, dante])
 
     # ESTAGIOS
     estagio1 = Estagio(titulo='TODO', ordem=1, empresaId=empresa.id, estagioInicial=True)
@@ -71,7 +71,7 @@ def carga():
     estagio3 = Estagio(titulo='Testing', ordem=3, empresaId=empresa.id, estagioTeste=True)
     estagio4 = Estagio(titulo='Done', ordem=4, empresaId=empresa.id, estagioFinal=True)
     estagios = [estagio1, estagio2, estagio3, estagio4]
-    estagio_dao.add_all(estagios)
+    estagio_dao.upsert_all(estagios)
 
     # ATIVIDADES
     ativ1 = Atividade(codigo='1', descricao='Desenvolver tela de Atividades', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
@@ -81,13 +81,13 @@ def carga():
     ativ5 = Atividade(codigo='5', descricao='Quinta Atividade', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
     ativ6 = Atividade(codigo='OS-123', descricao='Sexta Atividade', usuarioExecucaoId=ares.id, estagioId=estagio1.id)
     atividades = [ativ1, ativ2, ativ3, ativ4, ativ5, ativ6]
-    atividade_dao.add_all(atividades)
+    atividade_dao.upsert_all(atividades)
 
     # TIPO CONQUISTA
     tipo_conq1 = TipoConquista(titulo='Level Up!', descricao='Subiu para o Nível {}', destaque=True, icone='levelup')
     tipo_conq2 = TipoConquista(titulo='Level Up de Habilidade', descricao='Habilidade {} subiu para o Nível {}', destaque=False, icone='skillup')
     tipo_conqs = [tipo_conq1, tipo_conq2]
-    tipo_conquista_dao.add_all(tipo_conqs)
+    tipo_conquista_dao.upsert_all(tipo_conqs)
 
     # HABILIDADES
     hab_prog = Habilidade(descricao='Programação')
@@ -123,7 +123,7 @@ def carga():
     habilidades = [hab_prog, hab_python, hab_js, hab_java, hab_db, hab_postgresql, hab_mongodb, hab_oracle,
                    hab_frontend, hab_css, hab_vue, hab_angular, hab_engsoft, hab_mod_dados, hab_analise,
                    hab_an_neg, hab_an_sis, hab_ia, hab_ml, hab_nlp, hab_ds, hab_ds_da, hab_ds_etl]
-    habilidade_dao.add_all(habilidades)
+    habilidade_dao.upsert_all(habilidades)
 
     # TIPO ATIVIDADE
     ta1 = TipoAtividade(descricao='Desenvolvimento Tela')
@@ -131,7 +131,7 @@ def carga():
     ta3 = TipoAtividade(descricao='Estrutura de Dados')
     ta4 = TipoAtividade(descricao='Desenvolvimento do Mestre')
     tas = [ta1, ta2, ta3, ta4]
-    tipo_atividade_dao.add_all(tas)
+    tipo_atividade_dao.upsert_all(tas)
 
     # XP
     xp1 = Xp(atividadeId=ativ1.id, habilidadeId=hab_python.id, valor=40)
@@ -155,7 +155,7 @@ def carga():
     xp19 = Xp(atividadeId=ativ3.id, habilidadeId=hab_js.id, valor=20)
     xp20 = Xp(atividadeId=ativ3.id, habilidadeId=hab_an_sis.id, valor=20)
     xps = [xp1, xp2, xp3, xp4, xp5, xp6, xp7, xp8, xp9, xp10, xp11, xp12, xp13, xp14, xp15, xp16, xp17, xp18, xp19, xp20]
-    xp_dao.add_all(xps)
+    xp_dao.upsert_all(xps)
 
     return habilidades, tipo_conqs, atividades, tas, xps, estagios
 

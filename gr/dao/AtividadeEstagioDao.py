@@ -1,6 +1,5 @@
-from datetime import datetime
-
 from app import db
+from datetime import datetime
 from gr.dao.BaseDao import BaseDao
 from gr.model.manyToMany.AtividadeEstagio import AtividadeEstagio
 

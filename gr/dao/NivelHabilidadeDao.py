@@ -8,19 +8,8 @@ class NivelHabilidadeDao(BaseDao):
         nh = self.model.query.filter(self.model.usuarioId == usuarioid).filter(
             self.model.habilidadeId == habilidadeid).first()
         if not nh:
-            nh = self.insert(usuarioid, habilidadeid)
+            nh = self.upsert(NivelHabilidade(usuarioId=usuarioid, habilidadeId=habilidadeid))
         return nh
-
-    def insert(self, usuarioid, habilidadeid):
-        nh = NivelHabilidade(usuarioId=usuarioid, habilidadeId=habilidadeid)
-        db.session.add(nh)
-        db.session.commit()
-        return nh
-
-    def update(self, nivel_habilidade):
-        db.session.add(nivel_habilidade)
-        db.session.commit()
-        return nivel_habilidade
 
     def purge(self, nivel_habilidade):
         db.session.execute(nivel_habilidade.delete())

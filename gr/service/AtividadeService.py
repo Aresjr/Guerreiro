@@ -20,7 +20,7 @@ class AtividadeService:
 
             # atualiza estagio atual
             atividade.estagioId = estagioid
-            atividade_dao.update(atividade)
+            atividade_dao.upsert(atividade)
 
             atividade_estagio_dao.inserir(atividadeid, estagioid, usuarioid)
 
@@ -28,7 +28,7 @@ class AtividadeService:
         atividades = atividade_dao.get_xp_nao_contabilizados(usuario.id)
         for atividade in atividades:
             self.contabiliza_xp_atividade(usuario, atividade)
-        usuario_dao.update(usuario)
+        usuario_dao.upsert(usuario)
 
     def contabiliza_xp_atividade(self, usuario, atividade):
         xps = xp_dao.get_by_atividadeid(atividade.id)
@@ -37,7 +37,7 @@ class AtividadeService:
         for xp in xps:
             self.contabiliza_xp(usuario, xp)
         atividade.xpContabilizado = True
-        atividade_dao.update(atividade)
+        atividade_dao.upsert(atividade)
 
     def contabiliza_xp(self, usuario, xp):
         usuario_service.add_xp(usuario, xp.valor)
@@ -53,6 +53,6 @@ class AtividadeService:
 
     def add_atividade(self, titulo, descricao, usuario_execucao, usuario_criacao):
         Atividade(titulo=titulo, descricao=descricao, usuarioExecucaoId=usuario_execucao, usuarioCriacao=usuario_criacao)
-        atividade_dao.add()
+        atividade_dao.upsert()
 
 atividade_service = AtividadeService()
