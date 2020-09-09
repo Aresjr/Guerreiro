@@ -26,9 +26,7 @@ def api_trocar_ordem_estagio():
 @app.route('/api/atividade_nova', methods=["POST"])
 def api_atividade_nova():
     try:
-        atividade = Atividade(codigo=request.form['codigo'], descricao=request.form['descricao'], usuarioExecucaoId=request.form['usuarioExecucaoId'], estagioId=request.form['estagioId'])
-        atividade_dao.upsert(atividade)
-        print(atividade)
+        atividade_dao.upsert(Atividade(codigo=request.form['codigo'], descricao=request.form['descricao'], usuarioExecucaoId=request.form['usuarioExecucaoId'], estagioId=request.form['estagioId']))
         return jsonify({'response': 'OK'})
     except Exception as e:
         return jsonify({'error': str(e)})

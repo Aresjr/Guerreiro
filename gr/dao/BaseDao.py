@@ -11,6 +11,10 @@ class BaseDao:
     def get_all(self):
         return self.model.query.all()
 
+    def purge(self, model):
+        db.session.execute(model.delete())
+        db.session.commit()
+
     def purge_all(self):
         return self.model.query.delete()
 

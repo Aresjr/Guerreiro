@@ -90,39 +90,39 @@ def carga():
     tipo_conquista_dao.upsert_all(tipo_conqs)
 
     # HABILIDADES
+    # HAB PAI
     hab_prog = Habilidade(descricao='Programação')
+    hab_db = Habilidade(descricao='Banco de Dados')
+    hab_frontend = Habilidade(descricao='Front End')
+    hab_analise = Habilidade(descricao='Análise')
+    hab_engsoft = Habilidade(descricao='Enenharia de Software')
+    hab_ia = Habilidade(descricao='Inteligência Aritificial')
+    hab_ds = Habilidade(descricao='Ciência de Dados')
+
+    habilidades = [hab_prog, hab_db, hab_frontend, hab_engsoft, hab_analise, hab_ia, hab_ds]
+    habilidade_dao.upsert_all(habilidades)
+
+    print(hab_prog.id)
+
     hab_python = Habilidade(descricao='Python', habPaiId=hab_prog.id)
     hab_js = Habilidade(descricao='Javascript', habPaiId=hab_prog.id)
     hab_java = Habilidade(descricao='Java', habPaiId=hab_prog.id)
-
-    hab_db = Habilidade(descricao='Banco de Dados')
     hab_postgresql = Habilidade(descricao='PostgreSQL', habPaiId=hab_db.id)
     hab_oracle = Habilidade(descricao='Oracle', habPaiId=hab_db.id)
     hab_mongodb = Habilidade(descricao='MongoDB', habPaiId=hab_db.id)
-
-    hab_frontend = Habilidade(descricao='Front End')
     hab_css = Habilidade(descricao='HTML/CSS', habPaiId=hab_frontend.id)
     hab_angular = Habilidade(descricao='Angular', habPaiId=hab_frontend.id)
     hab_vue = Habilidade(descricao='Vue', habPaiId=hab_frontend.id)
-
-    hab_engsoft = Habilidade(descricao='Enenharia de Software')
     hab_mod_dados = Habilidade(descricao='Modelagem de Dados', habPaiId=hab_engsoft.id)
-
-    hab_analise = Habilidade(descricao='Análise')
     hab_an_sis = Habilidade(descricao='Análise de Sistemas', habPaiId=hab_analise.id)
     hab_an_neg = Habilidade(descricao='Análise de Negócio', habPaiId=hab_analise.id)
-
-    hab_ia = Habilidade(descricao='Inteligência Aritificial')
     hab_ml = Habilidade(descricao='Machine Learning', habPaiId=hab_ia.id)
     hab_nlp = Habilidade(descricao='Natural Language Processing', habPaiId=hab_ia.id)
-
-    hab_ds = Habilidade(descricao='Ciência de Dados')
     hab_ds_da = Habilidade(descricao='Análise de Dados', habPaiId=hab_ds.id)
     hab_ds_etl = Habilidade(descricao='ETL', habPaiId=hab_ds.id)
 
-    habilidades = [hab_prog, hab_python, hab_js, hab_java, hab_db, hab_postgresql, hab_mongodb, hab_oracle,
-                   hab_frontend, hab_css, hab_vue, hab_angular, hab_engsoft, hab_mod_dados, hab_analise,
-                   hab_an_neg, hab_an_sis, hab_ia, hab_ml, hab_nlp, hab_ds, hab_ds_da, hab_ds_etl]
+    habilidades = [hab_python, hab_js, hab_java, hab_postgresql, hab_mongodb, hab_oracle, hab_css, hab_vue, hab_angular,
+                   hab_mod_dados, hab_an_neg, hab_an_sis, hab_ml, hab_nlp, hab_ds_da, hab_ds_etl]
     habilidade_dao.upsert_all(habilidades)
 
     # TIPO ATIVIDADE

@@ -1,5 +1,5 @@
-from app import db
 from gr.dao.BaseDao import BaseDao
+from gr.model.usuario.Habilidade import Habilidade
 from gr.model.usuario.NivelHabilidade import NivelHabilidade
 
 
@@ -11,9 +11,11 @@ class NivelHabilidadeDao(BaseDao):
             nh = self.upsert(NivelHabilidade(usuarioId=usuarioid, habilidadeId=habilidadeid))
         return nh
 
-    def purge(self, nivel_habilidade):
-        db.session.execute(nivel_habilidade.delete())
-        db.session.commit()
+    def get_by_usuario(self, usuarioid):
+        return self.model.query.filter(self.model.usuarioId == usuarioid).all()
+
+    def get_nh_pai_usuario(self, usuarioid):
+        return self.model.query.filter(self.model.usuarioId == usuarioid).filter(Habilidade.habPaiId == None).all()
 
 
 nivel_habilidade_dao = NivelHabilidadeDao(NivelHabilidade)
