@@ -15,7 +15,8 @@ class NivelHabilidadeDao(BaseDao):
         return self.model.query.filter(self.model.usuarioId == usuarioid).all()
 
     def get_nh_pai_usuario(self, usuarioid):
-        return self.model.query.filter(self.model.usuarioId == usuarioid).filter(Habilidade.habPaiId == None).all()
+        return self.model.query.join(Habilidade).filter(self.model.usuarioId == usuarioid)\
+            .all()
 
 
 nivel_habilidade_dao = NivelHabilidadeDao(NivelHabilidade)

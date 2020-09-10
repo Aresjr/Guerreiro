@@ -30,3 +30,5 @@ tipoNotificacao = {
 
     }
 }
+
+usernames_reservados = ['ares', 'admin', 'root', 'guerreiro', 'mestre', 'dante']

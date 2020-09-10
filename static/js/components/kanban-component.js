@@ -5,7 +5,7 @@ const KanbanComponent = {
             url: '/view/kanban'
         }).done(function(view) {
             $('#kanban-content').html(view);
-            import('/static/js/pages/kanban-load.js');
+            import('/static/js/pages/kanban-on-load.js');
         });
     }
 };

@@ -314,15 +314,17 @@ var dragula = require("dragula");
       cardKanban.classList.add("kanban-item");
       cardKanban.classList.add("card");
       cardKanban.classList.add("card-stats");
+      cardKanban.classList.add("border-left-primary");
+      cardKanban.classList.add("shadow");
 
       var cardHeader = document.createElement("div");
       cardHeader.classList.add("card-header");
 
-      var cardTitle = document.createElement("h4");
+      var cardTitle = document.createElement("h5");
       cardTitle.classList.add("card-title");
       cardTitle.innerHTML = itemKanban.title || itemKanban.id;
 
-      var cardCategory = document.createElement("p");
+      var cardCategory = document.createElement("h6");
       cardCategory.classList.add("card-category");
       cardCategory.innerHTML = itemKanban.descricao;
 
@@ -330,7 +332,6 @@ var dragula = require("dragula");
       cardFooter.classList.add("card-footer");
 
       var cardFooterStats = document.createElement("div");
-      cardFooterStats.classList.add("stats");
       cardFooterStats.innerHTML = itemKanban.executor;
 
       cardHeader.appendChild(cardTitle);

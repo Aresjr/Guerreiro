@@ -9,53 +9,22 @@
               <img class="img" src="https://images.unsplash.com/photo-1502764088999-001291e403de" />
             </div>
             <div class="gr-card-perfil-conteudo">
-              <h4 class="card-title">{{ usuario.cargo.titulo }}</h4>
-              <h5 class="card-title">Nível {{ usuario.level }}</h5>
+              <h5 class="card-title">{{ usuario.cargo.titulo }}</h5>
+              <h6 class="card-title">Nível {{ usuario.level }}</h6>
             </div>
-        </div>
-        <div class="card-footer">
-            <div><!-- TODO - colocar os progress bars dos níveis das habilidades --></div>
         </div>
       </div>
     </div>
     <div class="col-md-7">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Atributos</h4>
+          <h5 class="card-title">Atributos</h5>
         </div>
         <div class="card-body">
-{#          <form>#}
-{#            <div class="row">#}
-{#              <div class="col-md-12">#}
-{#                <div class="form-group">#}
-{#                  <label class="bmd-label-floating">Nome</label>#}
-{#                  <input type="text" value="{{ usuario.nome }}" class="form-control">#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-{#            <div class="row">#}
-{#              <div class="col-md-4">#}
-{#                <div class="form-group">#}
-{#                  <label class="bmd-label-floating">Setor</label>#}
-{#                  <input type="text" value="{{ usuario.setor.nome }}" class="form-control" disabled>#}
-{#                </div>#}
-{#              </div>#}
-{#              <div class="col-md-3">#}
-{#                <div class="form-group">#}
-{#                  <label class="bmd-label-floating">Username</label>#}
-{#                  <input type="text" value="{{ usuario.username }}" class="form-control" disabled>#}
-{#                </div>#}
-{#              </div>#}
-{#              <div class="col-md-5">#}
-{#                <div class="form-group">#}
-{#                  <label class="bmd-label-floating">Email</label>#}
-{#                  <input type="email" value="{{ usuario.email }}" class="form-control">#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-{#            <button type="submit" class="btn btn-primary pull-right">Atualizar</button>#}
-{#            <div class="clearfix"></div>#}
-{#          </form>#}
+        <!-- TODO - colocar os progress bars dos níveis das habilidades -->
+            {% for nh in nhs %}
+                <div>Nível {{ nh.level }} - {{ nh.habilidade.descricao }}</div>
+            {% endfor %}
         </div>
       </div>
     </div>
