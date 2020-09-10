@@ -322,10 +322,12 @@ var dragula = require("dragula");
 
       var cardTitle = document.createElement("h5");
       cardTitle.classList.add("card-title");
+      cardTitle.style.fontStyle = 'bold';
       cardTitle.innerHTML = itemKanban.title || itemKanban.id;
 
       var cardCategory = document.createElement("h6");
       cardCategory.classList.add("card-category");
+      cardCategory.style.marginBottom = '0';
       cardCategory.innerHTML = itemKanban.descricao;
 
       var cardFooter = document.createElement("div");

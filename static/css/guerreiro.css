@@ -4536,7 +4536,7 @@ input[type="button"].btn-block {
 }
 
 .card-header {
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
   margin-bottom: 0;
   background-color: #f8f9fc;
   border-bottom: 1px solid #e3e6f0;
@@ -4551,7 +4551,7 @@ input[type="button"].btn-block {
 }
 
 .card-footer {
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 1rem;
   background-color: #f8f9fc;
   border-top: 1px solid #e3e6f0;
 }
@@ -11231,16 +11231,15 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .gr-card-perfil-imagem {
-    margin-right: 2rem;
+    margin: 1rem;
     float: left;
     overflow: hidden;
     padding: 0;
-    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
 }
 
 .gr-card-perfil-imagem img {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
 }
 
