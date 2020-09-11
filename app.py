@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.secret_key = 'sqgtjqzAbk'
 app.debug = True
-app.config.from_object("config.DevelopmentConfig")
+app.config.from_object("config.TestingConfig")
 
 login_manager = LoginManager()
 login_manager.init_app(app)

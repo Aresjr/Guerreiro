@@ -7,10 +7,18 @@ import KanbanComponent from '/static/js/components/kanban-component.js';
 const router = new VueRouter({
   routes: [{
     path: '/',
-    component: PerfilComponent
+    component: PerfilComponent,
+    meta: {
+        titulo: PerfilComponent.titulo,
+        pagina: PerfilComponent.pagina,
+    }
   }, {
     path: '/kanban',
-    component: KanbanComponent
+    component: KanbanComponent,
+    meta: {
+        titulo: KanbanComponent.titulo,
+        pagina: KanbanComponent.pagina
+    }
   }]
 });
 

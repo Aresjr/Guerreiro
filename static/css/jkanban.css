@@ -58,8 +58,8 @@
 
 .kanban-board header .kanban-title-button {
   float: right;
-    font-size: 1.5rem;
-    line-height: 1;
+    font-size: 2rem;
+    line-height: 0.5;
     margin: 0px;
     padding: 0px;
 }

@@ -10,4 +10,5 @@ from gr.service.NivelHabilidadeService import nivel_habilidade_service
 def v_perfil():
     usuario = current_user
     nhs = nivel_habilidade_service.get_nh_pai_usuario(usuario.id)
+    print(nhs)
     return render_template('pages/perfil.html', usuario=usuario, nhs=nhs)
