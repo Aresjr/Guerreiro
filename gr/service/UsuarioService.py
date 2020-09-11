@@ -1,5 +1,4 @@
 from flask_login import login_user, logout_user
-
 from gr.dao.ConquistaDao import conquista_dao
 from gr.dao.TipoConquistaDao import tipo_conquista_dao
 from gr.dao.UsuarioDao import usuario_dao
@@ -32,8 +31,6 @@ class UsuarioService:
         leveled_up = False
         xp_fator = usuario.setor.empresa.xpFator
         conquista_level_up = tipo_conquista_dao.get_by_titulo('Level Up!')
-        print(usuario.currentXp)
-        print(total_xp)
         while usuario.currentXp + total_xp >= usuario.nextLevelXp:
             usuario.level += 1
             total_xp -= usuario.nextLevelXp
@@ -53,6 +50,9 @@ class UsuarioService:
                 'id': usuario.id
             })
         return usuarios_json
+
+    def get_all(self):
+        return usuario_dao.get_all()
 
 
 usuario_service = UsuarioService()

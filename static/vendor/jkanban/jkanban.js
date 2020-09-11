@@ -320,12 +320,12 @@ var dragula = require("dragula");
       var cardHeader = document.createElement("div");
       cardHeader.classList.add("card-header");
 
-      var cardTitle = document.createElement("h4");
+      var cardTitle = document.createElement("h5");
       cardTitle.classList.add("card-title");
       cardTitle.style.fontStyle = 'bold';
       cardTitle.innerHTML = itemKanban.title || itemKanban.id;
 
-      var cardCategory = document.createElement("h5");
+      var cardCategory = document.createElement("h6");
       cardCategory.classList.add("card-category");
       cardCategory.style.marginBottom = '0';
       cardCategory.innerHTML = itemKanban.descricao;
@@ -333,13 +333,14 @@ var dragula = require("dragula");
       var cardFooter = document.createElement("div");
       cardFooter.classList.add("card-footer");
 
-      var cardFooterStats = document.createElement("div");
-      cardFooterStats.innerHTML = itemKanban.executor;
+      var cardFooterUser = document.createElement("div");
+      cardFooterUser.innerHTML = itemKanban.executor;
+      cardFooterUser.style.fontSize = 'small';
 
       cardHeader.appendChild(cardTitle);
       cardHeader.appendChild(cardCategory);
       cardKanban.appendChild(cardHeader);
-      cardFooter.appendChild(cardFooterStats);
+      cardFooter.appendChild(cardFooterUser);
       cardKanban.appendChild(cardFooter);
       return cardKanban;
     }

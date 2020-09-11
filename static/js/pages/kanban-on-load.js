@@ -4,32 +4,13 @@ $(document).ready(function() {
         url: '/api/atividades'
     }).done(function(quadros){
 
-        let usuarios = [];
+        new SlimSelect({
+          select: '#usuario-execucao'
+        });
 
         const addAtividadeClick = function(btn, estagioId){
-
             $('#modal-atividade-nova').modal('show');
             $('#atividade-estagio').val(estagioId);
-
-            if(!usuarios.length) {
-                $.ajax({
-                    url: '/api/get_usuarios_empresa'
-                }).done(function (usuarios_json) {
-                    usuarios = usuarios_json;
-
-                    $('#usuario-atividade-nova').autocomplete({
-                        delay: 0,
-                        source: function(request, response) {
-                            response($.ui.autocomplete.filter(usuarios, request.term).slice(0, 5));
-                        },
-                        select: function(event, usuario){
-                            $('#usuario-execucao').val(usuario.item.id);
-                        }
-                    });
-                });
-
-            }
-
         };
 
         const dragendBoard = function(board){
@@ -77,6 +58,8 @@ $(document).ready(function() {
     $('#salvar_atividade_nova').click(function(){
         $('#modal-atividade-nova').modal('hide');
         const atividade_nova = $getFormData($('#form-atividade-nova'));
+        console.log(jKanban.createCard);
+        console.log(createCard);
         //TODO - Adicionar visualmente o card ao estágio (coluna)
 
         $.post({
