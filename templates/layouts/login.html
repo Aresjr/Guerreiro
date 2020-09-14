@@ -15,13 +15,18 @@
                   </div>
                   <form method="POST">
 					{{ form.csrf_token }}
-                        {% with msg = get_flashed_messages(category_filter=["danger", "info"])[0] %}
-                            {% if msg %}
-                                <div class="alert alert-info" role="alert">
-                                  {{ msg }}
-                                </div>
-                            {% endif %}
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% for category, message in messages %}
+                                {% if loop.index == 1 %}
+                                    <div class="alert alert-{{ category }}" role="alert">
+                                      {{ message }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         {% endwith %}
+                        {% if usuario_invalido %}
+                            <div class="alert alert-danger" role="alert">Usuário e/ou senha inválidos</div>
+                        {% endif %}
                     <div class="form-group">
 						{{ form.username(size=20, class_='form-control', placeholder="Usuário") }}
                     </div>

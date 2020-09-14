@@ -3,6 +3,7 @@ Vue.use(VueRouter);
 
 import PerfilComponent from '/static/js/components/perfil-component.js';
 import KanbanComponent from '/static/js/components/kanban-component.js';
+import ConquistasComponent from '/static/js/components/conquistas-component.js';
 
 const router = new VueRouter({
   routes: [{
@@ -18,6 +19,13 @@ const router = new VueRouter({
     meta: {
         titulo: KanbanComponent.titulo,
         pagina: KanbanComponent.pagina
+    }
+  }, {
+    path: '/conquistas',
+    component: ConquistasComponent,
+    meta: {
+        titulo: ConquistasComponent.titulo,
+        pagina: ConquistasComponent.pagina
     }
   }]
 });

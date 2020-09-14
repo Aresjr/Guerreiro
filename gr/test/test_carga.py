@@ -2,6 +2,7 @@ import pytest
 
 from app import app
 from gr.dao.AtividadeDao import atividade_dao
+from gr.dao.AtividadeEstagioDao import atividade_estagio_dao
 from gr.dao.CargoDao import cargo_dao
 from gr.dao.ConquistaDao import conquista_dao
 from gr.dao.EmpresaDao import empresa_dao
@@ -32,6 +33,7 @@ def carga():
 
     # DELETA OS DADOS FISICAMENTE
     xp_dao.purge_all()
+    atividade_estagio_dao.purge_all()
     atividade_dao.purge_all()
     conquista_dao.purge_all()
     tipo_conquista_dao.purge_all()
@@ -101,8 +103,6 @@ def carga():
 
     habilidades = [hab_prog, hab_db, hab_frontend, hab_engsoft, hab_analise, hab_ia, hab_ds]
     habilidade_dao.upsert_all(habilidades)
-
-    print(hab_prog.id)
 
     hab_python = Habilidade(descricao='Python', habPaiId=hab_prog.id)
     hab_js = Habilidade(descricao='Javascript', habPaiId=hab_prog.id)

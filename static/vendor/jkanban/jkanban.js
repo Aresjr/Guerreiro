@@ -453,6 +453,8 @@ var dragula = require("dragula");
       var boardContainer = document.createElement("div");
       boardContainer.classList.add("kanban-container");
       if(!self.options.breakLine){
+        console.log(self.options.boards.length);
+        console.log(self.options.borderWidth);
         boardContainer.style.width = (self.options.boards.length * self.options.borderWidth) + 'px';
       }
       self.container = boardContainer;

@@ -29,5 +29,12 @@ class AtividadeEstagioDao(BaseDao):
         )
         return db.session.commit()
 
+    def get_all(self):
+        return db.session.query(self.model).all()
+
+    def purge_all(self):
+        db.session.execute('''TRUNCATE TABLE atividade_estagio''')
+        db.session.commit()
+
 
 atividade_estagio_dao = AtividadeEstagioDao(AtividadeEstagio)

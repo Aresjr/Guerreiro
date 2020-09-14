@@ -7,4 +7,5 @@ class Conquista(db.Model):
     tipo = db.relationship(TipoConquista, lazy=True)
     tipoId = db.Column(db.ForeignKey(TipoConquista.id), nullable=False)
     descricao = db.Column(db.String(255), nullable=False)
+    data = db.Column(db.Date, default=db.func.now())
     usuarioId = db.Column(db.Integer, db.ForeignKey('usuario.id'))

@@ -36,7 +36,8 @@ class UsuarioService:
             total_xp -= usuario.nextLevelXp
             usuario.nextLevelXp = round(usuario.nextLevelXp * xp_fator)
             if conquista_level_up:
-                conquista_dao.upsert(Conquista(usuarioId=usuario.id, tipoId=conquista_level_up.id, descricao=conquista_level_up.descricao.format(str(usuario.level))))
+                conquista_dao.upsert(Conquista(usuarioId=usuario.id, tipoId=conquista_level_up.id,
+                                               descricao=conquista_level_up.descricao.format(str(usuario.level))))
             leveled_up = True
         usuario.currentXp += total_xp  # total_xp que sobra
         return usuario_dao.upsert(usuario)

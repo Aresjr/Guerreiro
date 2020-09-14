@@ -48,7 +48,7 @@ $(document).ready(function() {
             dragendBoard: dragendBoard,
             boards: quadros,
             addItemButton: true,
-            borderWidth: 338,
+            borderWidth: 320,
             breakLine: false,
             dragBoards: false
         });
@@ -58,8 +58,6 @@ $(document).ready(function() {
     $('#salvar_atividade_nova').click(function(){
         $('#modal-atividade-nova').modal('hide');
         const atividade_nova = $getFormData($('#form-atividade-nova'));
-        console.log(jKanban.createCard);
-        console.log(createCard);
         //TODO - Adicionar visualmente o card ao estágio (coluna)
 
         $.post({

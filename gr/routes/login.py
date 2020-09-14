@@ -1,21 +1,16 @@
-from app import app, db
+from app import app
 from flask import render_template, redirect, url_for, flash
-from flask_login import login_user, current_user, logout_user
-
-from gr.dao.UsuarioDao import usuario_dao
+from flask_login import current_user
 from gr.form.forms import LoginForm
+from gr.service.LoginService import login_service
 from gr.service.UsuarioService import usuario_service
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        username = form.username.data.lower()
-        login = usuario_service.verify_login(username, form.password.data)
-        if login:
-            usuario_service.login(username)
-            return redirect(form.next.data or url_for('index'))
+    if login_service.verificar_login(form):
+        return login_service.loga_usuario(form)
     return render_template('layouts/login.html', title="Login", form=form)
 
 
