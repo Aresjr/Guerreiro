@@ -15,8 +15,5 @@ class NivelHabilidadeService:
     def get_nh_usuario(self, usuarioid):
         return nivel_habilidade_dao.get_by_usuario(usuarioid)
 
-    def get_nh_pai_usuario(self, usuarioid):
-        return nivel_habilidade_dao.get_nh_pai_usuario(usuarioid)
-
 
 nivel_habilidade_service = NivelHabilidadeService()

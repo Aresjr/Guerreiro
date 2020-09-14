@@ -28,9 +28,15 @@ $(document).ready(function() {
         return indexed_array;
     }
 
+    //TODO - parou de funcionar nesse template novo
     $('textarea').bind('input propertychange', function() {
         console.log(this.scrollHeight);
         $(this).css('height', this.scrollHeight+'px');
+    });
+
+    $('.item-menu').click(function(){
+        $('.item-menu').removeClass('active');
+        $(this).addClass('active');
     });
 
 });

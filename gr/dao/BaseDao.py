@@ -12,7 +12,7 @@ class BaseDao:
         return self.model.query.all()
 
     def purge(self, model):
-        db.session.execute(model.delete())
+        db.session.delete(model)
         db.session.commit()
 
     def purge_all(self):

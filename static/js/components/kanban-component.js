@@ -4,6 +4,7 @@ const KanbanComponent = {
     template: '<div id="kanban-content"></div>',
     mounted(){
         $('#nome-pagina').html(KanbanComponent.pagina);
+        $('#menu-kanban').addClass('active');
         document.title = KanbanComponent.titulo;
         $.ajax({
             url: '/view/kanban'

@@ -4,6 +4,7 @@ const PerfilComponent = {
     template: '<div id="perfil" style="padding: 0rem 1.5rem;"></div>',
     mounted(){
         $('#nome-pagina').html(PerfilComponent.pagina);
+        $('#menu-pagina-inicial').addClass('active');
         document.title = PerfilComponent.titulo;
         $.ajax({
             url: '/view/perfil'
