@@ -61,6 +61,6 @@ class Usuario(db.Model):
 
     @login_manager.unauthorized_handler
     def unauthorized():
-        flash('Você deve realizar o login para acessar essa página', 'error')
+        flash('Você deve realizar o login para acessar essa página', 'danger')
         flash(request.url, 'next')
         return redirect(url_for('login'))

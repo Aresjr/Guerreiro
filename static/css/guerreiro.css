@@ -6605,7 +6605,7 @@ button.bg-dark:focus {
 }
 
 .d-none {
-  display: none !important;
+  display: none;
 }
 
 .d-inline {
@@ -10411,22 +10411,6 @@ a:focus {
   background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
   background-position: center;
   background-size: cover;
-}
-
-form.user .custom-checkbox.small label {
-  line-height: 1.5rem;
-}
-
-form.user .form-control-user {
-  font-size: 0.8rem;
-  border-radius: 10rem;
-  padding: 1.5rem 1rem;
-}
-
-form.user .btn-user {
-  font-size: 0.8rem;
-  border-radius: 10rem;
-  padding: 0.75rem 1rem;
 }
 
 .btn-google {

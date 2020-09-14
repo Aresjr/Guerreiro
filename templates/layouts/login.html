@@ -1,76 +1,55 @@
-<!doctype html>
-<html lang="pt">
-<head>
-  <title>{{ title }} | Guerreiro</title>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://nagoshiashumari.github.io/Rpg-Awesome/stylesheets/rpg-awesome.min.css">
-  <link href="/static/css/guerreiro.min.css" rel="stylesheet" />
-</head>
-<body>
-  <div class="wrapper">
-      <div class="gr-login-background"></div>
-      <div class="content gr-vertical-center">
-        <div class="container-fluid">
-            <div class="row justify-content-md-center">
-                <div class="col-md-3">
+{% extends 'layouts/main.html' %}
+
+{% block body %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Bem-vindo, Guerreiro!</h1>
+                  </div>
                   <form method="POST">
-                    {{ form.csrf_token }}
-                      <div class="card">
-                        {% with infos = get_flashed_messages(category_filter=["info"]) %}
-                            {% if infos %}
-                                <div class="card-header">
-                                    <div class="alert alert-info" role="alert">
-                                      {{ infos[0] }}
-                                    </div>
+					{{ form.csrf_token }}
+                        {% with msg = get_flashed_messages(category_filter=["danger", "info"])[0] %}
+                            {% if msg %}
+                                <div class="alert alert-info" role="alert">
+                                  {{ msg }}
                                 </div>
                             {% endif %}
                         {% endwith %}
-                        {% with errors = get_flashed_messages(category_filter=["error"]) %}
-                            {% if errors %}
-                                <div class="card-header">
-                                    <div class="alert alert-danger" role="alert">
-                                      {{ errors[0] }}
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% endwith %}
-                        <div class="card-body">
-                          <span class="bmd-form-group">
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="ra ra-helmet ra-2x" aria-hidden="true"></i>
-                                </span>
-                              </div>
-                              {{ form.username(size=20, class_='form-control', placeholder="Usuário") }}
-                            </div>
-                          </span>
-                          <span class="bmd-form-group">
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                  <i class="material-icons" style="font-size:36px;">lock_outline</i>
-                                </span>
-                              </div>
-                              {{ form.password(size=20, class_="form-control", placeholder="Senha") }}
-                            </div>
-                          </span>
-                        </div>
-                        {{ form.next(value=get_flashed_messages(category_filter=["next"])[0]) }}
-                        <div class="card-footer justify-content-center">
-                            <button type="submit" class="btn btn-primary pull-right" style="width:100%;">Login</button>
-                        </div>
+                    <div class="form-group">
+						{{ form.username(size=20, class_='form-control', placeholder="Usuário") }}
+                    </div>
+                    <div class="form-group">
+						{{ form.password(size=20, class_="form-control", placeholder="Senha", type="password") }}
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
-                    </form>
+                    </div>
+					<button type="submit" class="btn btn-primary btn-block">Login</button>
+                      {{ form.next(value=get_flashed_messages(category_filter=["next"])[0]) }}
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" href="#">Forgot Password?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="#">Create an Account!</a>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
       </div>
+    </div>
   </div>
-  {% include 'layouts/scripts_js.html' %}
-</body>
-</html>
+{% endblock %}

@@ -1,7 +1,7 @@
 const KanbanComponent = {
     pagina: 'Kanban',
     titulo: 'Kanban | Guerreiro',
-    template: '<div id="kanban-content"></div>',
+    template: '<div id="kanban-content" class="mt-4"></div>',
     mounted(){
         $('#nome-pagina').html(KanbanComponent.pagina);
         $('#menu-kanban').addClass('active');

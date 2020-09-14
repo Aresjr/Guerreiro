@@ -1,7 +1,7 @@
 const PerfilComponent = {
     pagina: 'Início',
     titulo: 'Guerreiro',
-    template: '<div id="perfil" style="padding: 0rem 1.5rem;"></div>',
+    template: '<div id="perfil" class="ml-4 mr-4"></div>',
     mounted(){
         $('#nome-pagina').html(PerfilComponent.pagina);
         $('#menu-pagina-inicial').addClass('active');
