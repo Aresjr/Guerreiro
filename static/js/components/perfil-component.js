@@ -10,6 +10,9 @@ const PerfilComponent = {
             url: '/view/perfil'
         }).done(function(view) {
             $('#perfil').html(view);
+        }).fail(function(e){
+            console.log('fail');
+            console.log(e);
         });
     },
     watch:{

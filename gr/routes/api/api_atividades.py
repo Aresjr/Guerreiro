@@ -1,7 +1,6 @@
 from app import app
-from flask import jsonify, request
-from flask_login import current_user
-
+from flask import jsonify, request, abort
+from flask_login import current_user, login_required
 from gr.dao.AtividadeDao import atividade_dao
 from gr.model.atividades.Atividade import Atividade
 from gr.service.AtividadeService import atividade_service
@@ -9,8 +8,12 @@ from gr.service.EstagioService import estagio_service
 
 
 @app.route('/api/atividades', methods=["GET"])
+@login_required
 def api_atividades_get():
-    return jsonify(estagio_service.get_quadro_by_usuario(current_user))
+    usuario = current_user
+    if usuario is None:
+        return abort(401)
+    return jsonify(estagio_service.get_quadro_by_usuario(usuario))
 
 @app.route('/api/trocar_estagio_atividade', methods=["POST"])
 def api_trocar_estagio_atividade():

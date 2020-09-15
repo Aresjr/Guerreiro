@@ -24,18 +24,15 @@
                                 {% endif %}
                             {% endfor %}
                         {% endwith %}
-                        {% if usuario_invalido %}
-                            <div class="alert alert-danger" role="alert">Usuário e/ou senha inválidos</div>
-                        {% endif %}
                     <div class="form-group">
 						{{ form.username(size=20, class_='form-control', placeholder="Usuário") }}
                     </div>
                     <div class="form-group">
-						{{ form.password(size=20, class_="form-control", placeholder="Senha", type="password") }}
+						{{ form.password(size=20, class_="form-control", placeholder="Senha") }}
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                          {{ form.remember_me(class_="custom-control-input") }}
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>

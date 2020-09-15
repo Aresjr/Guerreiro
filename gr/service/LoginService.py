@@ -15,7 +15,8 @@ class LoginService:
 
     def loga_usuario(self, form):
         username = form.username.data.lower()
-        usuario_service.login(username)
+        remember_me = form.remember_me.data
+        usuario_service.login(username, remember_me)
         return redirect(form.next.data or url_for('index'))
 
 

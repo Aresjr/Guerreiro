@@ -14,7 +14,7 @@ login_manager.login_view = 'login'
 db = SQLAlchemy(app)
 
 # noinspection PyUnresolvedReferences
-from gr.routes import index, login
+from gr.routes import index, login, error_responses
 # noinspection PyUnresolvedReferences
 from gr.routes.api import api_atividades, api_xp, api_tarefas, api_usuario
 # noinspection PyUnresolvedReferences
@@ -26,4 +26,4 @@ def get_app():
 
 
 if __name__ == "__main__":
-    get_app().run()
+    get_app().run(debug=True)

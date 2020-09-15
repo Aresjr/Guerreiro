@@ -52,9 +52,6 @@ class Usuario(db.Model):
     def is_authenticated(self):
         return self.authenticated
 
-    def is_anonymous(self):
-        return False
-
     @login_manager.user_loader
     def user_loader(user_id):
         return Usuario.query.get(user_id)

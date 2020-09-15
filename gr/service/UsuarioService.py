@@ -14,11 +14,11 @@ class UsuarioService:
                 return True
         return False
 
-    def login(self, username):
+    def login(self, username, remember):
         usuario = usuario_dao.get_by_username(username)
         usuario.authenticated = True
         usuario_dao.upsert(usuario)
-        login_user(usuario, remember=True)
+        login_user(usuario, remember=remember)
         return usuario
 
     def logout(self, usuario):
