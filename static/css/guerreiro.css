@@ -10817,7 +10817,7 @@ overflow:visible;
 
 .main-menu {
 background:#000;
-position:absolute;
+position:fixed;
 top:0;
 bottom:0;
 height:100%;

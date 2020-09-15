@@ -35,7 +35,7 @@
                             <div class="progress-bar" role="progressbar" style="width:{{ nhs[habId].width }}%" aria-valuenow="{{ nhs[habId].currentXp }}" aria-valuemin="0" aria-valuemax="{{ nhs[habId].nextLevelXp }}"></div>
                         </div>
                     </div>
-                    <div id="hab-filho-{{ nhs[habId].id }}" class="ml-2 d-none">
+                    <div id="hab-filho-{{ nhs[habId].id }}" class="ml-3 d-none">
                     {% for habFilho in nhs[habId].habFilho %}
                         <div>
                             <h4 class="small font-weight-bold text-primary">{{ habFilho.habilidade.descricao }}<span class="float-right">Nível {{ habFilho.level }}</span></h4>
