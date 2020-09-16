@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+    $ajaxView = function ajax(url, callback){
+        $.ajax({
+            url: url
+        }).done(function(response) {
+            callback(response);
+        }).fail(function(error){
+            if(error.status == 401){
+                window.location.href = '/login';
+            }
+        });
+    }
+
   // Scroll to top button appear
   $(document).on('scroll', function() {
     var scrollDistance = $(this).scrollTop();
@@ -19,15 +31,6 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-    $getFormData = function getFormData($form) {
-        var unindexed_array = $form.serializeArray();
-        var indexed_array = {};
-        $.map(unindexed_array, function (n, i) {
-            indexed_array[n['name']] = n['value'];
-        });
-        return indexed_array;
-    }
-
     $(document).on('input propertychange', 'textarea', function() {
         $(this).css('height', this.scrollHeight+'px');
     });
@@ -41,5 +44,14 @@ $(document).ready(function() {
         const HabId = $(this).data('hab-id');
         $('#hab-filho-'+HabId).toggle('fast');
     });
+
+    $getFormData = function getFormData($form) {
+        var unindexed_array = $form.serializeArray();
+        var indexed_array = {};
+        $.map(unindexed_array, function (n, i) {
+            indexed_array[n['name']] = n['value'];
+        });
+        return indexed_array;
+    }
 
 });
