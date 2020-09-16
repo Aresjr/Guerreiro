@@ -29,7 +29,6 @@ $(document).ready(function() {
     }
 
     $(document).on('input propertychange', 'textarea', function() {
-        console.log(this.scrollHeight);
         $(this).css('height', this.scrollHeight+'px');
     });
 

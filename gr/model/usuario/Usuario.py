@@ -36,6 +36,7 @@ class Usuario(db.Model):
 
     authenticated = db.Column(db.Boolean, default=False)
     del_ = db.Column(db.Boolean, default=False)
+    is_anonymous = False
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

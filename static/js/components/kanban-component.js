@@ -4,13 +4,20 @@ const KanbanComponent = {
     template: '<div id="kanban-content" class="mt-4"></div>',
     mounted(){
         $('#nome-pagina').html(KanbanComponent.pagina);
-        $('#menu-kanban').addClass('active');
+        // $('#menu-kanban').addClass('active');
         document.title = KanbanComponent.titulo;
-        $.ajax({
+        const request = $.ajax({
             url: '/view/kanban'
-        }).done(function(view) {
-            $('#kanban-content').html(view);
+        });
+        request.success(function(response) {
+            console.log(response);
+            $('#kanban-content').html(response);
             import('/static/js/pages/kanban-on-load.js');
+        });
+        request.error(function(httpObj, textStatus){
+            console.log('error');
+            console.log(httpObj);
+            console.log(textStatus);
         });
     },
     watch:{
