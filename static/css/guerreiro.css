@@ -10906,7 +10906,7 @@ padding:0;
 
 nav.main-menu li.active>a,.dropdown-menu>.active>a,.dashboard-page nav.dashboard-menu ul li.active a {
 color:#fff;
-background-color:#9c27b0;
+background-color:#9c27b0!important;
 }
 
 .main-menu li:hover>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a {

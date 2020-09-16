@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     $(document).on('click', '.show-hab', function() {
         const HabId = $(this).data('hab-id');
-        $('#hab-filho-'+HabId).toggle('fast');
+        $('#hab-filho-'+HabId).toggle({duration: 50});
     });
 
     $getFormData = function getFormData($form) {

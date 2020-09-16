@@ -5,7 +5,8 @@ $(document).ready(function() {
     }).done(function(quadros){
 
         new SlimSelect({
-          select: '#usuario-execucao'
+          select: '#usuario-execucao',
+          searchPlaceholder: 'Procurar'
         });
 
         const addAtividadeClick = function(btn, estagioId){

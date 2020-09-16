@@ -2,17 +2,18 @@
 <div id="modal-atividade-nova" class="modal bd-example-modal-sm hide" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-          <form id="form-atividade-nova" class="ajax" style="margin-bottom:0px;">
+          <form id="form-atividade-nova" class="ajax mb-0">
               <div class="kanban-item card card-stats">
                   <div class="card-header" style="background-color:#fff;">
-                      <div class="form-group bmd-form-group" style="margin: 0px;padding: 0px;">
-                          <input name="codigo" placeholder="Código" type="text" class="form-control" style="font-size:large;border:none;" required="required" />
+                      <div class="form-group bmd-form-group m-1 p-1">
+                          <input name="codigo" placeholder="Código" type="text" class="form-control border-0" style="font-size:large;" required="required" />
                       </div>
-                      <div class="form-group bmd-form-group" style="padding: 0px;margin: 0px;">
-                          <textarea name="descricao" placeholder="Descrição" class="form-control" rows="1" maxlength="200" required="required" style="border:none;"></textarea>
+                      <div class="form-group bmd-form-group m-1 p-1">
+                          <textarea name="descricao" placeholder="Descrição" class="form-control border-0" rows="1" maxlength="200" required="required"></textarea>
                       </div>
-                      <div class="form-group bmd-form-group" style="margin: 0px;padding: 0px;">
-                          <select name="usuarioExecucaoId" id="usuario-execucao" required="required">
+                      <div class="form-group bmd-form-group m-1 p-1">
+                          <select name="usuarioExecucaoId" id="usuario-execucao" required>
+                            <option value="" disabled>Selecione...</option>
                               {% for usuario in usuarios %}
                                   <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
                               {% endfor %}
@@ -20,9 +21,9 @@
                       </div>
                       <input id="atividade-estagio" type="hidden" name="estagioId" />
                   </div>
-                  <div class="modal-footer" style="padding: 10px;border-top: 0px;">
-                      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Fechar</button>
-                      <button type="button" id="salvar_atividade_nova" class="btn btn-primary btn-sm ajax">Salvar</button>
+                  <div class="modal-footer border-0 p-1">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">Fechar</button>
+                      <button type="button" id="salvar_atividade_nova" class="btn btn-primary ajax">Salvar</button>
                   </div>
               </div>
           </form>

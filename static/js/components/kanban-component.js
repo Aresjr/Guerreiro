@@ -4,12 +4,6 @@ const KanbanComponent = {
     rota: '/kanban',
     rota_view: '/view/kanban',
     template: '<div id="kanban-content" class="mt-4"></div>',
-    watch: {
-        $route: function(to, from){
-            $('#nome-pagina').html(to.meta.pagina);
-            document.title = to.meta.titulo;
-        }
-    },
     mounted(){
         $('#nome-pagina').html(KanbanComponent.pagina);
         document.title = KanbanComponent.titulo;

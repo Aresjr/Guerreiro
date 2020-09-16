@@ -12,8 +12,7 @@ class NivelHabilidadeDao(BaseDao):
         return nh
 
     def get_by_usuario(self, usuarioid):
-        return self.model.query.join(Habilidade).filter(self.model.usuarioId == usuarioid).order_by(Habilidade.habPaiId)\
-            .order_by(self.model.level.desc()).order_by(self.model.currentXp.desc()).all()
+        return self.model.query.join(Habilidade).filter(self.model.usuarioId == usuarioid).order_by(Habilidade.habPaiId, self.model.level.desc(), self.model.currentXp.desc()).all()
 
 
 nivel_habilidade_dao = NivelHabilidadeDao(NivelHabilidade)

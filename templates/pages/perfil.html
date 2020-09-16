@@ -1,17 +1,14 @@
-{% block searchbar %}{% endblock %}
-
-{% block content %}
   <div class="row">
     <div class="col-md-5 mt-4">
       <div class="card">
         <div class="card-body gr-card-perfil">
             <div class="gr-card-perfil-imagem">
-              <img class="img" src="https://images.unsplash.com/photo-1502764088999-001291e403de" />
+              <img class="img" src="https://images.unsplash.com/photo-1502764088999-001291e403de" alt="Foto de perfil"/>
             </div>
             <div>
                 <h4 class="font-weight-bold">Nível {{ usuario.level }}</h4>
                 <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: {{ 100 / usuario.nextLevelXp * usuario.currentXp }}%" aria-valuenow="{{ usuario.currentXp }}" aria-valuemin="0" aria-valuemax="{{ usuario.nextLevelXp }}"></div>
+                    <div class="progress-bar" role="progressbar" style="width: {{ width }}%" aria-valuenow="{{ usuario.currentXp }}" aria-valuemin="0" aria-valuemax="{{ usuario.nextLevelXp }}"></div>
                 </div>
                 <h5 class="card-title font-weight-bold">{{ usuario.cargo.titulo }}</h5>
             </div>
@@ -53,4 +50,3 @@
       </div>
     </div>
   </div>
-{% endblock %}
