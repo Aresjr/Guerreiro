@@ -190,7 +190,7 @@ var dragula = require("dragula");
         '[data-id="' + boardID + '"] .kanban-drag'
       );
 
-      var cardKanban = this.createCard(element);
+      var cardKanban = $createCard(element);
 
       if (typeof element.id !== "undefined" && element.id !== "") {
         cardKanban.setAttribute("data-eid", element.id);
@@ -279,7 +279,7 @@ var dragula = require("dragula");
         for (var itemkey in board.item) {
           var itemKanban = board.item[itemkey];
 
-          var nodeItem = this.createCard(itemKanban);
+          var nodeItem = $createCard(itemKanban);
 
           if (itemKanban.id) {
             nodeItem.dataset.eid = itemKanban.id;
@@ -308,42 +308,6 @@ var dragula = require("dragula");
       }
       return self;
     };
-
-    this.createCard = function(itemKanban){
-      var cardKanban = document.createElement("div");
-      cardKanban.classList.add("kanban-item");
-      cardKanban.classList.add("card");
-      cardKanban.classList.add("card-stats");
-      cardKanban.classList.add("border-left-primary");
-      cardKanban.classList.add("shadow");
-
-      var cardHeader = document.createElement("div");
-      cardHeader.classList.add("card-header");
-
-      var cardTitle = document.createElement("h5");
-      cardTitle.classList.add("card-title");
-      cardTitle.style.fontStyle = 'bold';
-      cardTitle.innerHTML = itemKanban.title || itemKanban.id;
-
-      var cardCategory = document.createElement("h6");
-      cardCategory.classList.add("card-category");
-      cardCategory.style.marginBottom = '0';
-      cardCategory.innerHTML = itemKanban.descricao;
-
-      var cardFooter = document.createElement("div");
-      cardFooter.classList.add("card-footer");
-
-      var cardFooterUser = document.createElement("div");
-      cardFooterUser.innerHTML = itemKanban.executor;
-      cardFooterUser.style.fontSize = 'small';
-
-      cardHeader.appendChild(cardTitle);
-      cardHeader.appendChild(cardCategory);
-      cardKanban.appendChild(cardHeader);
-      cardFooter.appendChild(cardFooterUser);
-      cardKanban.appendChild(cardFooter);
-      return cardKanban;
-    }
 
     this.findBoard = function(id) {
       var el = self.element.querySelector('[data-id="' + id + '"]');

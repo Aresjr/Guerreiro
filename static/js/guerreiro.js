@@ -54,4 +54,40 @@ $(document).ready(function() {
         return indexed_array;
     }
 
+    $createCard = function(itemKanban){
+      var cardKanban = document.createElement("div");
+      cardKanban.classList.add("kanban-item");
+      cardKanban.classList.add("card");
+      cardKanban.classList.add("card-stats");
+      cardKanban.classList.add("border-left-primary");
+      cardKanban.classList.add("shadow");
+
+      var cardHeader = document.createElement("div");
+      cardHeader.classList.add("card-header");
+
+      var cardTitle = document.createElement("h5");
+      cardTitle.classList.add("card-title");
+      cardTitle.style.fontStyle = 'bold';
+      cardTitle.innerHTML = itemKanban.title || itemKanban.id;
+
+      var cardCategory = document.createElement("h6");
+      cardCategory.classList.add("card-category");
+      cardCategory.style.marginBottom = '0';
+      cardCategory.innerHTML = itemKanban.descricao;
+
+      var cardFooter = document.createElement("div");
+      cardFooter.classList.add("card-footer");
+
+      var cardFooterUser = document.createElement("div");
+      cardFooterUser.innerHTML = itemKanban.executor;
+      cardFooterUser.style.fontSize = 'small';
+
+      cardHeader.appendChild(cardTitle);
+      cardHeader.appendChild(cardCategory);
+      cardKanban.appendChild(cardHeader);
+      cardFooter.appendChild(cardFooterUser);
+      cardKanban.appendChild(cardFooter);
+      return cardKanban;
+    };
+
 });

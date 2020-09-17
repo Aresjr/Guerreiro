@@ -23,7 +23,7 @@ $(document).ready(function() {
                 },
                 dataType: 'json'
             }).fail(function(error) {
-                console.log(error);
+                console.log(error); //TODO - tratar
             });
         };
 
@@ -38,7 +38,7 @@ $(document).ready(function() {
                 },
                 dataType: 'json'
             }).fail(function(error) {
-                console.log(error);
+                console.log(error); //TODO - tratar
             });
         };
 
@@ -59,15 +59,20 @@ $(document).ready(function() {
     $('#salvar_atividade_nova').click(function(){
         $('#modal-atividade-nova').modal('hide');
         const atividade_nova = $getFormData($('#form-atividade-nova'));
-        //TODO - Adicionar visualmente o card ao estágio (coluna)
+
+        const card = $createCard({
+            title: atividade_nova.codigo,
+            descricao: atividade_nova.descricao,
+            executor: 'ares'
+        });
+
+        $('#atividades-quadro-'+atividade_nova.estagioId).append(card);
 
         $.post({
             url: `/api/atividade_nova`,
             data: atividade_nova
-        }).done(function(response) {
-            console.log(response);
         }).fail(function(error) {
-            console.log(error);
+            console.log(error); //TODO - tratar
         });
 
     });
