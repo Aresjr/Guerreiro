@@ -33,7 +33,7 @@
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
                           {{ form.remember_me(class_="custom-control-input") }}
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                        <label class="custom-control-label pt-1" for="customCheck">Lembre-se de mim</label>
                       </div>
                     </div>
 					<button type="submit" class="btn btn-primary btn-block">Login</button>
@@ -41,10 +41,10 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="#">Forgot Password?</a>
+                    <a class="small" href="#">Esqueceu a Senha?</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="#">Create an Account!</a>
+                    <a class="small" href="{{ url_for('cadastrar') }}">Criar uma conta</a>
                   </div>
                 </div>
               </div>

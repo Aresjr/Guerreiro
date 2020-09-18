@@ -9781,6 +9781,15 @@ a:focus {
   flex: 1 0 auto;
 }
 
+#wrapper #content-pagina-gr {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#wrapper #content-pagina-gr #content {
+  flex: 1 0 auto;
+}
+
 .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -10484,6 +10493,43 @@ a:focus {
 
 .btn-facebook:not(:disabled):not(.disabled):active:focus, .btn-facebook:not(:disabled):not(.disabled).active:focus,
 .show > .btn-facebook.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn-linkedin {
+  color: #fff;
+  background-color: #007bb6;
+  border-color: #fff;
+}
+
+.btn-linkedin:hover {
+  color: #fff;
+  background-color: #005983;
+  border-color: #e6e6e6;
+}
+
+.btn-linkedin:focus, .btn-linkedin.focus {
+  color: #fff;
+  background-color: #005983;
+  border-color: #e6e6e6;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn-linkedin.disabled, .btn-linkedin:disabled {
+  color: #fff;
+  background-color: #007bb6;
+  border-color: #fff;
+}
+
+.btn-linkedin:not(:disabled):not(.disabled):active, .btn-linkedin:not(:disabled):not(.disabled).active,
+.show > .btn-linkedin.dropdown-toggle {
+  color: #fff;
+  background-color: #005983;
+  border-color: #dfdfdf;
+}
+
+.btn-linkedin:not(:disabled):not(.disabled):active:focus, .btn-linkedin:not(:disabled):not(.disabled).active:focus,
+.show > .btn-linkedin.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
 }
 

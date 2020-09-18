@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Guerreiro | Suba de Nível na sua Carreira</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <link rel="stylesheet" href="https://nagoshiashumari.github.io/Rpg-Awesome/stylesheets/rpg-awesome.min.css">
-  <link href="/static/css/guerreiro.min.css" rel="stylesheet" />
-</head>
-<body id="page-top">
+{% extends 'layouts/main.html' %}
+
+{% block body %}
   <div id="wrapper">
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-pagina-gr" class="d-flex flex-column">
       <div id="content">
-        <div class="container-fluid">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+          <div id="titulo-container">
+            <h1 id="nome-pagina" class="h3 mb-0 text-gray-800 mr-3 ml-2">Guerreiro</h1>
+          </div>
+          <div class="d-none d-sm-inline-block form-inline my-2 my-md-0 mw-100 ml-auto">
+            <div>
+                <a href="{{ url_for('cadastrar') }}" class="btn mr-2 border">Cadastrar</a>
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Fazer Login</a>
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid mt-4">
             <h1>Conteúdo da página do Produto...</h1>
         </div>
       </div>
     </div>
   </div>
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fa fa-angle-up"></i>
-  </a>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha512-kBFfSXuTKZcABVouRYGnUo35KKa1FBrYgwG4PAx7Z2Heroknm0ca2Fm2TosdrrI356EDHMW383S3ISrwKcVPUw==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous"></script>
-    <script src="/static/js/guerreiro.js?v=2"></script>
-</body>
-</html>
+{% endblock %}

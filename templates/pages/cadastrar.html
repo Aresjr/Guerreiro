@@ -1,0 +1,64 @@
+{% extends 'layouts/main.html' %}
+
+{% block body %}
+  <div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Criar Conta</h1>
+              </div>
+              <form class="user">
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                  </div>
+                </div>
+                <a href="#" class="btn btn-primary btn-user btn-block">
+                  Cadastrar
+                </a>
+                <hr>
+                  <div class="row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <a href="#" class="btn btn-linkedin btn-user btn-block">
+                          <i class="fa fa-linkedin fa-fw"></i> Cadastrar com Linkedin
+                        </a>
+                      </div>
+                      <div class="col-sm-6">
+                        <a href="#" class="btn btn-google btn-user btn-block">
+                          <i class="fa fa-google fa-fw"></i> Cadastrar com Google
+                        </a>
+                      </div>
+                  </div>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" href="#">Esqueceu a Senha?</a>
+              </div>
+              <div class="text-center">
+                <a class="small" href="{{ url_for('login') }}">Já tem uma conta? Fazer Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
