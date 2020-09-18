@@ -367,27 +367,27 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
+  font-size: 2.5rem!important;
 }
 
 h2, .h2 {
-  font-size: 2rem;
+  font-size: 2rem!important;
 }
 
 h3, .h3 {
-  font-size: 1.75rem;
+  font-size: 1.75rem!important;
 }
 
 h4, .h4 {
-  font-size: 1.5rem;
+  font-size: 1.5rem!important;
 }
 
 h5, .h5 {
-  font-size: 1.25rem;
+  font-size: 1.25rem!important;
 }
 
 h6, .h6 {
-  font-size: 1rem;
+  font-size: 1rem!important;
 }
 
 .lead {
@@ -10944,4 +10944,8 @@ height: 100%;
 
 .gr-card-perfil-conteudo {
     padding-top:0.5rem;
+}
+
+.bg-grey {
+  background-color:#ECF0F1!important;
 }

@@ -45,8 +45,8 @@ $(document).ready(function() {
         $('#hab-filho-'+HabId).toggle({duration: 50});
     });
 
-    $getFormData = function getFormData($form) {
-        var unindexed_array = $form.serializeArray();
+    $getFormData = function getFormData(form) {
+        var unindexed_array = $(form).serializeArray();
         var indexed_array = {};
         $.map(unindexed_array, function (n, i) {
             indexed_array[n['name']] = n['value'];

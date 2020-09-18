@@ -1,21 +1,21 @@
 <div id="kanban"></div>
-<div id="modal-atividade-nova" class="modal bd-example-modal-sm hide" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div id="modal-atividade-nova" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-          <form id="form-atividade-nova" class="ajax mb-0">
+          <form id="form-atividade-nova" class="mb-0">
               <div class="kanban-item card card-stats">
-                  <div class="card-header" style="background-color:#fff;">
-                      <div class="form-group bmd-form-group m-1 p-1">
-                          <input name="codigo" placeholder="Código" type="text" class="form-control border-0" style="font-size:large;" required />
+                  <div class="card-header bg-white">
+                      <div class="form-group bmd-form-group m-0 p-0">
+                          <input name="codigo" placeholder="Código" type="text" class="form-control border-0 h5" required />
                       </div>
-                      <div class="form-group bmd-form-group m-1 p-1">
+                      <div class="form-group bmd-form-group m-0 p-0">
                           <textarea name="descricao" placeholder="Descrição" class="form-control border-0" rows="1" maxlength="200" required></textarea>
                       </div>
-                      <div class="form-group bmd-form-group m-1 p-1">
+                      <div class="form-group bmd-form-group mt-2 p-0">
                           <select name="usuarioExecucaoId" id="usuario-execucao" required>
-                            <option value="" disabled>Selecione...</option>
+                            <option value="">Selecione...</option>
                               {% for usuario in usuarios %}
-                                  <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                                  <option value="{{ usuario.id }}" data-username="{{ usuario.username }}">{{ usuario.nome }}</option>
                               {% endfor %}
                           </select>
                       </div>
@@ -23,7 +23,7 @@
                   </div>
                   <div class="modal-footer border-0 p-1">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">Fechar</button>
-                      <button type="button" id="salvar_atividade_nova" class="btn btn-primary">Salvar</button>
+                      <input type="submit" class="btn btn-primary" alt="Salvar" value="Salvar" />
                   </div>
               </div>
           </form>

@@ -11,7 +11,7 @@ const KanbanComponent = {
 
         $ajaxView(KanbanComponent.rota_view, function(view){
             $('#kanban-content').html(view);
-            import('/static/js/pages/kanban-page.js');
+            import('/static/js/pages/kanban-page.js?v=8');
         });
     }
 };

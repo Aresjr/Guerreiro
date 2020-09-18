@@ -3,7 +3,7 @@ const ConquistasComponent = {
     titulo: 'Conquistas | Guerreiro',
     rota: '/conquistas',
     rota_view: '/view/conquistas',
-    template: '<div id="conquistas-content" style="background-color:#ECF0F1"></div>',
+    template: '<div id="conquistas-content" class="bg-grey"></div>',
     mounted(){
         $('#nome-pagina').html(ConquistasComponent.pagina);
         document.title = ConquistasComponent.titulo;

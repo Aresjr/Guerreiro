@@ -7,6 +7,7 @@ class EstagioService:
 
         estagios = estagio_dao.get_by_empresa(usuario.setor.empresa.id)
         estagios_json = []
+        estagios_draggable = []
         for estagio in estagios:
 
             itens = []
@@ -19,12 +20,17 @@ class EstagioService:
                     'executor': atividade.usuarioExecucao.username
                 })
 
+            if not estagio.estagioFinal:
+                estagios_draggable.append(str(estagio.id))
+
             estagios_json.append({
                 'id': str(estagio.id),
                 'title': estagio.titulo,
-                'item': itens,
-                'dragTo': ['1', '2', '3', '4']
+                'item': itens
             })
+
+        for estagio_json in estagios_json:
+            estagio_json['dragTo'] = estagios_draggable
 
         return estagios_json
 

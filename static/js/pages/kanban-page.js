@@ -28,7 +28,24 @@ $(document).ready(function() {
         };
 
         const dropEl = function (el, target) {
-            el.dataset.estagio = $(target).parent().data('id');
+            var allowedBoards = [];
+            jkanban.options.boards.map(function (board) {
+                if (board.id === el.dataset.estagio) {
+                    board.dragTo.map(function (_board) {
+                        if (allowedBoards.indexOf(_board) === -1) {
+                            allowedBoards.push(_board);
+                        }
+                    });
+                    return allowedBoards[0];
+                }
+                return allowedBoards[0];
+            });
+            const estagio_novo = $(target).parent().data('id').toString();
+            if (allowedBoards.length > 0 && allowedBoards.indexOf(estagio_novo) === -1) {
+                return;
+            }
+
+            el.dataset.estagio = estagio_novo;
 
             $.post({
                 url: '/api/trocar_estagio_atividade',
@@ -42,7 +59,7 @@ $(document).ready(function() {
             });
         };
 
-        new jKanban({
+        var jkanban = new jKanban({
             element : '#kanban',
             buttonClick: addAtividadeClick,
             dropEl: dropEl,
@@ -56,14 +73,15 @@ $(document).ready(function() {
 
     });
 
-    $('#salvar_atividade_nova').click(function(){
+    $('#form-atividade-nova').on('submit', function(e){
+        e.preventDefault();
         $('#modal-atividade-nova').modal('hide');
-        const atividade_nova = $getFormData($('#form-atividade-nova'));
+        const atividade_nova = $getFormData(this);
 
         const card = $createCard({
             title: atividade_nova.codigo,
             descricao: atividade_nova.descricao,
-            executor: 'ares'
+            executor: $( "#usuario-execucao option:selected").data('username')
         });
 
         $('#atividades-quadro-'+atividade_nova.estagioId).append(card);
