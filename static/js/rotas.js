@@ -1,11 +1,13 @@
 import PerfilComponent from '/static/js/components/perfil-component.js';
 import KanbanComponent from '/static/js/components/kanban-component.js';
 import ConquistasComponent from '/static/js/components/conquistas-component.js';
+import CarreiraComponent from '/static/js/components/carreira-component.js';
 
 const components = [
     PerfilComponent,
     KanbanComponent,
-    ConquistasComponent
+    ConquistasComponent,
+    CarreiraComponent
 ]
 
 const rotas = []

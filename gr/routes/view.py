@@ -27,3 +27,10 @@ def v_conquistas():
     if usuario.is_anonymous:
         return abort(401)
     return render_template('views/conquistas.html', usuario=usuario, conquistas=conquista_dao.get_by_usuario(usuario.id))
+
+@app.route('/view/carreira')
+def v_carreira():
+    usuario = current_user
+    if usuario.is_anonymous:
+        return abort(401)
+    return render_template('views/carreira.html', usuario=usuario)
