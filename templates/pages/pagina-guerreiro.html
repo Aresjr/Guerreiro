@@ -1,24 +1,24 @@
 {% extends 'layouts/main.html' %}
 
 {% block body %}
-  <div id="wrapper">
-    <div id="content-pagina-gr" class="d-flex flex-column">
-      <div id="content">
-        <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
-          <div id="titulo-container">
-            <h1 id="nome-pagina" class="h3 mb-0 text-gray-800 mr-3 ml-2">Guerreiro</h1>
-          </div>
-          <div class="d-none d-sm-inline-block form-inline my-2 my-md-0 mw-100 ml-auto">
-            <div>
-                <a href="{{ url_for('cadastrar') }}" class="btn mr-2 border">Cadastrar</a>
-                <a href="{{ url_for('login') }}" class="btn btn-primary">Fazer Login</a>
+    <div id="wrapper">
+        <div id="content-pagina-gr" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+                    <div id="titulo-container">
+                        <h1 id="nome-pagina" class="h3 mb-0 text-gray-800 mr-3 ml-2">Guerreiro</h1>
+                    </div>
+                    <div class="d-none d-sm-inline-block form-inline my-2 my-md-0 mw-100 ml-auto">
+                        <div>
+                            <a href="{{ url_for('cadastrar') }}" class="btn mr-2 border">Cadastrar</a>
+                            <a href="{{ url_for('login') }}" class="btn btn-primary">Fazer Login</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="container-fluid mt-4">
+                    <h1>Conteúdo da página do Produto...</h1>
+                </div>
             </div>
-          </div>
-        </nav>
-        <div class="container-fluid mt-4">
-            <h1>Conteúdo da página do Produto...</h1>
         </div>
-      </div>
     </div>
-  </div>
 {% endblock %}

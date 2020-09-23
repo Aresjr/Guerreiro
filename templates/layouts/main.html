@@ -2,24 +2,24 @@
 <html lang="pt">
 {% include 'layouts/head.html' %}
 <body id="page-top">
-  {% block body %}
-  <div id="wrapper">
-    {% include 'layouts/sidebar.html' %}
-    <div id="content-wrapper" class="d-flex flex-column">
-      <div id="content">
-          {% block content %}
-            {% include 'layouts/navbar.html' %}
-            <div class="container-fluid">
-                {% block container %}{% endblock %}
+{% block body %}
+    <div id="wrapper">
+        {% include 'layouts/sidebar.html' %}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                {% block content %}
+                    {% include 'layouts/navbar.html' %}
+                    <div class="container-fluid">
+                        {% block container %}{% endblock %}
+                    </div>
+                {% endblock %}
             </div>
-          {% endblock %}
-      </div>
+        </div>
     </div>
-  </div>
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fa fa-angle-up"></i>
-  </a>
-  {% include 'layouts/scripts_js.html' %}
-  {% endblock %}
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    {% include 'layouts/scripts_js.html' %}
+{% endblock %}
 </body>
 </html>

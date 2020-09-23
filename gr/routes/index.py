@@ -8,7 +8,7 @@ def index():
     usuario = current_user
     if usuario.is_anonymous:
         return render_template('pages/pagina-guerreiro.html', titulo='Suba de Nível na sua carreira')
-    return render_template('pages/pagina-inicial.html', usuario=usuario)
+    return render_template('layouts/pagina-inicial.html', usuario=usuario)
 
 @app.route('/cadastrar')
 def cadastrar():

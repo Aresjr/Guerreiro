@@ -3,6 +3,7 @@ from gr.model.usuario.Habilidade import Habilidade
 from gr.model.manyToMany.HabilidadeTipoAtividade import HabilidadeTipoAtividade
 
 
+# TODO - utilizar para pré carregar as habilidades ao cadastrar uma atividade deste tipo
 class TipoAtividade(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
