@@ -1,48 +1,43 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $ajaxView = function ajax(url, callback){
+    $ajaxView = function ajax(url, callback) {
         $.ajax({
             url: url
-        }).done(function(response) {
+        }).done(function (response) {
             callback(response);
-        }).fail(function(error){
-            if(error.status == 401){
+        }).fail(function (error) {
+            if (error.status === 401) {
                 window.location.href = '/login';
             }
         });
     }
 
-  // Scroll to top button appear
-  $(document).on('scroll', function() {
-    var scrollDistance = $(this).scrollTop();
-    if (scrollDistance > 100) {
-      $('.scroll-to-top').fadeIn();
-    } else {
-      $('.scroll-to-top').fadeOut();
-    }
-  });
-
-  // Smooth scrolling using jQuery easing
-  $(document).on('click', 'a.scroll-to-top', function(e) {
-    var $anchor = $(this);
-    $('html, body').stop().animate({
-      scrollTop: ($($anchor.attr('href')).offset().top)
-    }, 1000, 'easeInOutExpo');
-    e.preventDefault();
-  });
-
-    $(document).on('input propertychange', 'textarea', function() {
-        $(this).css('height', this.scrollHeight+'px');
-    });
-
-    $(document).on('click', '.item-menu', function() {
+    $(document).on('click', '.item-menu', function () {
         $('.item-menu').removeClass('active');
         $(this).addClass('active');
     });
 
-    $(document).on('click', '.show-hab', function() {
-        const HabId = $(this).data('hab-id');
-        $('#hab-filho-'+HabId).toggle({duration: 50});
+    // Scroll to top button appear
+    $(document).on('scroll', function () {
+        var scrollDistance = $(this).scrollTop();
+        if (scrollDistance > 100) {
+            $('.scroll-to-top').fadeIn();
+        } else {
+            $('.scroll-to-top').fadeOut();
+        }
+    });
+
+    // Smooth scrolling using jQuery easing
+    $(document).on('click', 'a.scroll-to-top', function (e) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top)
+        }, 1000, 'easeInOutExpo');
+        e.preventDefault();
+    });
+
+    $(document).on('input propertychange', 'textarea', function () {
+        $(this).css('height', this.scrollHeight + 'px');
     });
 
     $getFormData = function getFormData(form) {
@@ -54,40 +49,40 @@ $(document).ready(function() {
         return indexed_array;
     }
 
-    $createCard = function(itemKanban){
-      var cardKanban = document.createElement("div");
-      cardKanban.classList.add("kanban-item");
-      cardKanban.classList.add("card");
-      cardKanban.classList.add("card-stats");
-      cardKanban.classList.add("border-left-primary");
-      cardKanban.classList.add("shadow");
+    $createCard = function (itemKanban) {
+        var cardKanban = document.createElement("div");
+        cardKanban.classList.add("kanban-item");
+        cardKanban.classList.add("card");
+        cardKanban.classList.add("card-stats");
+        cardKanban.classList.add("border-left-primary");
+        cardKanban.classList.add("shadow");
 
-      var cardHeader = document.createElement("div");
-      cardHeader.classList.add("card-header");
+        var cardHeader = document.createElement("div");
+        cardHeader.classList.add("card-header");
 
-      var cardTitle = document.createElement("h5");
-      cardTitle.classList.add("card-title");
-      cardTitle.style.fontStyle = 'bold';
-      cardTitle.innerHTML = itemKanban.title || itemKanban.id;
+        var cardTitle = document.createElement("h5");
+        cardTitle.classList.add("card-title");
+        cardTitle.style.fontStyle = 'bold';
+        cardTitle.innerHTML = itemKanban.title || itemKanban.id;
 
-      var cardCategory = document.createElement("h6");
-      cardCategory.classList.add("card-category");
-      cardCategory.style.marginBottom = '0';
-      cardCategory.innerHTML = itemKanban.descricao;
+        var cardCategory = document.createElement("h6");
+        cardCategory.classList.add("card-category");
+        cardCategory.style.marginBottom = '0';
+        cardCategory.innerHTML = itemKanban.descricao;
 
-      var cardFooter = document.createElement("div");
-      cardFooter.classList.add("card-footer");
+        var cardFooter = document.createElement("div");
+        cardFooter.classList.add("card-footer");
 
-      var cardFooterUser = document.createElement("div");
-      cardFooterUser.innerHTML = itemKanban.executor;
-      cardFooterUser.style.fontSize = 'small';
+        var cardFooterUser = document.createElement("div");
+        cardFooterUser.innerHTML = itemKanban.executor;
+        cardFooterUser.style.fontSize = 'small';
 
-      cardHeader.appendChild(cardTitle);
-      cardHeader.appendChild(cardCategory);
-      cardKanban.appendChild(cardHeader);
-      cardFooter.appendChild(cardFooterUser);
-      cardKanban.appendChild(cardFooter);
-      return cardKanban;
+        cardHeader.appendChild(cardTitle);
+        cardHeader.appendChild(cardCategory);
+        cardKanban.appendChild(cardHeader);
+        cardFooter.appendChild(cardFooterUser);
+        cardKanban.appendChild(cardFooter);
+        return cardKanban;
     };
 
 });

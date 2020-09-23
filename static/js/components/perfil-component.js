@@ -11,6 +11,7 @@ const PerfilComponent = {
 
         $ajaxView(PerfilComponent.rota_view, function(view){
             $('#perfil').html(view);
+            import('/static/js/pages/perfil-page.js');
         });
     }
 };

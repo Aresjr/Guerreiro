@@ -1,52 +1,61 @@
-  <div class="row">
+<div class="row">
     <div class="col-md-5 mt-4">
-      <div class="card">
-        <div class="card-body gr-card-perfil">
-            <div class="gr-card-perfil-imagem">
-              <img class="img" src="https://images.unsplash.com/photo-1502764088999-001291e403de" alt="Foto de perfil"/>
-            </div>
-            <div>
-                <h4 class="font-weight-bold">Nível {{ usuario.level }}</h4>
-                <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: {{ width }}%" aria-valuenow="{{ usuario.currentXp }}" aria-valuemin="0" aria-valuemax="{{ usuario.nextLevelXp }}"></div>
-                </div>
-                <h5 class="card-title font-weight-bold">{{ usuario.cargo.titulo }}</h5>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-7 mt-4">
-      <div class="card">
-        <div class="card-header card-header-primary">
-          <h6 class="m-0 font-weight-bold">Nível de Habilidades</h6>
-        </div>
-        <div class="card-body">
-            {% for habId in nhs %}
-                <div class="show-hab" data-hab-id="{{ nhs[habId].id }}">
-                    <h4 class="small font-weight-bold text-primary">{{ nhs[habId].habilidade.descricao }}<span class="float-right">Nível {{ nhs[habId].level }}</span></h4>
-                    <button class="btn float-right p-0 ml-3">
-                        <i class="fa fa-chevron-down"></i>
-                    </button>
-                    <div class="pt-1">
-                        <div class="progress mb-4">
-                            <div class="progress-bar" role="progressbar" style="width:{{ nhs[habId].width }}%" aria-valuenow="{{ nhs[habId].currentXp }}" aria-valuemin="0" aria-valuemax="{{ nhs[habId].nextLevelXp }}"></div>
-                        </div>
-                    </div>
-                    <div id="hab-filho-{{ nhs[habId].id }}" class="ml-3 d-none">
-                    {% for habFilho in nhs[habId].habFilho %}
-                        <div>
-                            <h4 class="small font-weight-bold text-primary">{{ habFilho.habilidade.descricao }}<span class="float-right">Nível {{ habFilho.level }}</span></h4>
-                            <div class="pt-1">
-                                <div class="progress progress-sm mb-3">
-                                    <div class="progress-bar" role="progressbar" style="width:{{ habFilho.width }}%" aria-valuenow="{{ habFilho.currentXp }}" aria-valuemin="0" aria-valuemax="{{ habFilho.nextLevelXp }}"></div>
-                                </div>
+        <div class="card">
+            <div class="card-body gr-card-perfil">
+                <div>
+                    <div class="tox-progress" data-size="180" data-thickness="18" data-color="#4e73df"
+                         data-background="#ffffff" data-progress="{{ width }}" data-speed="800">
+                        <div class="tox-progress-content" data-vcenter="true">
+                            <div class="gr-card-perfil-imagem">
+                                <img class="img" src="https://images.unsplash.com/photo-1502764088999-001291e403de"
+                                     alt="Foto de perfil"/>
                             </div>
                         </div>
-                    {% endfor %}
                     </div>
+                    <div class="h4 font-weight-bold">Nível {{ usuario.level }}</div>
                 </div>
-            {% endfor %}
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="col-md-7 mt-4">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h6 class="m-0 font-weight-bold">Nível de Habilidades</h6>
+            </div>
+            <div class="card-body">
+                {% for habId in nhs %}
+                    <div class="show-hab" data-hab-id="{{ nhs[habId].id }}">
+                        <div class="h5 font-weight-bold text-primary">{{ nhs[habId].habilidade.descricao }}<span
+                                class="float-right">Nível {{ nhs[habId].level }}</span></div>
+                        <button class="btn float-right p-0 ml-3">
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <div class="pt-1">
+                            <div class="progress mb-4">
+                                <div class="progress-bar" role="progressbar" style="width:{{ nhs[habId].width }}%"
+                                     aria-valuenow="{{ nhs[habId].currentXp }}" aria-valuemin="0"
+                                     aria-valuemax="{{ nhs[habId].nextLevelXp }}"></div>
+                            </div>
+                        </div>
+                        <div id="hab-filho-{{ nhs[habId].id }}" class="ml-3 d-none">
+                            {% for habFilho in nhs[habId].habFilho %}
+                                <div>
+                                    <div class="h6 font-weight-bold text-primary">{{ habFilho.habilidade.descricao }}<span
+                                            class="float-right">Nível {{ habFilho.level }}</span></div>
+                                    <div class="pt-1">
+                                        <div class="progress progress-sm mb-3">
+                                            <div class="progress-bar" role="progressbar"
+                                                 style="width:{{ habFilho.width }}%"
+                                                 aria-valuenow="{{ habFilho.currentXp }}" aria-valuemin="0"
+                                                 aria-valuemax="{{ habFilho.nextLevelXp }}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
